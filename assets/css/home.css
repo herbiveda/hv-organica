@@ -939,3 +939,330 @@
   .partner-item { min-width: 16.66%; }
 
 }
+
+/*-----------------------------------*\
+  #HERBIVEDA HOME SECTIONS
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  LEARN / HEAL / RETREAT PILLARS
+\*-----------------------------------*/
+
+.pillar {
+  padding-block: 80px;
+}
+
+.pillar .section-title-wrapper {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.pillar .section-text {
+  max-width: 650px;
+  margin-inline: auto;
+}
+
+.pillar-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pillar-list > li {
+  display: flex;
+}
+
+.pillar-card {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
+  transition: 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
+}
+
+.pillar-card .card-banner {
+  overflow: hidden;
+  aspect-ratio: 1.45;
+}
+
+.pillar-card .card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.pillar-card:hover .card-banner img {
+  transform: scale(1.04);
+}
+
+.pillar-card .card-content {
+  padding: 28px;
+}
+
+.pillar-card .card-subtitle {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--medium-sea-green);
+}
+
+.pillar-card .card-title {
+  margin-bottom: 12px;
+}
+
+.pillar-card .card-text {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+
+/*-----------------------------------*\
+  FEATURED COURSES
+\*-----------------------------------*/
+
+#featured-courses {
+  padding-block: 75px;
+}
+
+#featured-courses .section-text {
+  max-width: 650px;
+  margin-bottom: 35px;
+}
+
+#featured-courses .grid-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+#featured-courses .product-card {
+  height: 100%;
+  padding: 20px;
+}
+
+#featured-courses .card-banner {
+  margin-bottom: 20px;
+  background-color: var(--cultured);
+  border-radius: 8px;
+}
+
+#featured-courses .card-category {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--medium-sea-green);
+}
+
+#featured-courses .card-title {
+  margin-bottom: 12px;
+}
+
+#featured-courses .card-text {
+  margin-bottom: 18px;
+  line-height: 1.65;
+}
+
+#featured-courses .product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+#featured-courses .product-meta li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--sonic-silver);
+}
+
+#featured-courses .product-meta ion-icon {
+  font-size: 16px;
+}
+
+
+/*-----------------------------------*\
+  BOOKS & GUIDES
+\*-----------------------------------*/
+
+.books-guides {
+  padding-block: 75px;
+}
+
+.books-guides .blog-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.books-guides .blog-card {
+  height: 100%;
+}
+
+
+/*-----------------------------------*\
+  RETREATS
+\*-----------------------------------*/
+
+#retreats {
+  padding-block: 80px;
+}
+
+#retreats .section-text {
+  max-width: 650px;
+  margin-bottom: 35px;
+}
+
+/*
+ * Keep retreat cards horizontal on desktop,
+ * matching the main Herbiveda content sections.
+ */
+
+#retreats .offer-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+#retreats .offer-item {
+  width: 100%;
+}
+
+#retreats .offer-card {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
+  transition: 0.3s ease;
+}
+
+#retreats .offer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
+}
+
+#retreats .card-banner {
+  overflow: hidden;
+  aspect-ratio: 1.45;
+}
+
+#retreats .card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+#retreats .offer-card:hover .card-banner img {
+  transform: scale(1.04);
+}
+
+#retreats .card-content {
+  padding: 26px;
+}
+
+#retreats .card-subtitle {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--medium-sea-green);
+}
+
+#retreats .card-title {
+  margin-bottom: 12px;
+}
+
+#retreats .card-text {
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+
+
+/*-----------------------------------*\
+  COMPACT CTA
+\*-----------------------------------*/
+
+.cta {
+  padding-block: 60px;
+}
+
+.cta .container {
+  text-align: center;
+}
+
+.cta .section-title {
+  margin-bottom: 12px;
+}
+
+.cta .cta-text {
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: 22px;
+}
+
+
+/*-----------------------------------*\
+  RESPONSIVE
+\*-----------------------------------*/
+
+@media (max-width: 1199px) {
+
+  .pillar-list,
+  #featured-courses .grid-list,
+  .books-guides .blog-list,
+  #retreats .offer-list {
+    gap: 18px;
+  }
+
+}
+
+
+@media (max-width: 991px) {
+
+  .pillar-list,
+  #featured-courses .grid-list,
+  .books-guides .blog-list,
+  #retreats .offer-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 575px) {
+
+  .pillar,
+  #featured-courses,
+  .books-guides,
+  #retreats {
+    padding-block: 55px;
+  }
+
+  .pillar-list,
+  #featured-courses .grid-list,
+  .books-guides .blog-list,
+  #retreats .offer-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pillar-card .card-content,
+  #retreats .card-content {
+    padding: 22px;
+  }
+
+}
