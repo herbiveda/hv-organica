@@ -1,0 +1,267 @@
+name: Herbiveda Homepage UI Update
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply approved Herbiveda homepage updates
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          index = Path("index.html")
+          css = Path("assets/css/home.css")
+
+          html = index.read_text(encoding="utf-8")
+          stylesheet = css.read_text(encoding="utf-8")
+
+          footer_marker = "<!-- HERBIVEDA FOOTER NAV V2 -->"
+          css_marker = "/*-----------------------------------*\\\n  #HERBIVEDA UX V2\n\\*-----------------------------------*/"
+
+          if footer_marker not in html:
+              company_pattern = re.compile(
+                  r'<ul class="footer-list">\\s*'
+                  r'<li>\\s*<p class="footer-list-title">Company</p>\\s*</li>.*?'
+                  r'</ul>',
+                  re.S,
+              )
+
+              replacement = f'''{footer_marker}
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Learn</p>
+            </li>
+
+            <li><a href="./knowledge-base.html" class="footer-link">Courses</a></li>
+            <li><a href="./journal.html" class="footer-link">Research & Journal</a></li>
+            <li><a href="./books.html" class="footer-link">Books & Guides</a></li>
+            <li><a href="./knowledge-base.html" class="footer-link">Knowledge Base</a></li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Heal</p>
+            </li>
+
+            <li><a href="./shop.html" class="footer-link">Ayurvedic Herbs</a></li>
+            <li><a href="./shop.html" class="footer-link">Formulations</a></li>
+            <li><a href="./disease.html" class="footer-link">Wellness</a></li>
+            <li><a href="./shop.html" class="footer-link">Yoga & Lifestyle</a></li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Retreat</p>
+            </li>
+
+            <li><a href="./travel.html" class="footer-link">Ayurveda Retreats</a></li>
+            <li><a href="./travel.html" class="footer-link">Panchakarma</a></li>
+            <li><a href="./travel.html" class="footer-link">Yoga Retreats</a></li>
+            <li><a href="./travel.html" class="footer-link">Wellness Journeys</a></li>
+
+          </ul>'''
+
+              html, count = company_pattern.subn(replacement, html, count=1)
+              if count != 1:
+                  raise SystemExit("Could not find the existing Company footer list; no HTML changes made.")
+
+          # Give the existing retreat section a stable id without changing its content.
+          if 'id="retreats"' not in html:
+              retreat_pattern = re.compile(
+                  r'<section class="section offer"(?![^>]*id=)([^>]*)>'
+                  r'(?:(?!</section>).)*?(?:Guided Healing Journeys|Panchakarma|Healing Retreats)'
+                  r'(?:(?!</section>).)*?</section>',
+                  re.S,
+              )
+              html, count = retreat_pattern.subn(
+                  lambda m: '<section class="section offer" id="retreats"' + m.group(1) + '>' + m.group(0).split('>', 1)[1],
+                  html,
+                  count=1,
+              )
+
+          if css_marker not in stylesheet:
+              stylesheet += r'''
+
+/*-----------------------------------*\
+  #HERBIVEDA UX V2
+\*-----------------------------------*/
+
+/* Pillars: tighter hierarchy while preserving Organica styling. */
+.pillar {
+  padding-block: 60px;
+}
+
+.pillar .section-title-wrapper {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-block-end: 34px;
+  text-align: center;
+}
+
+.pillar .section-text {
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.pillar-list {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.pillar-list > li,
+.pillar-card {
+  min-width: 0;
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-card .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-card .btn {
+  margin-block-start: auto;
+  align-self: flex-start;
+}
+
+/* Courses and Books & Guides use the existing Organica card language. */
+#featured-courses,
+#books-guides {
+  padding-block: 55px;
+}
+
+#featured-courses .section-text,
+#books-guides .section-text {
+  max-width: 680px;
+  margin-inline: auto;
+  margin-block-end: 30px;
+}
+
+#featured-courses .grid-list,
+#books-guides .blog-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+#featured-courses .product-card,
+#books-guides .blog-card {
+  height: 100%;
+}
+
+/* Retreat: 3 columns desktop, 2 tablet, 1 mobile. */
+#retreats {
+  padding-block: 60px;
+}
+
+#retreats .offer-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+#retreats .offer-item {
+  width: 100%;
+  min-width: 0;
+}
+
+#retreats .offer-card {
+  height: 100%;
+}
+
+/* Compact supporting sections. */
+.cta {
+  padding-block: 35px;
+}
+
+.cta-text {
+  margin-block: 10px 20px;
+}
+
+.partner,
+.testimonials {
+  padding-block: 45px;
+}
+
+.partner .section-title,
+.testimonials .section-title {
+  margin-block-end: 25px;
+}
+
+.testi-card {
+  padding: 22px 18px;
+}
+
+.testi-card .rating-wrapper {
+  margin-block: 18px 12px;
+}
+
+.testi-card .card-title {
+  margin-block: 18px 8px;
+}
+
+@media (min-width: 768px) {
+  .pillar-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #featured-courses .grid-list,
+  #books-guides .blog-list,
+  #retreats .offer-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  #featured-courses .grid-list,
+  #books-guides .blog-list,
+  #retreats .offer-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pillar-list,
+  #retreats .offer-list {
+    gap: 24px;
+  }
+}
+'''
+
+          index.write_text(html, encoding="utf-8")
+          css.write_text(stylesheet, encoding="utf-8")
+
+      - name: Commit homepage changes and remove one-time updater
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f .github/workflows/herbiveda-homepage-update.yml
+          git add index.html assets/css/home.css .github/workflows/herbiveda-homepage-update.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Refine Herbiveda homepage UX and navigation"
+          git push origin HEAD:master
