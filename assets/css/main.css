@@ -51,6 +51,7 @@
   --russian-violet_65: hsla(245, 97%, 13%, 0.65);
   --rhythm: hsl(220, 17%, 49%);
   --spanish-gray: hsl(156, 3%, 61%);
+  --medium-sea-green: hsl(152, 60%, 40%);
 
   /**
    * typography
@@ -199,6 +200,24 @@ body {
 .btn ion-icon { font-size: 1.6rem; }
 
 .btn-primary:is(:hover, :focus) { --bg-color: var(--green-pigment); }
+
+.btn-secondary {
+  --bg-color: transparent;
+  --color: var(--emerald);
+  border: 1.5px solid var(--emerald);
+}
+
+.btn-secondary:is(:hover, :focus) {
+  --bg-color: var(--emerald);
+  --color: var(--white);
+}
+
+.hero-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
 
 .section { padding-block: var(--section-padding); }
 
