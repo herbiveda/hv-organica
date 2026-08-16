@@ -159,12 +159,19 @@
 
 .pillar-card:is(:hover, :focus-within) { border-color: var(--emerald); }
 
-.pillar-card :is(.card-banner, .card-content) { padding: 30px; }
+.pillar-card :is(.card-banner, .card-content) { padding: 20px; }
 
-.pillar-card .card-banner { background-color: var(--mint-cream); }
+.pillar-card .card-banner {
+  background-color: var(--mint-cream);
+  aspect-ratio: 1.9;
+  overflow: hidden;
+  border-radius: var(--radius-4);
+}
 
 .pillar-card .card-banner img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: var(--radius-4);
 }
 
@@ -1157,7 +1164,7 @@
 
 #retreats .card-banner {
   overflow: hidden;
-  aspect-ratio: 1.45;
+  aspect-ratio: 1.9;
 }
 
 #retreats .card-banner img {
@@ -1172,7 +1179,7 @@
 }
 
 #retreats .card-content {
-  padding: 26px;
+  padding: 20px;
 }
 
 #retreats .card-subtitle {
@@ -1269,23 +1276,13 @@
 
 
 /*-----------------------------------*\
-  #QUICK-VIEW & HIERARCHY IMPROVEMENTS
+  #CARD CONSISTENCY (hover/shadow across chapters)
 \*-----------------------------------*/
 
-/* Cleaner section labels (remove dated -- TEXT -- look) */
-.section-subtitle {
-  letter-spacing: 1.5px;
-  font-size: 1.35rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-block-end: 12px;
-}
-
-/* Stronger card consistency across sections */
 .pillar-card,
 #featured-courses .product-card,
-#retreats .offer-card,
-.books-guides .blog-card {
+.books-guides .blog-card,
+#retreats .offer-card {
   border-radius: 10px;
   box-shadow: 0 4px 24px hsla(0, 0%, 0%, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1293,38 +1290,30 @@
 
 .pillar-card:hover,
 #featured-courses .product-card:hover,
-#retreats .offer-card:hover,
-.books-guides .blog-card:hover {
+.books-guides .blog-card:hover,
+#retreats .offer-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 32px hsla(0, 0%, 0%, 0.1);
 }
 
-/* Product section intro text */
 #heal .section-text {
   max-width: 620px;
   margin-inline: auto;
   margin-block-end: 40px;
 }
 
-/* Featured courses meta more scannable */
-#featured-courses .product-meta {
-  font-size: 1.3rem;
-  gap: 14px;
-}
 
-#featured-courses .product-meta ion-icon {
-  font-size: 1.6rem;
-  color: var(--emerald);
-}
+/*-----------------------------------*\
+  #CTA
+\*-----------------------------------*/
 
-/* CTA refinements */
 .cta {
-  padding-block: 70px;
+  padding-block: 56px;
 }
 
-.cta .section-title {
-  margin-block-end: 14px;
-}
+.cta .container { text-align: center; }
+
+.cta .section-title { margin-block-end: 14px; }
 
 .cta .cta-text {
   max-width: 580px;
@@ -1333,177 +1322,20 @@
   line-height: 1.7;
 }
 
-/* Hero improvements */
+
+/*-----------------------------------*\
+  #HERO REFINEMENTS
+\*-----------------------------------*/
+
 .hero-subtitle {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-size: 1.4rem;
 }
 
-.hero-title .span {
-  color: var(--emerald);
-}
-
-/* Filter buttons cleaner active state */
-.filter-btn.active {
-  background-color: var(--emerald);
-  color: var(--white);
-  box-shadow: 0 4px 14px hsla(152, 95%, 31%, 0.25);
-}
-
-/* Section button centering */
-.section-btn {
-  display: flex;
-  justify-content: center;
-  margin-block-start: 40px;
-}
-
-
-/*-----------------------------------*  #AMENDMENTS – Tighter spacing, consistent fonts, sliders
-\*-----------------------------------*/
-
-/* Restore / enforce original subtitle style (matches hero) */
-.section-subtitle {
-  color: var(--emerald);
-  font-family: var(--ff-playfair-display);
-  font-size: var(--fs-3);
-  font-style: italic;
-  font-weight: var(--fw-700);
-  letter-spacing: 1.5px;
-  margin-block-end: 10px;
-  text-transform: none; /* keep original italic look */
-}
-
-/* Reduce vertical space across home sections */
-.pillar,
-#featured-courses,
-.books-guides,
-#retreats,
-.section.product,
-.section.offer,
-.section.partner,
-.section.testimonials {
-  padding-block: 50px;
-}
-
-.cta {
-  padding-block: 45px;
-}
-
-.section-title-wrapper {
-  margin-block-end: 28px;
-}
-
-.section-text {
-  margin-block-end: 28px;
-}
-
-/* Consistent title fonts */
-.h2.section-title,
-.section-title {
-  font-family: var(--ff-roboto);
-  font-weight: var(--fw-500);
-  color: var(--russian-violet);
-}
-
-.partner .section-title,
-.partner .section-subtitle {
-  color: var(--white);
-}
-
-/* Slider / horizontal scroll for cards */
-.has-scrollbar {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding-block-end: 20px;
-  margin-block-end: -10px;
-  scroll-snap-type: inline mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.has-scrollbar::-webkit-scrollbar {
-  height: 8px;
-}
-
-.has-scrollbar::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 15px;
-}
-
-.has-scrollbar:hover::-webkit-scrollbar-thumb {
-  background-color: var(--black_25);
-}
-
-/* 4 cards visible on desktop for products / courses / guides / retreats */
-#heal .grid-list.has-scrollbar > li,
-#featured-courses .grid-list.has-scrollbar > li,
-.books-guides .blog-list.has-scrollbar > li,
-#retreats .offer-list.has-scrollbar > li {
-  min-width: calc(25% - 15px);
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
-
-/* Courses & Guides & Retreats already use lists – ensure flex */
-#featured-courses .grid-list,
-.books-guides .blog-list,
-#retreats .offer-list {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-/* Product section also becomes slider */
-#heal .grid-list {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-/* Mobile: 1.2–1.5 cards visible + tighter spacing */
-@media (max-width: 991px) {
-  .pillar,
-  #featured-courses,
-  .books-guides,
-  #retreats,
-  .section.product,
-  .section.offer,
-  .section.partner,
-  .section.testimonials {
-    padding-block: 40px;
-  }
-
-  #heal .grid-list.has-scrollbar > li,
-  #featured-courses .grid-list.has-scrollbar > li,
-  .books-guides .blog-list.has-scrollbar > li,
-  #retreats .offer-list.has-scrollbar > li {
-    min-width: calc(50% - 12px);
-  }
-}
+.hero-title .span { color: var(--emerald); }
 
 @media (max-width: 575px) {
-  .pillar,
-  #featured-courses,
-  .books-guides,
-  #retreats,
-  .section.product,
-  .section.offer,
-  .section.partner,
-  .section.testimonials,
-  .cta {
-    padding-block: 32px;
-  }
-
-  .section-title-wrapper {
-    margin-block-end: 20px;
-  }
-
-  #heal .grid-list.has-scrollbar > li,
-  #featured-courses .grid-list.has-scrollbar > li,
-  .books-guides .blog-list.has-scrollbar > li,
-  #retreats .offer-list.has-scrollbar > li {
-    min-width: calc(85% - 10px); /* ~1.15 cards visible, swipe for more */
-  }
-
   .hero-btn-group {
     flex-direction: column;
     align-items: stretch;
@@ -1515,39 +1347,101 @@
   }
 }
 
-/* Keep cards looking good inside slider */
-#heal .product-card,
-#featured-courses .product-card,
-.books-guides .blog-card,
-#retreats .offer-card {
-  height: 100%;
-}
 
-
-/* Final force: match original hero-subtitle style for all section labels */
-.section-subtitle {
-  color: var(--emerald) !important;
-  font-family: var(--ff-playfair-display) !important;
-  font-size: var(--fs-3) !important;
-  font-style: italic !important;
-  font-weight: 700 !important;
-  letter-spacing: 1.5px !important;
-  text-transform: none !important;
-  margin-block-end: 10px !important;
-}
-
-.partner .section-subtitle {
-  color: var(--white) !important;
-}
-
-
-/*-----------------------------------*  #POLISH TWEAKS – scrollbar, cards, spacing
+/*-----------------------------------*\
+  #FILTER BUTTONS
 \*-----------------------------------*/
 
-/* Stronger, always-usable scrollbar */
-.has-scrollbar::-webkit-scrollbar {
-  height: 6px;
+.filter-btn.active {
+  background-color: var(--emerald);
+  color: var(--white);
+  box-shadow: 0 4px 14px hsla(152, 95%, 31%, 0.25);
 }
+
+.section-btn {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 40px;
+}
+
+
+/*-----------------------------------*\
+  #SECTION LABELS (single source of truth)
+\*-----------------------------------*/
+
+.section-subtitle {
+  color: var(--emerald);
+  font-family: var(--ff-roboto);
+  font-size: 1.35rem;
+  font-style: normal;
+  font-weight: var(--fw-700);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-block-end: 12px;
+}
+
+.h2.section-title,
+.section-title {
+  font-family: var(--ff-roboto);
+  font-weight: var(--fw-500);
+  color: var(--russian-violet);
+}
+
+.partner .section-title,
+.partner .section-subtitle { color: var(--white); }
+
+
+/*-----------------------------------*\
+  #HOME SECTION SPACING (single source of truth)
+\*-----------------------------------*/
+
+.pillar,
+#featured-courses,
+.books-guides,
+#retreats,
+.section.product {
+  padding-block: 50px;
+}
+
+.partner,
+.testimonials {
+  padding-block: 48px;
+}
+
+.section-title-wrapper { margin-block-end: 28px; }
+
+.section-text { margin-block-end: 28px; }
+
+@media (max-width: 991px) {
+  .pillar,
+  #featured-courses,
+  .books-guides,
+  #retreats,
+  .section.product {
+    padding-block: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .pillar,
+  #featured-courses,
+  .books-guides,
+  #retreats,
+  .section.product,
+  .partner,
+  .testimonials {
+    padding-block: 32px;
+  }
+
+  .section-title-wrapper { margin-block-end: 20px; }
+}
+
+
+/*-----------------------------------*\
+  #SCROLLBAR (kept for any future use)
+\*-----------------------------------*/
+
+.has-scrollbar::-webkit-scrollbar { height: 6px; }
 
 .has-scrollbar::-webkit-scrollbar-track {
   background: hsla(0, 0%, 0%, 0.04);
@@ -1560,77 +1454,39 @@
   opacity: 0.7;
 }
 
-.has-scrollbar:hover::-webkit-scrollbar-thumb {
-  background-color: var(--green-pigment);
+.has-scrollbar:hover::-webkit-scrollbar-thumb { background-color: var(--green-pigment); }
+
+
+/*-----------------------------------*\
+  #PARTNER & TESTIMONIALS (static grid, no scroll/slider)
+\*-----------------------------------*/
+
+.partner-list,
+.testi-list {
+  display: grid;
+  gap: 24px;
 }
 
-/* Desktop: exactly 4 cards visible */
-@media (min-width: 1200px) {
-  #heal .grid-list.has-scrollbar > li,
-  #featured-courses .grid-list.has-scrollbar > li,
-  .books-guides .blog-list.has-scrollbar > li,
-  #retreats .offer-list.has-scrollbar > li {
-    min-width: calc(25% - 15px);
-  }
+.partner-item,
+.testi-item {
+  min-width: unset;
+  width: 100%;
+  margin-inline: 0;
+  scroll-snap-align: unset;
 }
 
-/* Tablet: 2–3 cards */
-@media (min-width: 768px) and (max-width: 1199px) {
-  #heal .grid-list.has-scrollbar > li,
-  #featured-courses .grid-list.has-scrollbar > li,
-  .books-guides .blog-list.has-scrollbar > li,
-  #retreats .offer-list.has-scrollbar > li {
-    min-width: calc(33.333% - 14px);
-  }
+.partner-list { grid-template-columns: repeat(2, 1fr); }
+
+.testi-list { grid-template-columns: 1fr; }
+
+@media (min-width: 576px) {
+  .partner-list { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Mobile: comfortable swipe (about 1.25 cards) */
-@media (max-width: 767px) {
-  #heal .grid-list.has-scrollbar > li,
-  #featured-courses .grid-list.has-scrollbar > li,
-  .books-guides .blog-list.has-scrollbar > li,
-  #retreats .offer-list.has-scrollbar > li {
-    min-width: 82%;
-  }
-
-  .has-scrollbar {
-    gap: 14px;
-    padding-inline: 4px;
-  }
+@media (min-width: 768px) {
+  .testi-list { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Slightly tighter section titles for better density */
-.section-title-wrapper {
-  margin-block-end: 24px;
-}
-
-.section-text {
-  margin-block-end: 24px;
-  line-height: 1.65;
-}
-
-/* Partner & Testimonials keep a little more breathing room */
-.section.partner,
-.section.testimonials {
-  padding-block: 55px;
-}
-
-@media (max-width: 575px) {
-  .section.partner,
-  .section.testimonials {
-    padding-block: 40px;
-  }
-}
-
-/* Smooth snap + prevent card stretching */
-.has-scrollbar > li {
-  scroll-snap-align: start;
-}
-
-#heal .product-card,
-#featured-courses .product-card,
-.books-guides .blog-card,
-#retreats .offer-card {
-  height: auto;
-  min-height: 100%;
+@media (min-width: 992px) {
+  .partner-list { grid-template-columns: repeat(6, 1fr); }
 }
