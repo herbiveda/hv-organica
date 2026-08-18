@@ -1,0 +1,118 @@
+/* Horizontal carousel for #featured-courses, #books-guides, #heal, #retreats */
+.carousel-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ds-emerald, var(--emerald, hsl(152, 95%, 39%)));
+  background: #fff;
+  color: var(--ds-emerald, var(--emerald, hsl(152, 95%, 39%)));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 1.8rem;
+  padding: 0;
+}
+
+.carousel-btn:hover:not(:disabled),
+.carousel-btn:focus:not(:disabled) {
+  background: var(--ds-emerald, var(--emerald, hsl(152, 95%, 39%)));
+  color: #fff;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+#featured-courses .has-scrollbar,
+#books-guides .has-scrollbar,
+#heal .has-scrollbar,
+#retreats .has-scrollbar {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 4px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ds-emerald, var(--emerald, hsl(152, 95%, 39%))) transparent;
+  cursor: grab;
+}
+
+#featured-courses .has-scrollbar::-webkit-scrollbar,
+#books-guides .has-scrollbar::-webkit-scrollbar,
+#heal .has-scrollbar::-webkit-scrollbar,
+#retreats .has-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+#featured-courses .has-scrollbar::-webkit-scrollbar-thumb,
+#books-guides .has-scrollbar::-webkit-scrollbar-thumb,
+#heal .has-scrollbar::-webkit-scrollbar-thumb,
+#retreats .has-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--ds-emerald, var(--emerald, hsl(152, 95%, 39%)));
+  border-radius: 10px;
+}
+
+#featured-courses .has-scrollbar.grabbing,
+#books-guides .has-scrollbar.grabbing,
+#heal .has-scrollbar.grabbing,
+#retreats .has-scrollbar.grabbing {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+#featured-courses .has-scrollbar > li,
+#books-guides .has-scrollbar > li,
+#heal .has-scrollbar > li,
+#retreats .has-scrollbar > li {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-width: 280px;
+  width: 280px;
+}
+
+@media (min-width: 992px) {
+  #featured-courses .has-scrollbar > li,
+  #books-guides .has-scrollbar > li,
+  #heal .has-scrollbar > li,
+  #retreats .has-scrollbar > li {
+    min-width: calc(25% - 15px);
+    width: calc(25% - 15px);
+    max-width: calc(25% - 15px);
+  }
+}
+
+@media (max-width: 991px) {
+  #featured-courses .has-scrollbar > li,
+  #books-guides .has-scrollbar > li,
+  #heal .has-scrollbar > li,
+  #retreats .has-scrollbar > li {
+    min-width: 300px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 575px) {
+  #featured-courses .has-scrollbar > li,
+  #books-guides .has-scrollbar > li,
+  #heal .has-scrollbar > li,
+  #retreats .has-scrollbar > li {
+    min-width: 82%;
+    width: 82%;
+    max-width: 340px;
+  }
+}
