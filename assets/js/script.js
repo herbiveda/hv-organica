@@ -63,6 +63,56 @@ if (productDisplay) {
   });
 }
 
+/** Homepage conversion polish */
+document.addEventListener('DOMContentLoaded', function () {
+  /* Move trust-strip items into the original top bar and remove the duplicate strip. */
+  const proof = document.querySelector('.top-bar-proof');
+  const trustItems = Array.from(document.querySelectorAll('.trust-strip-item'));
+  if (proof && trustItems.length) {
+    proof.textContent = trustItems.map(function (item) {
+      return item.textContent.trim();
+    }).join(' • ');
+    const trustStrip = document.querySelector('.trust-strip');
+    if (trustStrip) trustStrip.remove();
+  }
+
+  /* Update the hero store CTA. */
+  const heroStoreCta = document.querySelector('.hero-btn-group .btn-secondary');
+  if (heroStoreCta) heroStoreCta.textContent = 'HV Herbs Store';
+
+  /* Replace the early consultation block with the existing CTA section. */
+  const earlyConsultation = document.querySelector('.early-consultation');
+  const cta = document.querySelector('.cta');
+  const courses = document.querySelector('#featured-courses');
+  if (earlyConsultation) earlyConsultation.remove();
+  if (cta) {
+    cta.id = 'consultation';
+    if (courses && courses.parentNode) {
+      courses.parentNode.insertBefore(cta, courses);
+    }
+  }
+
+  /* Keep the desktop card rhythm at four cards without inventing prices or unavailable products. */
+  const addComingSoonCard = function (listSelector, sectionType, title, description) {
+    const list = document.querySelector(listSelector);
+    if (!list || list.children.length >= 4) return;
+
+    const item = document.createElement('li');
+    if (sectionType === 'course') {
+      item.innerHTML = '<div class="product-card"><figure class="card-banner"><img src="./assets/images/product-4.png" width="189" height="189" loading="lazy" alt="More Ayurveda learning coming soon"></figure><div class="card-content"><p class="card-category">COMING SOON</p><h3 class="h3 card-title">' + title + '</h3><p class="card-text">' + description + '</p><a href="#consultation" class="btn btn-secondary">Get Notified</a></div></div>';
+    } else if (sectionType === 'guide') {
+      item.innerHTML = '<div class="blog-card"><figure class="card-banner"><img src="./assets/images/blog-1.jpg" width="451" height="310" loading="lazy" alt="More Ayurveda guides coming soon" class="w-100"></figure><div class="card-content"><p class="card-subtitle">COMING SOON</p><h3 class="h3 card-title">' + title + '</h3><p class="card-text">' + description + '</p><a href="#consultation" class="btn btn-secondary">Get Notified</a></div></div>';
+    } else if (sectionType === 'retreat') {
+      item.innerHTML = '<div class="offer-card"><figure class="card-banner"><img src="./assets/images/blog-3.jpg" width="450" height="300" loading="lazy" alt="More Ayurveda retreats coming soon"></figure><div class="card-content"><p class="card-subtitle">COMING SOON</p><h3 class="h3 card-title">' + title + '</h3><p class="card-text">' + description + '</p><a href="#consultation" class="btn btn-secondary">Get Notified</a></div></div>';
+    }
+    list.appendChild(item);
+  };
+
+  addComingSoonCard('#featured-courses .grid-list', 'course', 'More Courses Coming Soon', 'New practitioner-reviewed Ayurveda learning experiences are being developed.');
+  addComingSoonCard('#books-guides .blog-list', 'guide', 'More Guides Coming Soon', 'New evidence-informed guides and deeper reading are being prepared.');
+  addComingSoonCard('#retreats .offer-list', 'retreat', 'More Retreats Coming Soon', 'New vetted Ayurveda, Panchakarma and yoga journeys will be announced here.');
+});
+
 /** Global legacy spelling cleanup */
 document.querySelectorAll('[aria-label], [title]').forEach(function (element) {
   if (element.hasAttribute('aria-label')) {
