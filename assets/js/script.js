@@ -122,58 +122,117 @@ document.addEventListener('DOMContentLoaded', function () {
   addComingSoonCard('#retreats .offer-list', 'retreat', 'More Retreats Coming Soon', 'New vetted Ayurveda, Panchakarma and yoga journeys will be announced here.');
 
   /**
-   * Scroll-stacked Learn / Heal / Retreat pillar cards.
-   * The existing three pillar list items are transformed into the lightweight
-   * sticky-card structure described in the shared design report.
+   * Horizontal carousels for the four requested sections:
+   * Featured Courses, Books & Guides, Heal, and Retreats.
    */
-  const pillarSection = document.querySelector('#pillars');
-  const pillarList = pillarSection ? pillarSection.querySelector('.pillar-list') : null;
+  const carouselSections = [
+    '#featured-courses',
+    '#books-guides',
+    '#heal',
+    '#retreats'
+  ];
 
-  if (pillarSection && pillarList && pillarList.children.length === 3 && !pillarSection.dataset.stackInitialized) {
-    const stackWrapper = document.createElement('div');
-    stackWrapper.className = 'stack-wrapper';
-    stackWrapper.setAttribute('aria-label', 'Learn, Heal and Retreat');
+  carouselSections.forEach(function (selector) {
+    const section = document.querySelector(selector);
+    if (!section) return;
 
-    Array.from(pillarList.children).forEach(function (item, index) {
-      const stackCard = document.createElement('div');
-      stackCard.className = 'stack-card';
-      stackCard.dataset.stack = String(index + 1);
-      stackCard.appendChild(item.firstElementChild);
-      stackWrapper.appendChild(stackCard);
+    const track = section.querySelector('.grid-list, .blog-list, .offer-list');
+    if (!track || track.dataset.carouselReady === 'true') return;
+
+    track.classList.add('has-scrollbar');
+    track.dataset.carouselReady = 'true';
+
+    /* Create Previous / Next controls. */
+    const nav = document.createElement('div');
+    nav.className = 'carousel-nav';
+    nav.innerHTML = `
+      <button class="carousel-btn prev" type="button" aria-label="Previous">
+        <ion-icon name="chevron-back-outline" aria-hidden="true"></ion-icon>
+      </button>
+      <button class="carousel-btn next" type="button" aria-label="Next">
+        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+      </button>
+    `;
+
+    track.parentNode.insertBefore(nav, track);
+
+    const prevBtn = nav.querySelector('.prev');
+    const nextBtn = nav.querySelector('.next');
+
+    const getCard = function () {
+      return track.querySelector(':scope > li, :scope > .product-item, :scope > .blog-card, :scope > .offer-item');
+    };
+
+    const getScrollAmount = function () {
+      const card = getCard();
+      if (!card) return 300;
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.columnGap || style.gap || '20') || 20;
+      return card.offsetWidth + gap;
+    };
+
+    const updateButtons = function () {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      prevBtn.disabled = track.scrollLeft <= 10;
+      nextBtn.disabled = track.scrollLeft >= maxScroll - 10;
+    };
+
+    prevBtn.addEventListener('click', function () {
+      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
     });
 
-    pillarList.replaceWith(stackWrapper);
-    pillarSection.classList.add('stacked-pillars');
-    pillarSection.dataset.stackInitialized = 'true';
+    nextBtn.addEventListener('click', function () {
+      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
 
-    const stackCards = stackWrapper.querySelectorAll('.stack-card');
-    if ('IntersectionObserver' in window) {
-      const stackObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-active');
-            entry.target.style.transform = 'scale(1) translateY(0)';
-            entry.target.style.opacity = '1';
-          } else {
-            entry.target.classList.remove('is-active');
-            entry.target.style.transform = 'scale(0.94) translateY(28px)';
-            entry.target.style.opacity = '0.72';
-          }
-        });
-      }, {
-        threshold: 0.4,
-        rootMargin: '-8% 0px -8% 0px'
-      });
+    track.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
 
-      stackCards.forEach(function (card) {
-        stackObserver.observe(card);
-      });
-    } else {
-      stackCards.forEach(function (card) {
-        card.classList.add('is-active');
-      });
-    }
-  }
+    /* Optional mouse-drag support from the implementation review. */
+    let isDown = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let moved = false;
+
+    track.addEventListener('mousedown', function (event) {
+      if (event.button !== 0) return;
+      isDown = true;
+      moved = false;
+      startX = event.pageX - track.offsetLeft;
+      startScrollLeft = track.scrollLeft;
+      track.classList.add('grabbing');
+    });
+
+    track.addEventListener('mouseleave', function () {
+      isDown = false;
+      track.classList.remove('grabbing');
+    });
+
+    track.addEventListener('mouseup', function () {
+      isDown = false;
+      track.classList.remove('grabbing');
+    });
+
+    track.addEventListener('mousemove', function (event) {
+      if (!isDown) return;
+      event.preventDefault();
+      const x = event.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      if (Math.abs(walk) > 4) moved = true;
+      track.scrollLeft = startScrollLeft - walk;
+    });
+
+    /* Prevent a drag gesture from accidentally activating a card link. */
+    track.addEventListener('click', function (event) {
+      if (moved) {
+        event.preventDefault();
+        event.stopPropagation();
+        moved = false;
+      }
+    }, true);
+
+    updateButtons();
+  });
 });
 
 /** Global legacy spelling cleanup */
