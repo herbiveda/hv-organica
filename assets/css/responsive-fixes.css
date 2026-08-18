@@ -21,7 +21,6 @@
   scroll-snap-align: start;
 }
 
-/* Keep the original CTA image and remove the inner white card treatment. */
 #consultation.cta {
   background-image: url("../images/cta-bg.png") !important;
   background-repeat: no-repeat !important;
@@ -36,7 +35,6 @@
   padding-block: 0 !important;
 }
 
-/* Uniform card boundary: reserve the border before hover so it never clips/crops. */
 .pillar-card,
 #featured-courses .product-card,
 #books-guides .blog-card,
@@ -64,13 +62,10 @@
   transform: translateY(-6px);
 }
 
-/* Compact mobile system: 360–430px screens should feel intentional, not scaled-down desktop. */
 @media (max-width: 767px) {
   body { padding-bottom: 64px; }
-
   .section { padding-block: 36px !important; }
   .container { width: min(100% - 28px, 540px); }
-
   .hero { padding-block: 30px 26px !important; min-height: 0 !important; }
   .hero-banner { display: none !important; }
   .hero-title { font-size: clamp(2.7rem, 9vw, 3.5rem) !important; line-height: 1.12 !important; }
@@ -78,29 +73,23 @@
   .hero-text { font-size: 1.4rem !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
-
   .service { padding-block: 22px !important; }
   .service-list { gap: 8px !important; }
   .service-item { min-height: 48px; gap: 9px; }
   .item-icon { padding: 10px !important; }
   .item-icon img { width: 26px; height: 26px; }
   .item-title { font-size: 1.35rem !important; }
-
   .section-title-wrapper { margin-bottom: 18px !important; }
   .section-title,
   .h2.section-title { font-size: clamp(2rem, 7.5vw, 2.7rem) !important; line-height: 1.2 !important; }
   .section-subtitle { font-size: 1.2rem !important; margin-bottom: 7px !important; }
   .section-text { font-size: 1.35rem !important; line-height: 1.6 !important; margin-bottom: 18px !important; }
-
-  /* How Herbiveda Works remains stacked, with compact cards. */
   .pillar { padding-block: 34px !important; }
   .pillar-list { display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important; }
   .pillar-card .card-content { padding: 17px !important; }
   .pillar-card .card-banner { aspect-ratio: 1.45 / 1 !important; }
   .pillar-card .card-title { font-size: 1.65rem !important; }
   .pillar-card .card-text { font-size: 1.3rem !important; line-height: 1.6 !important; }
-
-  /* Learn, Books, Heal and Retreat: 82% card rail with visible next-card cue. */
   #featured-courses .grid-list,
   #books-guides .blog-list,
   #heal .grid-list,
@@ -116,7 +105,6 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
   }
-
   #featured-courses .grid-list > li,
   #books-guides .blog-list > li,
   #heal .grid-list > li,
@@ -127,33 +115,27 @@
     max-width: 340px !important;
     scroll-snap-align: start;
   }
-
   #featured-courses .card-content,
   #books-guides .card-content,
   #heal .card-content,
   #retreats .card-content { padding: 17px !important; }
-
   #featured-courses .card-title,
   #books-guides .card-title,
   #heal .card-title,
   #retreats .card-title { font-size: 1.6rem !important; }
-
   #featured-courses .card-text,
   #books-guides .card-text,
   #heal .card-text,
   #retreats .card-text { font-size: 1.3rem !important; line-height: 1.58 !important; }
-
   #featured-courses .btn,
   #books-guides .btn,
   #heal .btn,
   #retreats .btn { width: 100% !important; }
-
   #consultation.cta { padding-block: 36px !important; }
   #consultation.cta .container { padding-inline: 14px !important; }
   #consultation.cta .section-title { font-size: 2.15rem !important; }
   #consultation.cta .cta-text { font-size: 1.35rem !important; line-height: 1.6 !important; margin-bottom: 18px !important; }
   #consultation.cta .btn { width: 100% !important; }
-
   .partner,
   .testimonials { padding-block: 28px !important; }
   .partner-list { gap: 12px !important; }
@@ -192,7 +174,6 @@
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
 }
 
-/* Tablet: four cards remain horizontally scrollable rather than collapsing into a tall stack. */
 @media (min-width: 768px) and (max-width: 1023px) {
   #heal .grid-list > li,
   #featured-courses .grid-list > li,
@@ -202,4 +183,84 @@
     width: 300px !important;
     min-width: 300px !important;
   }
+}
+
+/* Horizontal carousel system from the 7-page implementation review. */
+.has-scrollbar {
+  display: flex !important;
+  gap: 20px;
+  overflow-x: auto !important;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 4px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ds-emerald) transparent;
+  cursor: grab;
+}
+.has-scrollbar:active,
+.has-scrollbar.grabbing { cursor: grabbing; }
+.has-scrollbar.grabbing { scroll-snap-type: none; }
+.has-scrollbar::-webkit-scrollbar { height: 6px; }
+.has-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.has-scrollbar::-webkit-scrollbar-thumb { background: var(--ds-emerald); border-radius: 10px; }
+.has-scrollbar > li,
+.has-scrollbar .product-item,
+.has-scrollbar .blog-card,
+.has-scrollbar .offer-item {
+  flex: 0 0 280px;
+  min-width: 280px;
+  scroll-snap-align: start;
+}
+
+.carousel-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ds-emerald);
+  background: var(--ds-white);
+  color: var(--ds-emerald);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+.carousel-btn:hover,
+.carousel-btn:focus-visible {
+  background: var(--ds-emerald);
+  color: var(--ds-white);
+}
+.carousel-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (min-width: 992px) {
+  .has-scrollbar > li,
+  .has-scrollbar .product-item,
+  .has-scrollbar .blog-card,
+  .has-scrollbar .offer-item {
+    flex-basis: calc(25% - 15px);
+    min-width: calc(25% - 15px);
+  }
+}
+
+@media (max-width: 767px) {
+  .has-scrollbar {
+    gap: 14px;
+    padding-bottom: 12px;
+  }
+  .has-scrollbar > li,
+  .has-scrollbar .product-item,
+  .has-scrollbar .blog-card,
+  .has-scrollbar .offer-item {
+    flex-basis: 82% !important;
+    min-width: 82% !important;
+  }
+  .carousel-nav { margin-bottom: 12px; }
 }
