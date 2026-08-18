@@ -1,3 +1,5 @@
+@import url("./responsive-fixes.css");
+
 /*-----------------------------------*\
   #HERBIVEDA DESIGN SYSTEM + CONVERSION OVERRIDES
   Source of truth: Grok design review, 2026-08-18
@@ -407,4 +409,15 @@
   .h2.section-title { font-size: 2rem; }
   .section-subtitle { font-size: 1.15rem; }
   .mobile-action-bar .btn { font-size: 1.25rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #heal .grid-list > li,
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #retreats .offer-list > li {
+    flex-basis: 300px !important;
+    width: 300px !important;
+    min-width: 300px !important;
+  }
 }
