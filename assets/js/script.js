@@ -65,15 +65,6 @@ if (productDisplay) {
 
 /** Homepage conversion polish */
 document.addEventListener('DOMContentLoaded', function () {
-  /* Load the mobile/tablet responsive overrides after all legacy CSS. */
-  if (!document.querySelector('link[data-responsive-fixes]')) {
-    const responsiveStyles = document.createElement('link');
-    responsiveStyles.rel = 'stylesheet';
-    responsiveStyles.href = './assets/css/responsive-fixes.css';
-    responsiveStyles.dataset.responsiveFixes = 'true';
-    document.head.appendChild(responsiveStyles);
-  }
-
   /* Move trust-strip items into the original top bar and remove the duplicate strip. */
   const proof = document.querySelector('.top-bar-proof');
   const trustItems = Array.from(document.querySelectorAll('.trust-strip-item'));
