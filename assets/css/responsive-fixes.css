@@ -62,6 +62,23 @@
   transform: translateY(-6px);
 }
 
+/* Hero trust label: professional, evidence-first treatment. */
+.hero-subtitle {
+  color: var(--ds-russian-violet) !important;
+  font-family: var(--ff-body) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.35rem, 2vw, 1.7rem) !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase;
+  margin-block-end: 12px !important;
+}
+
+.hero-text strong {
+  color: var(--ds-russian-violet);
+  font-weight: 700;
+}
+
 @media (max-width: 767px) {
   body { padding-bottom: 64px; }
   .section { padding-block: 36px !important; }
@@ -142,12 +159,127 @@
   .partner-item { min-width: 0 !important; }
   .testi-list { gap: 14px !important; }
   .testi-item { min-width: 0 !important; margin-inline: 0 !important; }
+
+  /* Mobile header: hamburger | centered logo | search. */
+  .nav-wrapper .container {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr) 44px !important;
+    align-items: center !important;
+    column-gap: 8px !important;
+    row-gap: 0 !important;
+    padding: 12px 14px !important;
+    min-height: 58px;
+  }
+  .nav-wrapper .h1 {
+    order: 2 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    text-align: center;
+  }
+  .nav-wrapper .logo {
+    display: inline-block;
+    font-size: 2.25rem !important;
+    line-height: 1;
+  }
+  .nav-open-btn {
+    order: 1 !important;
+    justify-self: start !important;
+    width: 40px;
+    height: 40px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem !important;
+    padding: 6px !important;
+    border-radius: 10px;
+  }
+  .header-action {
+    order: 3 !important;
+    min-width: 0 !important;
+    width: 44px !important;
+    justify-self: end !important;
+    justify-content: flex-end !important;
+  }
+  .header-action .search-wrapper { position: relative; }
+  .header-action-btn {
+    width: 40px;
+    height: 40px;
+    padding: 8px !important;
+    font-size: 2rem !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-action .input-wrapper {
+    top: calc(100% + 14px);
+    right: 0;
+    left: auto;
+    width: min(250px, calc(100vw - 28px));
+    transform: translateX(0) scale(var(--scale, 0.5));
+    transform-origin: top right;
+  }
+  .header-action .search-wrapper.active .input-wrapper {
+    transform: translateX(0) scale(1);
+  }
+
+  /* Compact partner, testimonial and footer rhythm for phone screens. */
+  .partner.section,
+  .testimonials.section { padding-block: clamp(22px, 5vw, 30px) !important; }
+  .partner-list {
+    gap: clamp(8px, 2.5vw, 14px) !important;
+  }
+  .partner-logo {
+    width: clamp(46px, 15vw, 74px) !important;
+    margin: 0 auto;
+  }
+  .partner-logo img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .testi-list { gap: 12px !important; }
+  .testi-card {
+    padding: clamp(14px, 4vw, 18px) !important;
+  }
+  .testi-card .card-header {
+    margin-bottom: 10px !important;
+  }
+  .testi-card .card-avatar {
+    width: clamp(58px, 16vw, 72px) !important;
+    height: clamp(58px, 16vw, 72px) !important;
+  }
+  .testi-card .card-text {
+    font-size: clamp(1.2rem, 3.5vw, 1.35rem) !important;
+    line-height: 1.55 !important;
+  }
+  .testi-card .card-title {
+    font-size: clamp(1.45rem, 4vw, 1.7rem) !important;
+    margin-bottom: 4px !important;
+  }
+  .testi-card .card-subtitle {
+    font-size: clamp(1.05rem, 3vw, 1.2rem) !important;
+  }
+
+  .footer-top { padding-block: 28px 20px !important; }
+  .footer-top .container { gap: 20px !important; }
+  .footer-brand { text-align: center; }
+  .footer-brand .logo { font-size: 2.2rem !important; }
+  .footer-text,
+  .newsletter-text { font-size: 1.25rem !important; line-height: 1.55 !important; margin-bottom: 12px !important; }
+  .social-list { gap: 8px !important; justify-content: center !important; }
+  .footer-list { margin-bottom: 0 !important; }
+  .footer-list-title { font-size: 1.35rem !important; margin-bottom: 8px !important; }
+  .footer-link { font-size: 1.25rem !important; padding-block: 4px !important; }
+  .footer-form { margin-top: 10px !important; }
+  .footer-bottom { padding-block: 14px !important; }
+  .footer-bottom .container { gap: 8px !important; text-align: center !important; }
+  .copyright,
+  .footer-bottom-link { font-size: 1.1rem !important; }
 }
 
 @media (max-width: 575px) {
   .section { padding-block: 32px !important; }
   .container { width: min(100% - 26px, 540px); }
-  .header .container { width: min(100% - 26px, 540px); }
+  .header .container { width: 100%; }
   .btn { padding: 12px 20px !important; }
   .card-content,
   .pillar-card .card-content,
@@ -163,15 +295,18 @@
     width: 84% !important;
     min-width: 84% !important;
   }
+  .footer-list { padding-block: 2px !important; }
 }
 
 @media (max-width: 390px) {
   .hero { padding-block: 26px 24px !important; }
   .hero-title { font-size: 2.65rem !important; }
   .hero-text { font-size: 1.28rem !important; }
+  .hero-subtitle { font-size: 1.2rem !important; letter-spacing: 1px !important; }
   .section-title,
   .h2.section-title { font-size: 2rem !important; }
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
+  .footer-top { padding-block: 24px 16px !important; }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
