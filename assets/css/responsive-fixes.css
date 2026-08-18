@@ -1,0 +1,205 @@
+/* Homepage responsive fixes based on the shared mobile design review. */
+
+/* Restore Heal as a single horizontal product rail on larger screens too. */
+#heal .grid-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  gap: 20px;
+  padding-block: 4px 14px;
+  padding-inline: 2px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+#heal .grid-list > li {
+  flex: 0 0 calc(25% - 15px) !important;
+  width: calc(25% - 15px) !important;
+  min-width: calc(25% - 15px) !important;
+  scroll-snap-align: start;
+}
+
+/* Keep the original CTA image and remove the inner white card treatment. */
+#consultation.cta {
+  background-image: url("../images/cta-bg.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+#consultation.cta .container {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding-block: 0 !important;
+}
+
+/* Uniform card boundary: reserve the border before hover so it never clips/crops. */
+.pillar-card,
+#featured-courses .product-card,
+#books-guides .blog-card,
+#heal .product-card,
+#retreats .offer-card,
+.testi-card {
+  border: 2px solid transparent !important;
+  box-sizing: border-box !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.pillar-card:hover,
+#featured-courses .product-card:hover,
+#books-guides .blog-card:hover,
+#heal .product-card:hover,
+#retreats .offer-card:hover,
+.testi-card:hover,
+.pillar-card:focus-within,
+#featured-courses .product-card:focus-within,
+#books-guides .blog-card:focus-within,
+#heal .product-card:focus-within,
+#retreats .offer-card:focus-within,
+.testi-card:focus-within {
+  border-color: var(--ds-emerald) !important;
+  transform: translateY(-6px);
+}
+
+/* Compact mobile system: 360–430px screens should feel intentional, not scaled-down desktop. */
+@media (max-width: 767px) {
+  body { padding-bottom: 64px; }
+
+  .section { padding-block: 36px !important; }
+  .container { width: min(100% - 28px, 540px); }
+
+  .hero { padding-block: 30px 26px !important; min-height: 0 !important; }
+  .hero-banner { display: none !important; }
+  .hero-title { font-size: clamp(2.7rem, 9vw, 3.5rem) !important; line-height: 1.12 !important; }
+  .hero-title .span { font-size: inherit !important; }
+  .hero-text { font-size: 1.4rem !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
+  .hero-btn-group { display: grid !important; gap: 10px !important; }
+  .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
+
+  .service { padding-block: 22px !important; }
+  .service-list { gap: 8px !important; }
+  .service-item { min-height: 48px; gap: 9px; }
+  .item-icon { padding: 10px !important; }
+  .item-icon img { width: 26px; height: 26px; }
+  .item-title { font-size: 1.35rem !important; }
+
+  .section-title-wrapper { margin-bottom: 18px !important; }
+  .section-title,
+  .h2.section-title { font-size: clamp(2rem, 7.5vw, 2.7rem) !important; line-height: 1.2 !important; }
+  .section-subtitle { font-size: 1.2rem !important; margin-bottom: 7px !important; }
+  .section-text { font-size: 1.35rem !important; line-height: 1.6 !important; margin-bottom: 18px !important; }
+
+  /* How Herbiveda Works remains stacked, with compact cards. */
+  .pillar { padding-block: 34px !important; }
+  .pillar-list { display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important; }
+  .pillar-card .card-content { padding: 17px !important; }
+  .pillar-card .card-banner { aspect-ratio: 1.45 / 1 !important; }
+  .pillar-card .card-title { font-size: 1.65rem !important; }
+  .pillar-card .card-text { font-size: 1.3rem !important; line-height: 1.6 !important; }
+
+  /* Learn, Books, Heal and Retreat: 82% card rail with visible next-card cue. */
+  #featured-courses .grid-list,
+  #books-guides .blog-list,
+  #heal .grid-list,
+  #retreats .offer-list {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    gap: 14px !important;
+    padding: 3px 2px 12px !important;
+    margin-inline: -2px !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #heal .grid-list > li,
+  #retreats .offer-list > li {
+    flex: 0 0 82% !important;
+    width: 82% !important;
+    min-width: 82% !important;
+    max-width: 340px !important;
+    scroll-snap-align: start;
+  }
+
+  #featured-courses .card-content,
+  #books-guides .card-content,
+  #heal .card-content,
+  #retreats .card-content { padding: 17px !important; }
+
+  #featured-courses .card-title,
+  #books-guides .card-title,
+  #heal .card-title,
+  #retreats .card-title { font-size: 1.6rem !important; }
+
+  #featured-courses .card-text,
+  #books-guides .card-text,
+  #heal .card-text,
+  #retreats .card-text { font-size: 1.3rem !important; line-height: 1.58 !important; }
+
+  #featured-courses .btn,
+  #books-guides .btn,
+  #heal .btn,
+  #retreats .btn { width: 100% !important; }
+
+  #consultation.cta { padding-block: 36px !important; }
+  #consultation.cta .container { padding-inline: 14px !important; }
+  #consultation.cta .section-title { font-size: 2.15rem !important; }
+  #consultation.cta .cta-text { font-size: 1.35rem !important; line-height: 1.6 !important; margin-bottom: 18px !important; }
+  #consultation.cta .btn { width: 100% !important; }
+
+  .partner,
+  .testimonials { padding-block: 28px !important; }
+  .partner-list { gap: 12px !important; }
+  .partner-item { min-width: 0 !important; }
+  .testi-list { gap: 14px !important; }
+  .testi-item { min-width: 0 !important; margin-inline: 0 !important; }
+}
+
+@media (max-width: 575px) {
+  .section { padding-block: 32px !important; }
+  .container { width: min(100% - 26px, 540px); }
+  .header .container { width: min(100% - 26px, 540px); }
+  .btn { padding: 12px 20px !important; }
+  .card-content,
+  .pillar-card .card-content,
+  #featured-courses .card-content,
+  #books-guides .card-content,
+  #heal .card-content,
+  #retreats .card-content { padding: 16px !important; }
+  #heal .grid-list > li,
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #retreats .offer-list > li {
+    flex-basis: 84% !important;
+    width: 84% !important;
+    min-width: 84% !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero { padding-block: 26px 24px !important; }
+  .hero-title { font-size: 2.65rem !important; }
+  .hero-text { font-size: 1.28rem !important; }
+  .section-title,
+  .h2.section-title { font-size: 2rem !important; }
+  .mobile-action-bar .btn { font-size: 1.25rem !important; }
+}
+
+/* Tablet: four cards remain horizontally scrollable rather than collapsing into a tall stack. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #heal .grid-list > li,
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #retreats .offer-list > li {
+    flex-basis: 300px !important;
+    width: 300px !important;
+    min-width: 300px !important;
+  }
+}
