@@ -14,7 +14,6 @@
   --ds-white: #fff;
 }
 
-/* 1. Typography */
 .section-subtitle {
   font-family: var(--ff-display) !important;
   font-style: italic !important;
@@ -34,6 +33,12 @@
   line-height: 1.25;
   margin-block-end: 12px;
 }
+/* Learn / Heal / Retreat titles use the brand violet, not green, blue or grey. */
+#featured-courses .section-title,
+#heal .section-title,
+#retreats .section-title {
+  color: var(--ds-russian-violet) !important;
+}
 .card-title,
 .h3.card-title,
 .h4.card-title {
@@ -52,7 +57,6 @@
   max-width: 620px;
 }
 
-/* 2. Unified buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -77,7 +81,7 @@
 .btn-secondary:hover,
 .btn-secondary:focus { background-color: var(--ds-emerald); color: var(--ds-white); }
 
-/* 3. One unified card style */
+/* Uniform card hover: full green boundary + lift for every card family. */
 .card,
 .pillar-card,
 .product-card,
@@ -85,10 +89,12 @@
 .blog-card,
 .testi-card {
   background: var(--ds-white);
+  border: 2px solid transparent;
   border-radius: 12px;
   box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   height: 100%;
 }
 .card:hover,
@@ -97,7 +103,8 @@
 .offer-card:hover,
 .blog-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
+  border-color: var(--ds-emerald);
+  box-shadow: 0 0 0 0 var(--ds-emerald), 0 12px 30px hsla(0, 0%, 0%, 0.10);
 }
 .card-banner img,
 .pillar-card .card-banner img,
@@ -121,7 +128,6 @@
 .offer-card .card-content,
 .blog-card .card-content { padding: 24px; }
 
-/* 4. Spacing system */
 .section { padding-block: 56px; }
 .section-title-wrapper { margin-block-end: 28px; text-align: center; }
 .section-title-wrapper .section-text { margin-inline: auto; }
@@ -130,9 +136,8 @@
 .offer-list,
 .blog-list { gap: 20px; }
 
-/* Conversion layer */
 .trust-strip {
-  background-color: var(--ds-mint-cream);
+  background-color: var(--mint-cream);
   border-block: 1px solid var(--light-gray);
   padding: 12px 20px;
 }
@@ -155,11 +160,20 @@
   margin-inline-start: 22px;
   color: var(--ds-emerald);
 }
+
+/* The trust items now live in the original top bar; keep the original bar treatment. */
+.top-bar-proof {
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
 #featured-courses .product-card,
 #books-guides .blog-card,
 #heal .product-card,
 #retreats .offer-card,
-.pillar-card { border-radius: 12px; box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06); }
+.pillar-card { border-radius: 12px; }
 #featured-courses .card-category,
 #books-guides .card-subtitle,
 #heal .card-category,
@@ -176,23 +190,24 @@
 #heal .card-text,
 #retreats .card-text,
 .pillar-card .card-text { font-family: var(--ff-body); color: var(--ds-sonic-silver); }
+
+/* Four-card desktop layout. Content is extended to four cards by script without fabricating pricing. */
 #featured-courses .grid-list,
 #books-guides .blog-list,
 #heal .grid-list,
 #retreats .offer-list {
-  display: flex;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  padding-block-end: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: visible;
+  align-items: stretch;
+  gap: 20px;
 }
 #featured-courses .grid-list > li,
 #books-guides .blog-list > li,
 #heal .grid-list > li,
 #retreats .offer-list > li {
-  flex: 0 0 min(82vw, 340px);
-  scroll-snap-align: start;
+  min-width: 0;
+  width: 100%;
 }
 #books-guides .blog-list > li { display: flex; }
 #books-guides .blog-card { display: flex; flex-direction: column; }
@@ -200,20 +215,55 @@
 #books-guides .blog-card .card-content { flex: 1; display: flex; flex-direction: column; }
 #books-guides .blog-card .btn { margin-top: auto; }
 #heal .product-card .btn-wrapper { display: none; }
+
 .hero-btn-group .btn-primary { min-width: 220px; }
 .hero-btn-group .btn-secondary { min-width: 200px; }
-.early-consultation { padding-block: 30px; }
-.early-consultation .container { display: grid; gap: 18px; }
-.early-consultation .btn { width: max-content; }
+
+/* CTA now replaces the former early-consultation block. */
+.early-consultation { display: none !important; }
+#consultation.cta {
+  padding-block: 56px;
+}
+#consultation.cta .container {
+  background: var(--ds-mint-cream);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
+  padding: 32px;
+}
+#consultation.cta .cta-text {
+  max-width: 720px;
+  margin-inline: auto;
+  color: var(--ds-sonic-silver);
+  line-height: 1.7;
+}
+#consultation.cta .btn { margin-block-start: 20px; }
+
 .btn-badge[value="0"] { display: none; }
+
+@media (max-width: 1023px) {
+  #featured-courses .grid-list,
+  #books-guides .blog-list,
+  #heal .grid-list,
+  #retreats .offer-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 767px) {
   body { padding-block-end: 64px; }
   .section { padding-block: 40px; }
+  .trust-strip { display: none; }
   .trust-strip-item { font-size: 1.1rem; }
   .trust-strip-item:not(:last-child)::after { margin-inline-start: 10px; }
   .hero-btn-group { display: grid; gap: 10px; }
   .hero-btn-group .btn { width: 100%; justify-content: center; }
+  #featured-courses .grid-list,
+  #books-guides .blog-list,
+  #heal .grid-list,
+  #retreats .offer-list {
+    grid-template-columns: 1fr;
+  }
   .mobile-action-bar {
     position: fixed;
     z-index: 1000;
@@ -238,14 +288,4 @@
   .offer-card .card-content,
   .blog-card .card-content { padding: 20px; }
   .btn { width: 100%; justify-content: center; }
-  #featured-courses .grid-list > li,
-  #books-guides .blog-list > li,
-  #heal .grid-list > li,
-  #retreats .offer-list > li { min-width: 82%; }
-}
-@media (min-width: 768px) {
-  #featured-courses .grid-list > li,
-  #books-guides .blog-list > li,
-  #heal .grid-list > li,
-  #retreats .offer-list > li { flex-basis: calc(25% - 18px); }
 }
