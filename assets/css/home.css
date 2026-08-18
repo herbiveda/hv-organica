@@ -1015,3 +1015,38 @@
   .section-subtitle::before,
   .section-subtitle::after { width: 20px; }
 }
+
+.pillar-card,
+#featured-courses .product-card,
+.books-guides .blog-card,
+#retreats .offer-card {
+  background-color: var(--mint-cream);
+}
+
+.pillar-card .card-title,
+#featured-courses .card-title,
+.books-guides .card-title,
+#retreats .card-title {
+  font-family: var(--ff-playfair-display);
+  color: var(--russian-violet);
+  font-weight: var(--fw-500);
+}
+
+.pillar-card .card-subtitle,
+#featured-courses .card-category,
+.books-guides .card-subtitle,
+#retreats .card-subtitle {
+  font-family: var(--ff-roboto);
+  color: var(--medium-sea-green);
+  font-weight: var(--fw-700);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.pillar-card .card-text,
+#featured-courses .card-text,
+.books-guides .card-text,
+#retreats .card-text {
+  font-family: var(--ff-roboto);
+  color: var(--sonic-silver);
+}
