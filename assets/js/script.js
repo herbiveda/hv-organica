@@ -123,8 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /**
    * Scroll-stacked Learn / Heal / Retreat pillar cards.
-   * The existing three pillar list items are transformed into the lightweight
-   * sticky-card structure described in the shared design report.
    */
   const pillarSection = document.querySelector('#pillars');
   const pillarList = pillarSection ? pillarSection.querySelector('.pillar-list') : null;
@@ -174,6 +172,91 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  /**
+   * Horizontal carousels for:
+   * #featured-courses, #books-guides, #heal, #retreats
+   */
+  (function initHerbivedaCarousels() {
+    const sections = ['#featured-courses', '#books-guides', '#heal', '#retreats'];
+
+    sections.forEach(function (selector) {
+      const section = document.querySelector(selector);
+      if (!section) return;
+
+      const track = section.querySelector('.has-scrollbar');
+      if (!track || track.dataset.carouselReady === 'true') return;
+      track.dataset.carouselReady = 'true';
+
+      const nav = document.createElement('div');
+      nav.className = 'carousel-nav';
+      nav.innerHTML =
+        '<button type="button" class="carousel-btn prev" aria-label="Previous">' +
+        '<ion-icon name="chevron-back-outline"></ion-icon></button>' +
+        '<button type="button" class="carousel-btn next" aria-label="Next">' +
+        '<ion-icon name="chevron-forward-outline"></ion-icon></button>';
+
+      track.parentNode.insertBefore(nav, track);
+
+      const prevBtn = nav.querySelector('.prev');
+      const nextBtn = nav.querySelector('.next');
+
+      const getScrollAmount = function () {
+        const card = track.querySelector('li');
+        if (!card) return 300;
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.columnGap || style.gap) || 20;
+        return card.offsetWidth + gap;
+      };
+
+      const updateButtons = function () {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        prevBtn.disabled = track.scrollLeft <= 8;
+        nextBtn.disabled = track.scrollLeft >= maxScroll - 8;
+      };
+
+      prevBtn.addEventListener('click', function () {
+        track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', function () {
+        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', updateButtons, { passive: true });
+      window.addEventListener('resize', updateButtons);
+      updateButtons();
+
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', function (e) {
+        isDown = true;
+        track.classList.add('grabbing');
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      track.addEventListener('mouseleave', function () {
+        isDown = false;
+        track.classList.remove('grabbing');
+      });
+
+      track.addEventListener('mouseup', function () {
+        isDown = false;
+        track.classList.remove('grabbing');
+      });
+
+      track.addEventListener('mousemove', function (e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.4;
+        track.scrollLeft = scrollLeft - walk;
+      });
+    });
+  })();
 });
 
 /** Global legacy spelling cleanup */
