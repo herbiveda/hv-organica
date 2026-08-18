@@ -747,7 +747,7 @@
 }
 
 #featured-courses .product-card,
-.books-guides .blog-card,
+#books-guides .blog-card,
 #retreats .offer-card { height: 100%; }
 
 #featured-courses .product-card { padding: 20px; }
@@ -863,7 +863,7 @@
 
 .pillar-card,
 #featured-courses .product-card,
-.books-guides .blog-card,
+#books-guides .blog-card,
 #retreats .offer-card {
   border-radius: 10px;
   box-shadow: 0 4px 24px hsla(0, 0%, 0%, 0.06);
@@ -872,7 +872,7 @@
 
 .pillar-card:hover,
 #featured-courses .product-card:hover,
-.books-guides .blog-card:hover,
+#books-guides .blog-card:hover,
 #retreats .offer-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 32px hsla(0, 0%, 0%, 0.1);
@@ -1018,14 +1018,14 @@
 
 .pillar-card,
 #featured-courses .product-card,
-.books-guides .blog-card,
+#books-guides .blog-card,
 #retreats .offer-card {
   background-color: var(--mint-cream);
 }
 
 .pillar-card .card-title,
 #featured-courses .card-title,
-.books-guides .card-title,
+#books-guides .card-title,
 #retreats .card-title {
   font-family: var(--ff-playfair-display);
   color: var(--russian-violet);
@@ -1034,7 +1034,7 @@
 
 .pillar-card .card-subtitle,
 #featured-courses .card-category,
-.books-guides .card-subtitle,
+#books-guides .card-subtitle,
 #retreats .card-subtitle {
   font-family: var(--ff-roboto);
   color: var(--medium-sea-green);
@@ -1045,8 +1045,67 @@
 
 .pillar-card .card-text,
 #featured-courses .card-text,
-.books-guides .card-text,
+#books-guides .card-text,
 #retreats .card-text {
   font-family: var(--ff-roboto);
   color: var(--sonic-silver);
+}
+
+/*-----------------------------------*\
+  #BOOKS & GUIDES CARD CONSISTENCY
+\*-----------------------------------*/
+
+#books-guides .blog-list {
+  align-items: stretch;
+}
+
+#books-guides .blog-list > li {
+  height: 100%;
+}
+
+#books-guides .blog-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mint-cream);
+}
+
+#books-guides .blog-card .card-banner {
+  aspect-ratio: 451 / 310;
+  overflow: hidden;
+}
+
+#books-guides .blog-card .card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#books-guides .blog-card .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#books-guides .blog-card .card-subtitle {
+  font-family: var(--ff-roboto);
+  color: var(--medium-sea-green);
+  font-weight: var(--fw-700);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+#books-guides .blog-card .card-title {
+  font-family: var(--ff-playfair-display);
+  color: var(--russian-violet);
+  font-weight: var(--fw-500);
+}
+
+#books-guides .blog-card .card-text {
+  font-family: var(--ff-roboto);
+  color: var(--sonic-silver);
+}
+
+#books-guides .blog-card .btn {
+  margin-top: auto;
 }
