@@ -33,12 +33,9 @@
   line-height: 1.25;
   margin-block-end: 12px;
 }
-/* Learn / Heal / Retreat titles use the brand violet, not green, blue or grey. */
 #featured-courses .section-title,
 #heal .section-title,
-#retreats .section-title {
-  color: var(--ds-russian-violet) !important;
-}
+#retreats .section-title { color: var(--ds-russian-violet) !important; }
 .card-title,
 .h3.card-title,
 .h4.card-title {
@@ -56,7 +53,6 @@
   color: var(--ds-sonic-silver);
   max-width: 620px;
 }
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -81,7 +77,7 @@
 .btn-secondary:hover,
 .btn-secondary:focus { background-color: var(--ds-emerald); color: var(--ds-white); }
 
-/* Uniform card hover: full green boundary + lift for every card family. */
+/* Uniform card hover and a stable border box prevent the green edge from clipping. */
 .card,
 .pillar-card,
 .product-card,
@@ -101,10 +97,17 @@
 .pillar-card:hover,
 .product-card:hover,
 .offer-card:hover,
-.blog-card:hover {
+.blog-card:hover,
+.testi-card:hover,
+.card:focus-within,
+.pillar-card:focus-within,
+.product-card:focus-within,
+.offer-card:focus-within,
+.blog-card:focus-within,
+.testi-card:focus-within {
   transform: translateY(-6px);
   border-color: var(--ds-emerald);
-  box-shadow: 0 0 0 0 var(--ds-emerald), 0 12px 30px hsla(0, 0%, 0%, 0.10);
+  box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
 }
 .card-banner img,
 .pillar-card .card-banner img,
@@ -121,7 +124,12 @@
 .pillar-card:hover .card-banner img,
 .product-card:hover .card-banner img,
 .offer-card:hover .card-banner img,
-.blog-card:hover .card-banner img { transform: scale(1.04); }
+.blog-card:hover .card-banner img,
+.card:focus-within .card-banner img,
+.pillar-card:focus-within .card-banner img,
+.product-card:focus-within .card-banner img,
+.offer-card:focus-within .card-banner img,
+.blog-card:focus-within .card-banner img { transform: scale(1.04); }
 .card-content,
 .pillar-card .card-content,
 .product-card .card-content,
@@ -136,6 +144,7 @@
 .offer-list,
 .blog-list { gap: 20px; }
 
+/* Trust strip remains available as a component, but the homepage moves its items into top-bar. */
 .trust-strip {
   background-color: var(--mint-cream);
   border-block: 1px solid var(--light-gray);
@@ -160,8 +169,6 @@
   margin-inline-start: 22px;
   color: var(--ds-emerald);
 }
-
-/* The trust items now live in the original top bar; keep the original bar treatment. */
 .top-bar-proof {
   color: inherit;
   font-family: inherit;
@@ -191,7 +198,7 @@
 #retreats .card-text,
 .pillar-card .card-text { font-family: var(--ff-body); color: var(--ds-sonic-silver); }
 
-/* Four-card desktop layout. Content is extended to four cards by script without fabricating pricing. */
+/* Desktop: four-card rhythm. Mobile/tablet switch back to touch-friendly horizontal rows. */
 #featured-courses .grid-list,
 #books-guides .blog-list,
 #heal .grid-list,
@@ -215,21 +222,26 @@
 #books-guides .blog-card .card-content { flex: 1; display: flex; flex-direction: column; }
 #books-guides .blog-card .btn { margin-top: auto; }
 #heal .product-card .btn-wrapper { display: none; }
-
 .hero-btn-group .btn-primary { min-width: 220px; }
 .hero-btn-group .btn-secondary { min-width: 200px; }
 
-/* CTA now replaces the former early-consultation block. */
+/* CTA uses the original image background; there is no white/mint inner card. */
 .early-consultation { display: none !important; }
 #consultation.cta {
+  background-image: url("../images/cta-bg.png") !important;
+  background-color: var(--mint-cream);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding-block: 56px;
 }
 #consultation.cta .container {
-  background: var(--ds-mint-cream);
-  border: 2px solid transparent;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
-  padding: 32px;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  padding: 0 20px;
+  text-align: center;
 }
 #consultation.cta .cta-text {
   max-width: 720px;
@@ -242,28 +254,118 @@
 .btn-badge[value="0"] { display: none; }
 
 @media (max-width: 1023px) {
+  .section { padding-block: 44px; }
   #featured-courses .grid-list,
   #books-guides .blog-list,
   #heal .grid-list,
   #retreats .offer-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding-block: 4px 14px;
+    padding-inline: 2px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #heal .grid-list > li,
+  #retreats .offer-list > li {
+    flex: 0 0 300px;
+    width: 300px;
+    scroll-snap-align: start;
   }
 }
 
 @media (max-width: 767px) {
   body { padding-block-end: 64px; }
-  .section { padding-block: 40px; }
-  .trust-strip { display: none; }
-  .trust-strip-item { font-size: 1.1rem; }
-  .trust-strip-item:not(:last-child)::after { margin-inline-start: 10px; }
+  .section { padding-block: 36px; }
+  .container { width: min(100% - 32px, 540px); }
+
+  .hero { padding-block: 34px 30px; }
+  .hero-title { line-height: 1.12; margin-block-end: 12px; }
+  .hero-text { font-size: 1.4rem; line-height: 1.65; margin-block-end: 20px; }
   .hero-btn-group { display: grid; gap: 10px; }
-  .hero-btn-group .btn { width: 100%; justify-content: center; }
+  .hero-btn-group .btn { width: 100%; min-width: 0; justify-content: center; }
+
+  .service { padding-block: 24px; }
+  .service-list { gap: 10px; }
+  .service-item { min-height: 52px; }
+  .item-icon { padding: 12px; }
+  .item-icon img { width: 28px; height: 28px; }
+  .item-title { font-size: 1.45rem; }
+
+  .section-title-wrapper { margin-block-end: 18px; }
+  .section-title,
+  .h2.section-title { font-size: clamp(2.1rem, 8vw, 2.8rem); }
+  .section-subtitle { font-size: 1.25rem; margin-block-end: 7px; }
+  .section-text { font-size: 1.4rem; line-height: 1.6; margin-block-end: 20px; }
+
+  /* How Herbiveda Works remains a three-card section; it is simply compact and stacked on phones. */
+  .pillar { padding-block: 36px; }
+  .pillar-list { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .pillar-card .card-content { padding: 18px; }
+  .pillar-card .card-banner { aspect-ratio: 1.45 / 1; }
+  .pillar-card .card-title { font-size: 1.65rem; }
+  .pillar-card .card-text { font-size: 1.35rem; margin-block-end: 14px; }
+
+  /* All four-card sections are touch sliders on mobile, including Heal. */
   #featured-courses .grid-list,
   #books-guides .blog-list,
   #heal .grid-list,
   #retreats .offer-list {
-    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-block: 3px 12px;
+    margin-inline: -2px;
   }
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #heal .grid-list > li,
+  #retreats .offer-list > li {
+    flex: 0 0 82%;
+    width: 82%;
+    min-width: 82%;
+    max-width: 340px;
+    scroll-snap-align: start;
+  }
+  #featured-courses .product-card,
+  #books-guides .blog-card,
+  #heal .product-card,
+  #retreats .offer-card { min-height: 0; }
+  #featured-courses .card-content,
+  #books-guides .card-content,
+  #heal .card-content,
+  #retreats .card-content { padding: 18px; }
+  #featured-courses .card-title,
+  #books-guides .card-title,
+  #heal .card-title,
+  #retreats .card-title { font-size: 1.65rem; }
+  #featured-courses .card-text,
+  #books-guides .card-text,
+  #heal .card-text,
+  #retreats .card-text { font-size: 1.35rem; line-height: 1.6; }
+  #featured-courses .btn,
+  #books-guides .btn,
+  #heal .btn,
+  #retreats .btn { width: 100%; }
+
+  /* Preserve the original CTA image while keeping the section compact. */
+  #consultation.cta { padding-block: 38px; }
+  #consultation.cta .container { padding-inline: 16px; }
+  #consultation.cta .section-title { font-size: 2.25rem; }
+  #consultation.cta .cta-text { font-size: 1.4rem; line-height: 1.6; margin-block-end: 18px; }
+  #consultation.cta .btn { width: 100%; }
+
+  .partner,
+  .testimonials { padding-block: 28px; }
+  .partner-list { gap: 12px; }
+  .partner-item { min-width: 0; }
+  .testi-list { gap: 14px; }
+  .testi-item { margin-inline: 0; min-width: 0; }
+
   .mobile-action-bar {
     position: fixed;
     z-index: 1000;
@@ -273,19 +375,36 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    padding: 8px;
+    padding: 7px;
     background-color: var(--ds-white);
     border-block-start: 1px solid var(--light-gray);
     box-shadow: 0 -6px 20px hsla(0, 0%, 0%, 0.08);
   }
-  .mobile-action-bar .btn { width: 100%; justify-content: center; padding-block: 12px; }
+  .mobile-action-bar .btn { width: 100%; justify-content: center; padding-block: 11px; }
 }
+
 @media (max-width: 575px) {
-  .section { padding-block: 36px; }
+  .section { padding-block: 32px; }
+  .container { width: min(100% - 28px, 540px); }
+  .header .container { width: min(100% - 28px, 540px); }
   .card-content,
   .pillar-card .card-content,
   .product-card .card-content,
   .offer-card .card-content,
-  .blog-card .card-content { padding: 20px; }
-  .btn { width: 100%; justify-content: center; }
+  .blog-card .card-content { padding: 16px; }
+  .btn { width: 100%; justify-content: center; padding: 12px 20px; }
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #heal .grid-list > li,
+  #retreats .offer-list > li { flex-basis: 84%; width: 84%; min-width: 84%; }
+}
+
+@media (max-width: 390px) {
+  .hero { padding-block: 28px; }
+  .hero-title { font-size: 2.8rem; }
+  .hero-text { font-size: 1.3rem; }
+  .section-title,
+  .h2.section-title { font-size: 2rem; }
+  .section-subtitle { font-size: 1.15rem; }
+  .mobile-action-bar .btn { font-size: 1.25rem; }
 }
