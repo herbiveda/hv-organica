@@ -120,6 +120,60 @@ document.addEventListener('DOMContentLoaded', function () {
   addComingSoonCard('#featured-courses .grid-list', 'course', 'More Courses Coming Soon', 'New practitioner-reviewed Ayurveda learning experiences are being developed.');
   addComingSoonCard('#books-guides .blog-list', 'guide', 'More Guides Coming Soon', 'New evidence-informed guides and deeper reading are being prepared.');
   addComingSoonCard('#retreats .offer-list', 'retreat', 'More Retreats Coming Soon', 'New vetted Ayurveda, Panchakarma and yoga journeys will be announced here.');
+
+  /**
+   * Scroll-stacked Learn / Heal / Retreat pillar cards.
+   * The existing three pillar list items are transformed into the lightweight
+   * sticky-card structure described in the shared design report.
+   */
+  const pillarSection = document.querySelector('#pillars');
+  const pillarList = pillarSection ? pillarSection.querySelector('.pillar-list') : null;
+
+  if (pillarSection && pillarList && pillarList.children.length === 3 && !pillarSection.dataset.stackInitialized) {
+    const stackWrapper = document.createElement('div');
+    stackWrapper.className = 'stack-wrapper';
+    stackWrapper.setAttribute('aria-label', 'Learn, Heal and Retreat');
+
+    Array.from(pillarList.children).forEach(function (item, index) {
+      const stackCard = document.createElement('div');
+      stackCard.className = 'stack-card';
+      stackCard.dataset.stack = String(index + 1);
+      stackCard.appendChild(item.firstElementChild);
+      stackWrapper.appendChild(stackCard);
+    });
+
+    pillarList.replaceWith(stackWrapper);
+    pillarSection.classList.add('stacked-pillars');
+    pillarSection.dataset.stackInitialized = 'true';
+
+    const stackCards = stackWrapper.querySelectorAll('.stack-card');
+    if ('IntersectionObserver' in window) {
+      const stackObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-active');
+            entry.target.style.transform = 'scale(1) translateY(0)';
+            entry.target.style.opacity = '1';
+          } else {
+            entry.target.classList.remove('is-active');
+            entry.target.style.transform = 'scale(0.94) translateY(28px)';
+            entry.target.style.opacity = '0.72';
+          }
+        });
+      }, {
+        threshold: 0.4,
+        rootMargin: '-8% 0px -8% 0px'
+      });
+
+      stackCards.forEach(function (card) {
+        stackObserver.observe(card);
+      });
+    } else {
+      stackCards.forEach(function (card) {
+        card.classList.add('is-active');
+      });
+    }
+  }
 });
 
 /** Global legacy spelling cleanup */
