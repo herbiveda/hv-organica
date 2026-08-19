@@ -78,12 +78,13 @@
 }
 
 .hero-stamp {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
   display: block;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.18);
+  object-fit: contain;
 }
 
 .hero-text strong {
@@ -91,7 +92,7 @@
   font-weight: 700;
 }
 
-/* Top bar: underlined claim only, responsive across breakpoints */
+/* Top bar: claim + partner link, responsive */
 .top-bar {
   padding-block: 8px;
 }
@@ -104,11 +105,16 @@
   text-wrap: balance;
 }
 
-.top-bar u {
+.top-bar a {
+  color: inherit;
   text-decoration: underline;
-  text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
-  text-decoration-color: currentColor;
+  font-weight: 600;
+}
+
+.top-bar a:hover,
+.top-bar a:focus {
+  opacity: 0.9;
 }
 
 /* Books & Guides — consistent card design aligned with pillars / courses */
@@ -197,7 +203,7 @@
   .hero-text { font-size: 1.4rem !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
-  .hero-stamp { width: 24px; height: 24px; }
+  .hero-stamp { width: 30px; height: 30px; }
   .service { padding-block: 22px !important; }
   .service-list { gap: 8px !important; }
   .service-item { min-height: 48px; gap: 9px; }
@@ -421,7 +427,7 @@
   .hero-title { font-size: 2.65rem !important; }
   .hero-text { font-size: 1.28rem !important; }
   .hero-subtitle { font-size: 1.2rem !important; letter-spacing: 1px !important; }
-  .hero-stamp { width: 22px; height: 22px; }
+  .hero-stamp { width: 26px; height: 26px; }
   .section-title,
   .h2.section-title { font-size: 2rem !important; }
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
@@ -438,84 +444,4 @@
     width: 300px !important;
     min-width: 300px !important;
   }
-}
-
-/* Horizontal carousel system from the 7-page implementation review. */
-.has-scrollbar {
-  display: flex !important;
-  gap: 20px;
-  overflow-x: auto !important;
-  overflow-y: visible;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  padding-block: 4px 14px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--ds-emerald) transparent;
-  cursor: grab;
-}
-.has-scrollbar:active,
-.has-scrollbar.grabbing { cursor: grabbing; }
-.has-scrollbar.grabbing { scroll-snap-type: none; }
-.has-scrollbar::-webkit-scrollbar { height: 6px; }
-.has-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.has-scrollbar::-webkit-scrollbar-thumb { background: var(--ds-emerald); border-radius: 10px; }
-.has-scrollbar > li,
-.has-scrollbar .product-item,
-.has-scrollbar .blog-card,
-.has-scrollbar .offer-item {
-  flex: 0 0 280px;
-  min-width: 280px;
-  scroll-snap-align: start;
-}
-
-.carousel-nav {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-}
-.carousel-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ds-emerald);
-  background: var(--ds-white);
-  color: var(--ds-emerald);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-.carousel-btn:hover,
-.carousel-btn:focus-visible {
-  background: var(--ds-emerald);
-  color: var(--ds-white);
-}
-.carousel-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-@media (min-width: 992px) {
-  .has-scrollbar > li,
-  .has-scrollbar .product-item,
-  .has-scrollbar .blog-card,
-  .has-scrollbar .offer-item {
-    flex-basis: calc(25% - 15px);
-    min-width: calc(25% - 15px);
-  }
-}
-
-@media (max-width: 767px) {
-  .has-scrollbar {
-    gap: 14px;
-    padding-bottom: 12px;
-  }
-  .has-scrollbar > li,
-  .has-scrollbar .product-item,
-  .has-scrollbar .blog-card,
-  .has-scrollbar .offer-item {
-    flex-basis: 82% !important;
-    min-width: 82% !important;
-  }
-  .carousel-nav { margin-bottom: 12px; }
 }
