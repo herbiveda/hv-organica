@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Clinically Proven">
+  <circle cx="60" cy="60" r="56" fill="#c62828"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="44" fill="none" stroke="#fff" stroke-width="1" opacity="0.7"/>
+  <!-- Flask -->
+  <g fill="#fff">
+    <path d="M52 38 h16 v10 l10 28 a12 12 0 0 1-12 12 h-12 a12 12 0 0 1-12-12 l10-28 z"/>
+    <rect x="50" y="34" width="20" height="6" rx="1.5"/>
+    <circle cx="60" cy="72" r="3.5" opacity="0.9"/>
+    <path d="M60 48 v8 M56 52 h8" stroke="#c62828" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Arc text: CLINICALLY PROVEN (top and bottom via paths) -->
+  <defs>
+    <path id="topArc" d="M 22,60 A 38,38 0 0 1 98,60" fill="none"/>
+    <path id="botArc" d="M 98,60 A 38,38 0 0 1 22,60" fill="none"/>
+  </defs>
+  <text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.6">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">CLINICALLY PROVEN</textPath>
+  </text>
+  <text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.6">
+    <textPath href="#botArc" startOffset="50%" text-anchor="middle">CLINICALLY PROVEN</textPath>
+  </text>
+</svg>
