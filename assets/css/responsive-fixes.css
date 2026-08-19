@@ -72,6 +72,18 @@
   letter-spacing: 1.2px !important;
   text-transform: uppercase;
   margin-block-end: 12px !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-stamp {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.12);
 }
 
 .hero-text strong {
@@ -99,6 +111,81 @@
   text-decoration-color: currentColor;
 }
 
+/* Books & Guides — consistent card design aligned with pillars / courses */
+#books-guides .blog-list {
+  align-items: stretch;
+}
+
+#books-guides .blog-list > li {
+  display: flex;
+  height: 100%;
+}
+
+#books-guides .blog-card {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: var(--ds-white, #fff) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
+}
+
+#books-guides .blog-card .card-banner {
+  aspect-ratio: 1.45 / 1 !important;
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: var(--ds-mint-cream, hsl(96, 36%, 95%));
+}
+
+#books-guides .blog-card .card-banner img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+#books-guides .blog-card .card-content {
+  flex: 1 1 auto;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 24px !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+#books-guides .blog-card .card-subtitle {
+  margin-bottom: 8px !important;
+  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: var(--ds-emerald, hsl(152, 95%, 39%)) !important;
+}
+
+#books-guides .blog-card .card-title {
+  margin-block: 0 12px !important;
+  font-family: var(--ff-display, 'Playfair Display', serif) !important;
+  font-weight: 500 !important;
+  color: var(--ds-russian-violet, hsl(245, 97%, 13%)) !important;
+}
+
+#books-guides .blog-card .card-text {
+  flex: 1 1 auto;
+  margin-bottom: 20px !important;
+  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
+  color: var(--ds-sonic-silver, hsl(0, 0%, 45%)) !important;
+  line-height: 1.7 !important;
+}
+
+#books-guides .blog-card .btn {
+  margin-top: auto !important;
+  align-self: flex-start;
+}
+
 @media (max-width: 767px) {
   body { padding-bottom: 64px; }
   .section { padding-block: 36px !important; }
@@ -110,6 +197,7 @@
   .hero-text { font-size: 1.4rem !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
+  .hero-stamp { width: 24px; height: 24px; }
   .service { padding-block: 22px !important; }
   .service-list { gap: 8px !important; }
   .service-item { min-height: 48px; gap: 9px; }
@@ -168,6 +256,7 @@
   #books-guides .btn,
   #heal .btn,
   #retreats .btn { width: 100% !important; }
+  #books-guides .blog-card .btn { align-self: stretch; justify-content: center; }
   #consultation.cta { padding-block: 36px !important; }
   #consultation.cta .container { padding-inline: 14px !important; }
   #consultation.cta .section-title { font-size: 2.15rem !important; }
@@ -332,6 +421,7 @@
   .hero-title { font-size: 2.65rem !important; }
   .hero-text { font-size: 1.28rem !important; }
   .hero-subtitle { font-size: 1.2rem !important; letter-spacing: 1px !important; }
+  .hero-stamp { width: 22px; height: 22px; }
   .section-title,
   .h2.section-title { font-size: 2rem !important; }
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
