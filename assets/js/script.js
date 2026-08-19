@@ -93,6 +93,9 @@ function injectSitePolishStyles() {
       --ds-emerald: rgba(15, 60, 53, 1) !important;
       --ds-green-pigment: rgba(11, 47, 42, 1) !important;
     }
+    .partner {
+      background-color: rgba(15, 60, 53, 1) !important;
+    }
     .testimonials-swiper { position:relative; width:100%; overflow:hidden; padding-block:4px 28px; }
     .testimonials-swiper .swiper-wrapper { display:flex !important; align-items:stretch; gap:0 !important; }
     .testimonials-swiper .swiper-slide { height:auto; display:flex; }
@@ -149,22 +152,10 @@ function initializeTestimonialsSwiper() {
     speed: 650,
     loop: true,
     grabCursor: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.testimonials-swiper .swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.testimonials-swiper .swiper-button-next',
-      prevEl: '.testimonials-swiper .swiper-button-prev'
-    },
-    breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 20 },
-      1024: { slidesPerView: 3, spaceBetween: 20 }
-    }
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    pagination: { el: '.testimonials-swiper .swiper-pagination', clickable: true },
+    navigation: { nextEl: '.testimonials-swiper .swiper-button-next', prevEl: '.testimonials-swiper .swiper-button-prev' },
+    breakpoints: { 768: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 20 } }
   });
 }
 function initializeHomepageEnhancements() {
