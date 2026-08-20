@@ -62,7 +62,7 @@ document.querySelectorAll('body *').forEach(function (element) {
   if (element.children.length === 0 && element.textContent) element.textContent = element.textContent.replace(/Whishlist/g, 'Wishlist').replace(/whishlist/g, 'wishlist');
 });
 
-/** Homepage enhancements */
+/** Homepage enhancements (no CTA DOM moves — CTA is static HTML) */
 function loadStylesheet(href) {
   if (document.querySelector('link[href="' + href + '"]')) return;
   const link = document.createElement('link');
@@ -110,15 +110,6 @@ function injectSitePolishStyles() {
   `;
   document.head.appendChild(style);
 }
-function moveCtaBelowPillars() {
-  const pillars = document.getElementById('pillars');
-  const cta = document.querySelector('.cta');
-  const earlyConsultation = document.querySelector('.early-consultation');
-  if (!pillars || !cta) return;
-  if (earlyConsultation) earlyConsultation.remove();
-  cta.id = 'consultation';
-  pillars.insertAdjacentElement('afterend', cta);
-}
 function addFourthHomepageCard(selector, cardHtml) {
   const list = document.querySelector(selector);
   if (!list) return;
@@ -160,7 +151,6 @@ function initializeTestimonialsSwiper() {
 }
 function initializeHomepageEnhancements() {
   injectSitePolishStyles();
-  moveCtaBelowPillars();
   addRealFourthCards();
   loadStylesheet('https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.css');
   loadScript('https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.js', initializeTestimonialsSwiper);
