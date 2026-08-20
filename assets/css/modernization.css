@@ -141,14 +141,23 @@
 .hero-btn-group .btn-secondary { min-width: 200px; }
 
 .early-consultation { display: none !important; }
+
+/*
+  CTA background must target .cta (HTML class exists in source).
+  Do NOT require #consultation — that id is only added by JS after load.
+  home.css still points at cta-bg.png; this rule must win with !important.
+*/
+.cta,
 #consultation.cta {
   background-image: url("../images/cta-bg.webp") !important;
-  background-color: var(--mint-cream);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: var(--ds-mint-cream, var(--mint-cream, hsl(96, 36%, 95%)));
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
   padding-block: 56px;
 }
+
+.cta .container,
 #consultation.cta .container {
   background: transparent !important;
   border: 0 !important;
@@ -157,12 +166,16 @@
   padding: 0 20px;
   text-align: center;
 }
+
+.cta .cta-text,
 #consultation.cta .cta-text {
   max-width: 720px;
   margin-inline: auto;
   color: var(--ds-sonic-silver);
   line-height: 1.7;
 }
+
+.cta .btn,
 #consultation.cta .btn { margin-block-start: 20px; }
 
 .btn-badge[value="0"] { display: none; }
@@ -240,10 +253,15 @@
     scroll-snap-align: start;
   }
 
+  .cta,
   #consultation.cta { padding-block: 38px; }
+  .cta .container,
   #consultation.cta .container { padding-inline: 16px; }
+  .cta .section-title,
   #consultation.cta .section-title { font-size: 2.25rem; }
+  .cta .cta-text,
   #consultation.cta .cta-text { font-size: 1.4rem; line-height: 1.6; margin-block-end: 18px; }
+  .cta .btn,
   #consultation.cta .btn { width: 100%; }
 
   .partner,
