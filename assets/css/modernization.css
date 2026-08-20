@@ -142,7 +142,7 @@
 
 .early-consultation { display: none !important; }
 #consultation.cta {
-  background-image: url("../images/cta-bg.png") !important;
+  background-image: url("../images/cta-bg.webp") !important;
   background-color: var(--mint-cream);
   background-repeat: no-repeat;
   background-size: cover;
