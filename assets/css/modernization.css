@@ -1,4 +1,5 @@
 @import url("./responsive-fixes.css");
+@import url("./unified-cards.css");
 
 /*-----------------------------------*\
   #HERBIVEDA DESIGN SYSTEM + CONVERSION OVERRIDES
@@ -79,65 +80,6 @@
 .btn-secondary:hover,
 .btn-secondary:focus { background-color: var(--ds-emerald); color: var(--ds-white); }
 
-/* Uniform card hover and a stable border box prevent the green edge from clipping. */
-.card,
-.pillar-card,
-.product-card,
-.offer-card,
-.blog-card,
-.testi-card {
-  background: var(--ds-white);
-  border: 2px solid transparent;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
-  overflow: hidden;
-  box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  height: 100%;
-}
-.card:hover,
-.pillar-card:hover,
-.product-card:hover,
-.offer-card:hover,
-.blog-card:hover,
-.testi-card:hover,
-.card:focus-within,
-.pillar-card:focus-within,
-.product-card:focus-within,
-.offer-card:focus-within,
-.blog-card:focus-within,
-.testi-card:focus-within {
-  transform: translateY(-6px);
-  border-color: var(--ds-emerald);
-  box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
-}
-.card-banner img,
-.pillar-card .card-banner img,
-.product-card .card-banner img,
-.offer-card .card-banner img,
-.blog-card .card-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 1.45 / 1;
-  transition: transform 0.4s ease;
-}
-.card:hover .card-banner img,
-.pillar-card:hover .card-banner img,
-.product-card:hover .card-banner img,
-.offer-card:hover .card-banner img,
-.blog-card:hover .card-banner img,
-.card:focus-within .card-banner img,
-.pillar-card:focus-within .card-banner img,
-.product-card:focus-within .card-banner img,
-.offer-card:focus-within .card-banner img,
-.blog-card:focus-within .card-banner img { transform: scale(1.04); }
-.card-content,
-.pillar-card .card-content,
-.product-card .card-content,
-.offer-card .card-content,
-.blog-card .card-content { padding: 24px; }
-
 .section { padding-block: 56px; }
 .section-title-wrapper { margin-block-end: 28px; text-align: center; }
 .section-title-wrapper .section-text { margin-inline: auto; }
@@ -146,7 +88,6 @@
 .offer-list,
 .blog-list { gap: 20px; }
 
-/* Trust strip remains available as a component, but the homepage moves its items into top-bar. */
 .trust-strip {
   background-color: var(--mint-cream);
   border-block: 1px solid var(--light-gray);
@@ -178,29 +119,6 @@
   letter-spacing: inherit;
 }
 
-#featured-courses .product-card,
-#books-guides .blog-card,
-#heal .product-card,
-#retreats .offer-card,
-.pillar-card { border-radius: 12px; }
-#featured-courses .card-category,
-#books-guides .card-subtitle,
-#heal .card-category,
-#retreats .card-subtitle,
-.pillar-card .card-subtitle {
-  font-family: var(--ff-body);
-  color: var(--ds-emerald);
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-#featured-courses .card-text,
-#books-guides .card-text,
-#heal .card-text,
-#retreats .card-text,
-.pillar-card .card-text { font-family: var(--ff-body); color: var(--ds-sonic-silver); }
-
-/* Desktop: four-card rhythm. Mobile/tablet switch back to touch-friendly horizontal rows. */
 #featured-courses .grid-list,
 #books-guides .blog-list,
 #heal .grid-list,
@@ -219,15 +137,9 @@
   width: 100%;
 }
 #books-guides .blog-list > li { display: flex; }
-#books-guides .blog-card { display: flex; flex-direction: column; }
-#books-guides .blog-card .card-banner { aspect-ratio: 1.45 / 1; overflow: hidden; }
-#books-guides .blog-card .card-content { flex: 1; display: flex; flex-direction: column; }
-#books-guides .blog-card .btn { margin-top: auto; }
-#heal .product-card .btn-wrapper { display: none; }
 .hero-btn-group .btn-primary { min-width: 220px; }
 .hero-btn-group .btn-secondary { min-width: 200px; }
 
-/* CTA uses the original image background; there is no white/mint inner card. */
 .early-consultation { display: none !important; }
 #consultation.cta {
   background-image: url("../images/cta-bg.png") !important;
@@ -306,15 +218,9 @@
   .section-subtitle { font-size: 1.25rem; margin-block-end: 7px; }
   .section-text { font-size: 1.4rem; line-height: 1.6; margin-block-end: 20px; }
 
-  /* How Herbiveda Works remains a three-card section; it is simply compact and stacked on phones. */
   .pillar { padding-block: 36px; }
   .pillar-list { display: grid; grid-template-columns: 1fr; gap: 14px; }
-  .pillar-card .card-content { padding: 18px; }
-  .pillar-card .card-banner { aspect-ratio: 1.45 / 1; }
-  .pillar-card .card-title { font-size: 1.65rem; }
-  .pillar-card .card-text { font-size: 1.35rem; margin-block-end: 14px; }
 
-  /* All four-card sections are touch sliders on mobile, including Heal. */
   #featured-courses .grid-list,
   #books-guides .blog-list,
   #heal .grid-list,
@@ -333,28 +239,7 @@
     max-width: 340px;
     scroll-snap-align: start;
   }
-  #featured-courses .product-card,
-  #books-guides .blog-card,
-  #heal .product-card,
-  #retreats .offer-card { min-height: 0; }
-  #featured-courses .card-content,
-  #books-guides .card-content,
-  #heal .card-content,
-  #retreats .card-content { padding: 18px; }
-  #featured-courses .card-title,
-  #books-guides .card-title,
-  #heal .card-title,
-  #retreats .card-title { font-size: 1.65rem; }
-  #featured-courses .card-text,
-  #books-guides .card-text,
-  #heal .card-text,
-  #retreats .card-text { font-size: 1.35rem; line-height: 1.6; }
-  #featured-courses .btn,
-  #books-guides .btn,
-  #heal .btn,
-  #retreats .btn { width: 100%; }
 
-  /* Preserve the original CTA image while keeping the section compact. */
   #consultation.cta { padding-block: 38px; }
   #consultation.cta .container { padding-inline: 16px; }
   #consultation.cta .section-title { font-size: 2.25rem; }
@@ -389,11 +274,6 @@
   .section { padding-block: 32px; }
   .container { width: min(100% - 28px, 540px); }
   .header .container { width: min(100% - 28px, 540px); }
-  .card-content,
-  .pillar-card .card-content,
-  .product-card .card-content,
-  .offer-card .card-content,
-  .blog-card .card-content { padding: 16px; }
   .btn { width: 100%; justify-content: center; padding: 12px 20px; }
   #featured-courses .grid-list > li,
   #books-guides .blog-list > li,
