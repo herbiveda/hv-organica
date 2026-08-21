@@ -10,6 +10,7 @@
   --ff-display: 'Playfair Display', serif;
   --ff-body: 'Roboto', sans-serif;
   --ds-emerald: hsl(152, 95%, 39%);
+  --emerald: hsl(152, 95%, 39%);
   --ds-green-pigment: hsl(152, 95%, 33%);
   --ds-russian-violet: hsl(245, 97%, 13%);
   --ds-sonic-silver: hsl(0, 0%, 45%);
@@ -17,14 +18,14 @@
   --ds-white: #fff;
 }
 
-/* Section labels: uppercase + side rules (matches original editorial style) */
+/* Section labels: consistent emerald treatment; partner/testimonial labels are intentionally hidden */
 .section-subtitle {
   font-family: var(--ff-body) !important;
   font-style: normal !important;
   font-weight: 700 !important;
   font-size: 1.2rem;
   letter-spacing: 2.2px;
-  color: var(--ds-emerald);
+  color: var(--emerald) !important;
   text-transform: uppercase !important;
   margin-block-end: 12px;
   display: flex !important;
@@ -41,14 +42,17 @@
   opacity: 0.5;
   flex-shrink: 0;
 }
-.partner .section-subtitle {
-  color: var(--ds-white, #fff);
+.partner .section-subtitle,
+.testimonials .section-subtitle {
+  display: none !important;
 }
 .cta .section-subtitle {
   font-family: var(--ff-body) !important;
   font-style: normal !important;
   text-transform: uppercase !important;
+  color: var(--emerald) !important;
 }
+
 .section-title,
 .h2.section-title {
   font-family: var(--ff-body);
@@ -91,16 +95,16 @@
   transition: 0.25s ease;
   border: 1.5px solid transparent;
 }
-.btn-primary { background-color: var(--ds-emerald); color: var(--ds-white); }
+.btn-primary { background-color: var(--emerald); color: var(--ds-white); }
 .btn-primary:hover,
 .btn-primary:focus { background-color: var(--ds-green-pigment); }
 .btn-secondary {
   background-color: transparent;
-  color: var(--ds-emerald);
-  border-color: var(--ds-emerald);
+  color: var(--emerald);
+  border-color: var(--emerald);
 }
 .btn-secondary:hover,
-.btn-secondary:focus { background-color: var(--ds-emerald); color: var(--ds-white); }
+.btn-secondary:focus { background-color: var(--emerald); color: var(--ds-white); }
 
 .section { padding-block: 56px; }
 .section-title-wrapper { margin-block-end: 28px; text-align: center; }
@@ -132,7 +136,7 @@
 .trust-strip-item:not(:last-child)::after {
   content: "•";
   margin-inline-start: 22px;
-  color: var(--ds-emerald);
+  color: var(--emerald);
 }
 .top-bar-proof {
   color: inherit;
@@ -159,6 +163,7 @@
   width: 100%;
 }
 #books-guides .blog-list > li { display: flex; }
+#featured-courses .section-btn { text-align: center; }
 .hero-btn-group .btn-primary { min-width: 220px; }
 .hero-btn-group .btn-secondary { min-width: 200px; }
 
@@ -197,6 +202,27 @@
   .item-icon { margin-inline: auto; padding: 12px; }
   .item-icon img { width: 28px; height: 28px; }
   .service-item .item-title { font-size: 1.25rem; }
+}
+
+/* Partner logos/items: remain horizontal at every viewport; narrow screens scroll rather than stack */
+.partner-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 4px 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.partner-item {
+  flex: 1 1 0;
+  min-width: 140px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta,
@@ -347,8 +373,8 @@
 
   .partner,
   .testimonials { padding-block: 28px; }
-  .partner-list { gap: 12px; }
-  .partner-item { min-width: 0; }
+  .partner-list { gap: 14px; }
+  .partner-item { flex: 0 0 140px; min-width: 140px; }
   .testi-list { gap: 14px; }
   .testi-item { margin-inline: 0; min-width: 0; }
 
