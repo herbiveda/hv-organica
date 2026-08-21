@@ -2,8 +2,11 @@
 @import url("./unified-cards.css");
 @import url("./cta-fixes.css");
 
-/* Temporary bootstrap: full rules live in imported sheets.
-   Design tokens kept here for cascade compatibility. */
+/*-----------------------------------*\
+  #HERBIVEDA DESIGN SYSTEM + CONVERSION OVERRIDES
+  Source of truth: Grok design review, 2026-08-18
+\*-----------------------------------*/
+
 :root {
   --ff-display: 'Playfair Display', serif;
   --ff-body: 'Roboto', sans-serif;
@@ -21,8 +24,150 @@
   --btn-primary-hover: hsl(152, 95%, 28%);
 }
 
+.section-subtitle {
+  font-family: var(--ff-body) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem;
+  letter-spacing: 2.2px;
+  color: var(--emerald) !important;
+  text-transform: uppercase !important;
+  margin-block-end: 12px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.section-subtitle::before,
+.section-subtitle::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.partner .section-subtitle,
+.testimonials .section-subtitle { display: none !important; }
+
+.section-title,
+.h2.section-title {
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  color: var(--ds-russian-violet);
+  line-height: 1.25;
+  margin-block-end: 12px;
+}
+.btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--ff-body);
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 14px 28px !important;
+  border-radius: 50px;
+  border: 1.5px solid transparent;
+  transition: 0.25s ease;
+}
+.btn-primary,
 html body .btn.btn-primary {
   background-color: rgba(15, 60, 53, 1) !important;
   color: #fff !important;
   border-color: rgba(15, 60, 53, 1) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: hsl(152, 95%, 28%) !important;
+  border-color: hsl(152, 95%, 28%) !important;
+  color: #fff !important;
+}
+.section { padding-block: var(--section-padding) !important; }
+.section-title-wrapper { margin-block-end: 28px; text-align: center; }
+
+#featured-courses .grid-list,
+#books-guides .blog-list,
+#heal .grid-list,
+#retreats .offer-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px 24px !important;
+}
+.service-item {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+}
+
+.cta,
+#consultation.cta {
+  background-image: url("../images/cta-bg.webp") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  padding-block: 56px !important;
+  min-height: 280px;
+}
+.cta .container { text-align: center; background: transparent !important; }
+
+@media (max-width: 1023px) {
+  .section { padding-block: var(--section-padding-md) !important; }
+  #featured-courses .grid-list,
+  #books-guides .blog-list,
+  #heal .grid-list,
+  #retreats .offer-list {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+  }
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #heal .grid-list > li,
+  #retreats .offer-list > li {
+    flex: 0 0 300px;
+    width: 300px;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 767px) {
+  body { padding-block-end: 64px; }
+  .section { padding-block: 36px !important; }
+  .hero-btn-group { display: grid; gap: 10px; }
+  .hero-btn-group .btn { width: 100%; justify-content: center; }
+  .mobile-action-bar {
+    position: fixed;
+    z-index: 1000;
+    right: 0; bottom: 0; left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 7px;
+    background-color: #fff;
+    border-block-start: 1px solid #d0d0d0;
+    box-shadow: 0 -6px 20px hsla(0, 0%, 0%, 0.08);
+  }
+  .mobile-action-bar .btn { width: 100%; justify-content: center; padding-block: 11px !important; }
+  #featured-courses .grid-list > li,
+  #books-guides .blog-list > li,
+  #heal .grid-list > li,
+  #retreats .offer-list > li {
+    flex: 0 0 82%;
+    width: 82%;
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 575px) {
+  .section { padding-block: var(--section-padding-sm) !important; }
+  .btn { width: 100%; justify-content: center; }
 }
