@@ -18,7 +18,7 @@
   --ds-white: #fff;
 }
 
-/* Section labels: consistent emerald treatment; partner/testimonial labels are intentionally hidden */
+/* Section labels */
 .section-subtitle {
   font-family: var(--ff-body) !important;
   font-style: normal !important;
@@ -114,6 +114,26 @@
 .offer-list,
 .blog-list { gap: 20px; }
 
+/* 2. Pillar card labels LEARN / HEAL / RETREAT → emerald */
+.pillar-card .card-subtitle,
+.pillar .pillar-card .card-subtitle {
+  color: var(--emerald) !important;
+}
+
+/* 3. Center "View All Courses" on all non-mobile layouts (mobile already fine) */
+.section-btn,
+#featured-courses .section-btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+  margin-block-start: 28px;
+  text-align: center;
+}
+#featured-courses .section-btn .btn {
+  margin-inline: auto;
+}
+
 .trust-strip {
   background-color: var(--mint-cream);
   border-block: 1px solid var(--light-gray);
@@ -163,13 +183,12 @@
   width: 100%;
 }
 #books-guides .blog-list > li { display: flex; }
-#featured-courses .section-btn { text-align: center; }
 .hero-btn-group .btn-primary { min-width: 220px; }
 .hero-btn-group .btn-secondary { min-width: 200px; }
 
 .early-consultation { display: none !important; }
 
-/* Trust bar (service): keep horizontal — not a vertical stack */
+/* Trust bar (service): keep horizontal */
 .service-list {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -204,9 +223,10 @@
   .service-item .item-title { font-size: 1.25rem; }
 }
 
-/* Partner logos/items: remain horizontal at every viewport; narrow screens scroll rather than stack */
+/* 4. Partner items horizontal on ALL screens (scroll on narrow) */
 .partner-list {
   display: flex !important;
+  flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center;
   justify-content: space-between;
@@ -219,10 +239,21 @@
 }
 .partner-item {
   flex: 1 1 0;
-  min-width: 140px;
+  min-width: 120px;
+  max-width: 180px;
   display: flex !important;
   align-items: center;
   justify-content: center;
+}
+.partner-logo {
+  max-width: 100%;
+  margin-inline: auto;
+}
+.partner-logo img {
+  width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
 }
 
 .cta,
@@ -257,7 +288,6 @@
 .cta .btn,
 #consultation.cta .btn { margin-block-start: 20px; }
 
-/* Mobile: keep banner art visible (wide image — bias + min-height + light scrim on text) */
 @media (max-width: 767px) {
   .cta,
   #consultation.cta {
@@ -360,6 +390,27 @@
     scroll-snap-align: start;
   }
 
+  /* 5. View Product / card CTAs optimized for mobile */
+  #heal .product-card > .btn,
+  #featured-courses .product-card .btn,
+  #retreats .offer-card .btn,
+  #books-guides .blog-card .btn,
+  .pillar-card .btn {
+    width: 100% !important;
+    max-width: none;
+    justify-content: center !important;
+    white-space: normal;
+    min-height: 46px;
+    padding: 12px 16px;
+    line-height: 1.25;
+    box-sizing: border-box;
+  }
+  #heal .product-card > .btn {
+    width: calc(100% - 36px) !important;
+    margin-inline: 18px !important;
+    margin-block-end: 18px !important;
+  }
+
   .cta,
   #consultation.cta { padding-block: 38px; }
   .cta .container,
@@ -373,8 +424,12 @@
 
   .partner,
   .testimonials { padding-block: 28px; }
-  .partner-list { gap: 14px; }
-  .partner-item { flex: 0 0 140px; min-width: 140px; }
+  .partner-list { gap: 14px; justify-content: flex-start; }
+  .partner-item {
+    flex: 0 0 110px;
+    min-width: 110px;
+    max-width: 130px;
+  }
   .testi-list { gap: 14px; }
   .testi-item { margin-inline: 0; min-width: 0; }
 
@@ -404,6 +459,11 @@
   #books-guides .blog-list > li,
   #heal .grid-list > li,
   #retreats .offer-list > li { flex-basis: 84%; width: 84%; min-width: 84%; }
+  .partner-item {
+    flex: 0 0 96px;
+    min-width: 96px;
+    max-width: 110px;
+  }
 }
 
 @media (max-width: 390px) {
@@ -427,7 +487,7 @@
   }
 }
 
-/* Final CTA color guard: keep primary buttons dark green, independent of the emerald accent token. */
+/* Primary buttons stay dark green (independent of emerald accent) */
 html body .btn.btn-primary {
   background-color: rgba(15, 60, 53, 1) !important;
 }

@@ -36,7 +36,7 @@
   outline: none !important;
 }
 
-/* Banner: full-bleed, consistent ratio */
+/* Banner: full-bleed, consistent ratio across all card types */
 .product-card .card-banner,
 .offer-card .card-banner,
 .blog-card .card-banner,
@@ -91,7 +91,7 @@
   background: transparent;
 }
 
-/* Labels (category / subtitle) */
+/* Labels (category / subtitle) — emerald for Learn / Heal / Retreat */
 .product-card .card-category,
 .product-card .card-subtitle,
 .offer-card .card-subtitle,
@@ -102,7 +102,7 @@
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: var(--emerald, hsl(152, 95%, 39%));
+  color: var(--emerald, hsl(152, 95%, 39%)) !important;
   margin: 0 0 8px;
 }
 
@@ -224,6 +224,7 @@
   justify-content: flex-start;
 }
 
+/* Mobile: full-width, tappable CTAs */
 @media (max-width: 767px) {
   .product-card .card-content,
   .offer-card .card-content,
@@ -245,7 +246,9 @@
   }
 
   #heal .product-card > .btn {
-    width: calc(100% - 44px);
+    width: calc(100% - 36px);
+    margin-inline: 18px;
+    margin-block-end: 18px;
     justify-content: center;
     white-space: normal;
     min-height: 46px;
@@ -254,7 +257,7 @@
   }
 }
 
-/* Primary buttons intentionally remain dark green, independent of the emerald accent. */
+/* Primary buttons remain dark green */
 html body .btn.btn-primary {
   background-color: rgba(15, 60, 53, 1) !important;
 }
