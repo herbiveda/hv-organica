@@ -31,7 +31,7 @@
 .blog-card:focus-within,
 .pillar-card:focus-within {
   transform: translateY(-6px);
-  border-color: var(--ds-emerald, hsl(152, 95%, 39%));
+  border-color: var(--emerald, hsl(152, 95%, 39%));
   box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
   outline: none !important;
 }
@@ -102,7 +102,7 @@
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: var(--ds-emerald, hsl(152, 95%, 39%));
+  color: var(--emerald, hsl(152, 95%, 39%));
   margin: 0 0 8px;
 }
 
@@ -132,7 +132,7 @@
 .product-card .card-title a:hover,
 .offer-card .card-title a:hover,
 .blog-card .card-title a:hover {
-  color: var(--ds-emerald, hsl(152, 95%, 39%));
+  color: var(--emerald, hsl(152, 95%, 39%));
 }
 
 /* Body text */
@@ -169,7 +169,7 @@
 
 .product-card .product-meta ion-icon {
   font-size: 1.5rem;
-  color: var(--ds-emerald, hsl(152, 95%, 39%));
+  color: var(--emerald, hsl(152, 95%, 39%));
 }
 
 /* CTA sits at bottom of card */
