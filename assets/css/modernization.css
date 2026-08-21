@@ -95,9 +95,9 @@
   transition: 0.25s ease;
   border: 1.5px solid transparent;
 }
-.btn-primary { background-color: var(--emerald); color: var(--ds-white); }
+.btn-primary { background-color: rgba(15, 60, 53, 1) !important; color: var(--ds-white); }
 .btn-primary:hover,
-.btn-primary:focus { background-color: var(--ds-green-pigment); }
+.btn-primary:focus { background-color: var(--ds-green-pigment) !important; }
 .btn-secondary {
   background-color: transparent;
   color: var(--emerald);
@@ -425,4 +425,9 @@
     width: 300px !important;
     min-width: 300px !important;
   }
+}
+
+/* Final CTA color guard: keep primary buttons dark green, independent of the emerald accent token. */
+html body .btn.btn-primary {
+  background-color: rgba(15, 60, 53, 1) !important;
 }
