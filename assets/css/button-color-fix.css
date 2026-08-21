@@ -1,0 +1,9 @@
+/* Preserve the original primary button color independently from the emerald subtitle/card accent. */
+.btn-primary {
+  background-color: rgba(15, 60, 53, 1) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--ds-green-pigment) !important;
+}
