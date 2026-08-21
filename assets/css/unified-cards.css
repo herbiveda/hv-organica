@@ -254,7 +254,7 @@
   }
 }
 
-/* Preserve the original primary button color independently from the emerald accent. */
-html body .btn-primary {
+/* Primary buttons intentionally remain dark green, independent of the emerald accent. */
+html body .btn.btn-primary {
   background-color: rgba(15, 60, 53, 1) !important;
 }
