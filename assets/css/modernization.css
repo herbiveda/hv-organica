@@ -431,3 +431,144 @@
 html body .btn.btn-primary {
   background-color: rgba(15, 60, 53, 1) !important;
 }
+
+/* ============================================
+   SPACING + BUTTON CONSISTENCY FIX
+   (2026-08-21) — unify section gaps & CTA colors
+   ============================================ */
+
+:root {
+  --section-padding: 64px;
+  --section-padding-md: 48px;
+  --section-padding-sm: 40px;
+  --btn-primary-bg: rgba(15, 60, 53, 1);
+  --btn-primary-hover: hsl(152, 95%, 28%);
+  --btn-secondary-border: hsl(152, 95%, 33%);
+}
+
+/* Unified section vertical rhythm */
+.section {
+  padding-block: var(--section-padding) !important;
+}
+
+.product,
+.blog,
+.newsletter {
+  padding-block-start: var(--section-padding) !important;
+}
+
+.partner,
+.testimonials {
+  padding-block: 48px !important;
+}
+
+.cta,
+#consultation.cta {
+  padding-block: 56px !important;
+}
+
+.section-title-wrapper {
+  margin-block-end: 28px !important;
+}
+
+.section-title,
+.h2.section-title {
+  margin-block-end: 12px !important;
+}
+
+/* Unified button system */
+.btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--ff-body, 'Roboto', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 14px 28px !important;
+  border-radius: 50px;
+  border: 1.5px solid transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary,
+html body .btn.btn-primary,
+.mobile-action-bar .btn-primary,
+.hero-btn-group .btn-primary,
+.cta .btn-primary,
+#consultation .btn-primary,
+.product-card .btn-primary,
+.offer-card .btn-primary,
+.section-btn .btn-primary {
+  background-color: var(--btn-primary-bg) !important;
+  color: #fff !important;
+  border-color: var(--btn-primary-bg) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+html body .btn.btn-primary:hover,
+html body .btn.btn-primary:focus {
+  background-color: var(--btn-primary-hover) !important;
+  border-color: var(--btn-primary-hover) !important;
+  color: #fff !important;
+}
+
+.btn-secondary,
+html body .btn.btn-secondary,
+.mobile-action-bar .btn-secondary,
+.hero-btn-group .btn-secondary,
+.section-btn .btn-secondary {
+  background-color: transparent !important;
+  color: var(--btn-secondary-border) !important;
+  border-color: var(--btn-secondary-border) !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+html body .btn.btn-secondary:hover,
+html body .btn.btn-secondary:focus {
+  background-color: var(--btn-secondary-border) !important;
+  color: #fff !important;
+  border-color: var(--btn-secondary-border) !important;
+}
+
+.mobile-action-bar .btn {
+  width: 100%;
+  justify-content: center;
+  padding-block: 12px !important;
+}
+
+@media (max-width: 1023px) {
+  .section {
+    padding-block: var(--section-padding-md) !important;
+  }
+  .partner,
+  .testimonials {
+    padding-block: 40px !important;
+  }
+  .cta,
+  #consultation.cta {
+    padding-block: 48px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .section {
+    padding-block: var(--section-padding-sm) !important;
+  }
+  .partner,
+  .testimonials {
+    padding-block: 32px !important;
+  }
+  .cta,
+  #consultation.cta {
+    padding-block: 40px !important;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
