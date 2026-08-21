@@ -1,1 +1,28 @@
-PLACEHOLDER
+@import url("./responsive-fixes.css");
+@import url("./unified-cards.css");
+@import url("./cta-fixes.css");
+
+/* Temporary bootstrap: full rules live in imported sheets.
+   Design tokens kept here for cascade compatibility. */
+:root {
+  --ff-display: 'Playfair Display', serif;
+  --ff-body: 'Roboto', sans-serif;
+  --ds-emerald: hsl(152, 95%, 39%);
+  --emerald: hsl(152, 95%, 39%);
+  --ds-green-pigment: hsl(152, 95%, 33%);
+  --ds-russian-violet: hsl(245, 97%, 13%);
+  --ds-sonic-silver: hsl(0, 0%, 45%);
+  --ds-mint-cream: hsl(96, 36%, 95%);
+  --ds-white: #fff;
+  --section-padding: 64px;
+  --section-padding-md: 48px;
+  --section-padding-sm: 40px;
+  --btn-primary-bg: rgba(15, 60, 53, 1);
+  --btn-primary-hover: hsl(152, 95%, 28%);
+}
+
+html body .btn.btn-primary {
+  background-color: rgba(15, 60, 53, 1) !important;
+  color: #fff !important;
+  border-color: rgba(15, 60, 53, 1) !important;
+}
