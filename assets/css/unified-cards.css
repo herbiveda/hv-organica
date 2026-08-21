@@ -253,3 +253,8 @@
     line-height: 1.2;
   }
 }
+
+/* Preserve the original primary button color independently from the emerald accent. */
+html body .btn-primary {
+  background-color: rgba(15, 60, 53, 1) !important;
+}
