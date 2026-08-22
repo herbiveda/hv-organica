@@ -190,29 +190,48 @@ html body .btn.btn-secondary:focus,
   word-break: break-word;
 }
 
-/* CTA: webp only */
+/* CTA: image on ::before so mobile can blur + left-align woman */
 .cta,
 #consultation.cta {
-  background-image: url("../images/cta-bg.webp") !important;
+  position: relative;
+  isolation: isolate;
   background-color: #eef1f0 !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-position: center center !important;
+  background-image: none !important;
   padding-block: 56px !important;
   min-height: 280px;
+  overflow: hidden;
+}
+.cta::before,
+#consultation.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../images/cta-bg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  pointer-events: none;
 }
 .cta .container,
 #consultation.cta .container {
+  position: relative;
+  z-index: 1;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
   text-align: center;
   padding-inline: 20px;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  max-width: none;
+  margin-inline: auto;
 }
 .cta .btn,
 #consultation.cta .btn { margin-block-start: 20px; }
 
-/* Unified cards (inlined from unified-cards.css) */
+/* Unified cards — one visual system */
 .product-card,
 .offer-card,
 .blog-card,
@@ -220,9 +239,9 @@ html body .btn.btn-secondary:focus,
   display: flex;
   flex-direction: column;
   background: #fff !important;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
+  border: 1px solid hsla(0, 0%, 0%, 0.06);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px hsla(0, 0%, 0%, 0.06);
   overflow: hidden;
   box-sizing: border-box;
   height: 100%;
@@ -238,9 +257,9 @@ html body .btn.btn-secondary:focus,
 .offer-card:focus-within,
 .blog-card:focus-within,
 .pillar-card:focus-within {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: var(--emerald);
-  box-shadow: 0 12px 30px hsla(0, 0%, 0%, 0.10);
+  box-shadow: 0 12px 28px hsla(0, 0%, 0%, 0.10);
 }
 .product-card .card-banner,
 .offer-card .card-banner,
@@ -250,11 +269,24 @@ html body .btn.btn-secondary:focus,
   display: block;
   width: 100%;
   margin: 0 !important;
-  aspect-ratio: 1.45 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--ds-mint-cream);
 }
-.product-card .card-banner img,
+#heal .product-card .card-banner,
+#featured-courses .product-card .card-banner {
+  aspect-ratio: 1 / 1;
+  background: var(--ds-mint-cream);
+}
+#heal .product-card .card-banner img,
+#featured-courses .product-card .card-banner img {
+  object-fit: contain;
+  padding: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .offer-card .card-banner img,
 .blog-card .card-banner img,
 .pillar-card .card-banner img {
@@ -270,8 +302,41 @@ html body .btn.btn-secondary:focus,
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 18px 22px 22px;
-  gap: 6px;
+  padding: 16px 18px 18px;
+  gap: 8px;
+}
+.product-card .card-title,
+.offer-card .card-title,
+.blog-card .card-title,
+.pillar-card .card-title,
+.product-card .h3.card-title,
+.product-card .h4.card-title {
+  font-family: var(--ff-body);
+  font-size: 1.7rem !important;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ds-russian-violet);
+  margin: 0;
+}
+.product-card .card-text,
+.offer-card .card-text,
+.blog-card .card-text,
+.pillar-card .card-text {
+  font-size: 1.4rem !important;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+.product-card .card-subtitle,
+.product-card .card-category,
+.offer-card .card-subtitle,
+.blog-card .card-subtitle,
+.pillar-card .card-subtitle {
+  font-size: 1.15rem !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin: 0;
 }
 .product-card .btn,
 .offer-card .btn,
@@ -279,17 +344,24 @@ html body .btn.btn-secondary:focus,
 .pillar-card .btn {
   margin-top: auto;
   margin-inline: 0;
-  align-self: flex-start;
+  align-self: stretch;
+  justify-content: center;
   min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
 }
 #heal .product-card > .card-title,
 #heal .product-card > .h4.card-title {
-  padding: 16px 22px 0;
-  margin-block-end: 8px;
+  padding: 16px 18px 0 !important;
+  margin: 0 !important;
+  font-size: 1.7rem !important;
+  line-height: 1.35 !important;
 }
 #heal .product-card > .btn {
-  margin: 8px 22px 22px;
-  align-self: flex-start;
+  margin: 12px 18px 18px !important;
+  width: calc(100% - 36px) !important;
+  align-self: center;
+  justify-content: center;
 }
 
 @media (max-width: 1023px) {
@@ -322,7 +394,6 @@ html body .btn.btn-secondary:focus,
   .hero-btn-group { display: grid; gap: 10px; }
   .hero-btn-group .btn { width: 100%; min-width: 0; justify-content: center; }
 
-  /* Service: 1 column — fixes icon/text overlap */
   .service { padding-block: 20px !important; }
   .service-list {
     grid-template-columns: 1fr !important;
@@ -347,7 +418,6 @@ html body .btn.btn-secondary:focus,
     line-height: 1.35 !important;
   }
 
-  /* Partner: mobile only (desktop keeps home.css) */
   .partner-list {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -368,35 +438,62 @@ html body .btn.btn-secondary:focus,
     object-fit: contain !important;
   }
 
-  /* CTA: webp + semi-transparent backdrop card */
+  /* CTA mobile: left-aligned woman, blurred photo, light scrim — NO white card */
   .cta,
   #consultation.cta {
-    background-image: url("../images/cta-bg.webp") !important;
-    background-size: cover !important;
-    background-position: center center !important;
+    background-image: none !important;
     min-height: 420px;
     padding-block: 48px !important;
   }
+  .cta::before,
+  #consultation.cta::before {
+    background-image: url("../images/cta-bg.webp");
+    background-size: cover;
+    background-position: left center;
+    filter: blur(6px);
+    transform: scale(1.06);
+  }
+  .cta::after,
+  #consultation.cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.72) 50%,
+      rgba(255, 255, 255, 0.80) 100%
+    );
+    pointer-events: none;
+  }
   .cta .container,
   #consultation.cta .container {
-    background-color: rgba(255, 255, 255, 0.88) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px !important;
-    padding: 24px 18px !important;
-    max-width: 540px;
+    position: relative;
+    z-index: 1;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 16px !important;
+    max-width: 100%;
     margin-inline: auto;
-    box-shadow: 0 8px 28px hsla(0, 0%, 0%, 0.08) !important;
+  }
+  .cta .section-subtitle,
+  #consultation.cta .section-subtitle {
+    font-size: 1.15rem !important;
   }
   .cta .section-title,
   #consultation.cta .section-title {
     font-size: clamp(2.1rem, 7vw, 2.6rem) !important;
-    color: #111827 !important;
+    color: var(--ds-russian-violet) !important;
   }
   .cta .cta-text,
   #consultation.cta .cta-text {
     font-size: 1.4rem !important;
-    color: #374151 !important;
+    color: var(--ds-sonic-silver) !important;
     margin-block-end: 18px !important;
   }
   .cta .btn,
@@ -405,8 +502,8 @@ html body .btn.btn-secondary:focus,
   #heal .product-card > .btn,
   #heal .product-card > .btn.btn-primary {
     display: flex !important;
-    width: calc(100% - 32px) !important;
-    margin: 8px 16px 16px !important;
+    width: calc(100% - 36px) !important;
+    margin: 12px 18px 18px !important;
     padding: 12px 14px !important;
     min-height: 48px !important;
     font-size: 1.35rem !important;
@@ -452,7 +549,10 @@ html body .btn.btn-secondary:focus,
 @media (max-width: 390px) {
   .cta,
   #consultation.cta {
-    background-position: center center !important;
     min-height: 380px;
+  }
+  .cta::before,
+  #consultation.cta::before {
+    background-position: left center;
   }
 }
