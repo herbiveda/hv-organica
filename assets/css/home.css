@@ -17,7 +17,7 @@
 .hero-banner { display: none; }
 
 .hero {
-  background-image: url("../images/hero-left-bg.png");
+  background-image: url("../images/hero-left-bg.webp");
   background-color: var(--mint-cream);
   background-repeat: no-repeat;
   background-position: bottom left;
@@ -559,7 +559,7 @@
 @media (min-width: 569px) {
 
   .hero {
-    background-image: url("../images/hero-left-bg.png"), url("../images/hero-right-bg.png");
+    background-image: url("../images/hero-left-bg.webp"), url("../images/hero-right-bg.webp");
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right top;
   }
