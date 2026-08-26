@@ -23,6 +23,169 @@
   --btn-primary-hover: hsl(152, 40%, 22%);
 }
 
+/* ---------- HERO — soft color transition + responsive two-column composition ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f3f7f3 !important;
+  background-image: linear-gradient(118deg, #edf5ef 0%, #f7f5ed 48%, #eef4f2 100%) !important;
+  padding-block: clamp(32px, 5vw, 64px) !important;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url("../images/hero-left-bg.webp"),
+    url("../images/hero-right-bg.webp");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right bottom;
+  background-size: min(30vw, 300px) auto, min(30vw, 300px) auto;
+  opacity: 0.72;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.42), transparent 42%),
+    linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.10));
+}
+
+.hero .container {
+  width: min(100% - 40px, 1240px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  min-width: 0;
+  max-width: 760px;
+  padding-block: 8px;
+}
+
+.hero-banner {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: clamp(8px, 2vw, 24px);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 8% 5%;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.40);
+  filter: blur(20px);
+}
+
+.hero-banner img {
+  display: block;
+  width: min(100%, 560px) !important;
+  height: auto !important;
+  max-height: min(58vh, 600px);
+  object-fit: contain;
+  object-position: center;
+  border-radius: 24px;
+  filter: drop-shadow(0 20px 38px rgba(15, 60, 53, 0.13));
+}
+
+.hero-subtitle {
+  color: var(--ds-russian-violet) !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.hero-title {
+  color: var(--ds-russian-violet) !important;
+  max-width: 760px;
+  text-wrap: balance;
+}
+
+.hero-title .span { color: rgba(15, 60, 53, 1) !important; }
+
+.hero-text {
+  max-width: 700px;
+  color: #4d5f5a !important;
+  text-wrap: pretty;
+}
+
+.hero-btn-group { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-stamp { box-shadow: 0 2px 8px rgba(15, 60, 53, 0.12); }
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .hero .container {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+    gap: 28px;
+  }
+  .hero::before {
+    background-size: 210px auto, 210px auto;
+    opacity: 0.60;
+  }
+  .hero-banner { padding: 4px; }
+  .hero-banner img { max-height: 500px; }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-block: 28px 34px !important;
+    background-image: linear-gradient(145deg, #edf6f0 0%, #f8f4eb 52%, #eef4f2 100%) !important;
+  }
+  .hero::before {
+    background-size: 145px auto, 145px auto;
+    background-position: left bottom, right bottom;
+    opacity: 0.48;
+  }
+  .hero::after {
+    background: radial-gradient(circle at 50% 42%, rgba(255,255,255,0.42), transparent 52%);
+  }
+  .hero .container {
+    width: min(100% - 28px, 620px);
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .hero-content {
+    order: 1;
+    max-width: none;
+    padding-block: 0;
+    text-align: center;
+  }
+  .hero-banner {
+    order: 2;
+    padding: 4px 0 0;
+  }
+  .hero-banner::before { inset: 10% 12%; }
+  .hero-banner img {
+    width: min(88vw, 430px) !important;
+    max-height: 48vh;
+    border-radius: 18px;
+  }
+  .hero-btn-group { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .hero .container { gap: 12px; }
+  .hero-banner img { width: min(86vw, 360px) !important; max-height: 42vh; }
+  .hero::before { background-size: 110px auto, 110px auto; opacity: 0.40; }
+}
+
 /* ---------- Typography ---------- */
 .section-subtitle {
   font-family: var(--ff-body) !important;
