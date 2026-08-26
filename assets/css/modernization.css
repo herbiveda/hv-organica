@@ -71,7 +71,6 @@
 .section-title-wrapper { margin-block-end: 28px; text-align: center; }
 .section-title-wrapper .section-text { margin-inline: auto; }
 
-/* CTA same subtitle + title scale as other sections */
 .cta .section-subtitle,
 #consultation.cta .section-subtitle {
   font-size: 1.2rem !important;
@@ -93,9 +92,6 @@
   margin-inline: auto;
 }
 
-/* ---------- Buttons ----------
-   Root cause of missing hover: html body .btn.btn-primary (higher specificity)
-   overrode .btn-primary:hover. Hover must match that specificity. */
 .btn {
   display: inline-flex !important;
   align-items: center;
@@ -170,7 +166,6 @@ html body .btn.btn-secondary:focus,
   width: 100%;
 }
 
-/* Service trust bar */
 .service-list {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -190,7 +185,6 @@ html body .btn.btn-secondary:focus,
   word-break: break-word;
 }
 
-/* CTA: image on ::before so mobile can blur + left-align woman */
 .cta,
 #consultation.cta {
   position: relative;
@@ -231,7 +225,6 @@ html body .btn.btn-secondary:focus,
 .cta .btn,
 #consultation.cta .btn { margin-block-start: 20px; }
 
-/* Unified cards — one visual system */
 .product-card,
 .offer-card,
 .blog-card,
@@ -438,7 +431,6 @@ html body .btn.btn-secondary:focus,
     object-fit: contain !important;
   }
 
-  /* CTA mobile: left-aligned woman, blurred photo, light scrim — NO white card */
   .cta,
   #consultation.cta {
     background-image: none !important;
@@ -554,5 +546,213 @@ html body .btn.btn-secondary:focus,
   .cta::before,
   #consultation.cta::before {
     background-position: left center;
+  }
+}
+
+/*-----------------------------------*\
+  #HERO — aesthetic + corner BGs + mobile
+  Complements Learn / Heal / Retreat collage (black + bold accents)
+\*-----------------------------------*/
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #0c1614 !important;
+  background-image:
+    url("../images/hero-left-bg.webp"),
+    url("../images/hero-right-bg.webp") !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-position: left bottom, right bottom !important;
+  background-size: min(42vw, 320px) auto, min(42vw, 320px) auto !important;
+  padding-block: clamp(40px, 6vw, 72px) !important;
+  min-height: auto;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 70% at 12% 100%, rgba(15, 60, 53, 0.45) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 70% at 88% 100%, rgba(15, 60, 53, 0.35) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(12, 22, 20, 0.2) 0%, transparent 40%);
+  opacity: 0.9;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 560px;
+}
+
+.hero-subtitle {
+  color: #7ddea8 !important;
+  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.2rem, 2vw, 1.45rem) !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  margin-block-end: 14px !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-stamp {
+  filter: brightness(1.15) saturate(1.1);
+}
+
+.hero-title,
+.hero .h1.hero-title {
+  color: #f4f7f5 !important;
+  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
+  font-weight: 500 !important;
+  font-size: clamp(2.6rem, 5vw, 4.4rem) !important;
+  line-height: 1.15 !important;
+  margin-block-end: 16px !important;
+  letter-spacing: -0.02em;
+}
+
+.hero-title .span {
+  color: #3dd68c !important;
+  font-family: inherit !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  font-size: inherit !important;
+  display: inline !important;
+}
+
+.hero-text {
+  color: rgba(232, 240, 236, 0.78) !important;
+  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
+  font-size: clamp(1.4rem, 1.8vw, 1.65rem) !important;
+  line-height: 1.65 !important;
+  margin-block-end: 28px !important;
+  max-width: 48ch;
+}
+
+.hero-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.hero-btn-group .btn {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hero-banner {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 20px 50px rgba(0, 0, 0, 0.45);
+  background: #000;
+}
+
+.hero-banner img.w-100,
+.hero-banner .w-100 {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 768px) {
+  .hero-banner {
+    display: block !important;
+  }
+
+  .hero .container {
+    display: grid !important;
+    grid-template-columns: 1.05fr 0.95fr !important;
+    align-items: center !important;
+    gap: clamp(24px, 4vw, 48px) !important;
+  }
+
+  .hero {
+    background-size: min(28vw, 300px) auto, min(28vw, 300px) auto !important;
+    background-position: left bottom, right bottom !important;
+    min-height: min(72vh, 640px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    background-size: 340px auto, 340px auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-block: 28px 36px !important;
+    background-position: left bottom, right bottom !important;
+    background-size: 55vw auto, 55vw auto !important;
+    min-height: 0 !important;
+  }
+
+  .hero .container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+  }
+
+  .hero-banner {
+    display: block !important;
+    order: -1;
+    border-radius: 14px;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+
+  .hero-content {
+    max-width: none;
+    text-align: left;
+  }
+
+  .hero-title,
+  .hero .h1.hero-title {
+    font-size: clamp(2.4rem, 8vw, 3.2rem) !important;
+  }
+
+  .hero-text {
+    font-size: 1.45rem !important;
+    max-width: none;
+  }
+
+  .hero-btn-group {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+  }
+
+  .hero-btn-group .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    background-size: 70vw auto, 70vw auto !important;
+    background-position: -8% bottom, 108% bottom !important;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(12, 22, 20, 0.55) 0%, rgba(12, 22, 20, 0.75) 100%);
+    opacity: 1;
   }
 }
