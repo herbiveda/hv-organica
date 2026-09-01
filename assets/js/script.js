@@ -53,16 +53,7 @@ if (productDisplay) {
   });
 }
 
-/** Global legacy spelling cleanup */
-document.querySelectorAll('[aria-label], [title]').forEach(function (element) {
-  if (element.hasAttribute('aria-label')) element.setAttribute('aria-label', element.getAttribute('aria-label').replace(/whishlist/gi, 'wishlist'));
-  if (element.hasAttribute('title')) element.setAttribute('title', element.getAttribute('title').replace(/whishlist/gi, 'wishlist'));
-});
-document.querySelectorAll('body *').forEach(function (element) {
-  if (element.children.length === 0 && element.textContent) element.textContent = element.textContent.replace(/Whishlist/g, 'Wishlist').replace(/whishlist/g, 'wishlist');
-});
-
-/** Homepage enhancements (no CTA DOM moves — CTA is static HTML) */
+/** Homepage enhancements */
 function loadStylesheet(href) {
   if (document.querySelector('link[href="' + href + '"]')) return;
   const link = document.createElement('link');
@@ -93,9 +84,7 @@ function injectSitePolishStyles() {
       --ds-emerald: rgba(15, 60, 53, 1) !important;
       --ds-green-pigment: rgba(11, 47, 42, 1) !important;
     }
-    .partner {
-      background-color: rgba(15, 60, 53, 1) !important;
-    }
+    .partner { background-color: rgba(15, 60, 53, 1) !important; }
     .testimonials-swiper { position:relative; width:100%; overflow:hidden; padding-block:4px 28px; }
     .testimonials-swiper .swiper-wrapper { display:flex !important; align-items:stretch; gap:0 !important; }
     .testimonials-swiper .swiper-slide { height:auto; display:flex; }
@@ -105,7 +94,6 @@ function injectSitePolishStyles() {
     .testimonials-swiper .swiper-button-prev::after,.testimonials-swiper .swiper-button-next::after { font-size:15px; font-weight:700; }
     @media (max-width:767px) {
       .testimonials-swiper .swiper-button-prev,.testimonials-swiper .swiper-button-next { display:none; }
-      .testimonials-swiper { padding-bottom:24px; }
     }
   `;
   document.head.appendChild(style);
@@ -114,7 +102,7 @@ function addFourthHomepageCard(selector, cardHtml) {
   const list = document.querySelector(selector);
   if (!list) return;
   Array.from(list.children).forEach(function (item) {
-    if (/coming\s*soon/i.test(item.textContent || '')) item.remove();
+    if (/coming\\s*soon/i.test(item.textContent || '')) item.remove();
   });
   if (list.children.length < 4) list.insertAdjacentHTML('beforeend', cardHtml);
 }
@@ -161,3 +149,92 @@ if (document.readyState === 'loading') {
 } else {
   initializeHomepageEnhancements();
 }
+
+/** Hero Learn / Heal / Retreat slider */
+(function initHeroSlider() {
+  const root = document.querySelector('[data-hero-slider]');
+  if (!root) return;
+
+  const slides = Array.from(root.querySelectorAll('.hero-slide'));
+  const tabs = Array.from(root.querySelectorAll('.hero-tab'));
+  const dots = Array.from(root.querySelectorAll('.hero-dot'));
+  const prevBtn = root.querySelector('[data-hero-prev]');
+  const nextBtn = root.querySelector('[data-hero-next]');
+  const progressBar = root.querySelector('.hero-progress-bar');
+  if (!slides.length) return;
+
+  let index = 0;
+  let timer = null;
+  const DELAY = 6500;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setActive(i) {
+    index = (i + slides.length) % slides.length;
+    slides.forEach(function (slide, n) {
+      const on = n === index;
+      slide.classList.toggle('is-active', on);
+      if (on) slide.removeAttribute('hidden');
+      else slide.setAttribute('hidden', '');
+    });
+    tabs.forEach(function (tab, n) {
+      const on = n === index;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    dots.forEach(function (dot, n) {
+      dot.classList.toggle('is-active', n === index);
+    });
+    restartProgress();
+  }
+
+  function restartProgress() {
+    if (!progressBar || reduceMotion) return;
+    progressBar.style.transition = 'none';
+    progressBar.style.transform = 'scaleX(0)';
+    void progressBar.offsetWidth;
+    progressBar.style.transition = 'transform ' + DELAY + 'ms linear';
+    progressBar.style.transform = 'scaleX(1)';
+  }
+
+  function next() { setActive(index + 1); }
+  function prev() { setActive(index - 1); }
+
+  function startAuto() {
+    stopAuto();
+    if (reduceMotion) return;
+    timer = window.setInterval(next, DELAY);
+    restartProgress();
+  }
+
+  function stopAuto() {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      setActive(Number(tab.getAttribute('data-goto') || 0));
+      startAuto();
+    });
+  });
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      setActive(Number(dot.getAttribute('data-goto') || 0));
+      startAuto();
+    });
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function () { next(); startAuto(); });
+  if (prevBtn) prevBtn.addEventListener('click', function () { prev(); startAuto(); });
+
+  root.addEventListener('mouseenter', stopAuto);
+  root.addEventListener('mouseleave', startAuto);
+  root.addEventListener('focusin', stopAuto);
+  root.addEventListener('focusout', function (e) {
+    if (!root.contains(e.relatedTarget)) startAuto();
+  });
+
+  setActive(0);
+  startAuto();
+})();
