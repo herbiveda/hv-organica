@@ -62,31 +62,7 @@
   transform: translateY(-6px);
 }
 
-/* Hero trust label: professional, evidence-first treatment. */
-.hero-subtitle {
-  color: var(--ds-russian-violet) !important;
-  font-family: var(--ff-body) !important;
-  font-style: normal !important;
-  font-weight: 700 !important;
-  font-size: clamp(1.35rem, 2vw, 1.7rem) !important;
-  letter-spacing: 1.2px !important;
-  text-transform: uppercase;
-  margin-block-end: 12px !important;
-  display: inline-flex !important;
-  align-items: center;
-  gap: 10px;
-}
-
-.hero-stamp {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  display: block;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px hsla(0, 0%, 0%, 0.18);
-  object-fit: contain;
-}
-
+/* Hero trust label handled in hero-refinement (moved under logo). */
 .hero-text strong {
   color: var(--ds-russian-violet);
   font-weight: 700;
@@ -196,14 +172,16 @@
   body { padding-bottom: 64px; }
   .section { padding-block: 36px !important; }
   .container { width: min(100% - 28px, 540px); }
+
+  /* Do NOT hide hero banner — column layout is handled in hero-refinement.css */
   .hero { padding-block: 30px 26px !important; min-height: 0 !important; }
-  .hero-banner { display: none !important; }
+  .hero-banner { display: flex !important; }
   .hero-title { font-size: clamp(2.7rem, 9vw, 3.5rem) !important; line-height: 1.12 !important; }
   .hero-title .span { font-size: inherit !important; }
   .hero-text { font-size: 1.4rem !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
-  .hero-stamp { width: 30px; height: 30px; }
+
   .service { padding-block: 22px !important; }
   .service-list { gap: 8px !important; }
   .service-item { min-height: 48px; gap: 9px; }
@@ -275,7 +253,7 @@
   .testi-list { gap: 14px !important; }
   .testi-item { min-width: 0 !important; margin-inline: 0 !important; }
 
-  /* Mobile header: hamburger | centered logo | search. */
+  /* Mobile header: hamburger | centered logo block | search */
   .nav-wrapper .container {
     display: grid !important;
     grid-template-columns: 44px minmax(0, 1fr) 44px !important;
@@ -285,15 +263,17 @@
     padding: 12px 14px !important;
     min-height: 58px;
   }
+  .nav-wrapper .logo-block,
   .nav-wrapper .h1 {
     order: 2 !important;
     min-width: 0 !important;
     width: 100% !important;
     text-align: center;
+    align-items: center;
   }
   .nav-wrapper .logo {
     display: inline-block;
-    font-size: 2.25rem !important;
+    font-size: 2.4rem !important;
     line-height: 1;
   }
   .nav-open-btn {
@@ -337,7 +317,6 @@
     transform: translateX(0) scale(1);
   }
 
-  /* Compact partner, testimonial and footer rhythm for phone screens. */
   .partner.section,
   .testimonials.section { padding-block: clamp(22px, 5vw, 30px) !important; }
   .partner-list {
@@ -426,8 +405,6 @@
   .hero { padding-block: 26px 24px !important; }
   .hero-title { font-size: 2.65rem !important; }
   .hero-text { font-size: 1.28rem !important; }
-  .hero-subtitle { font-size: 1.2rem !important; letter-spacing: 1px !important; }
-  .hero-stamp { width: 26px; height: 26px; }
   .section-title,
   .h2.section-title { font-size: 2rem !important; }
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
