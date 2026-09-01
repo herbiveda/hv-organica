@@ -102,7 +102,7 @@ function addFourthHomepageCard(selector, cardHtml) {
   const list = document.querySelector(selector);
   if (!list) return;
   Array.from(list.children).forEach(function (item) {
-    if (/coming\\s*soon/i.test(item.textContent || '')) item.remove();
+    if (/coming\s*soon/i.test(item.textContent || '')) item.remove();
   });
   if (list.children.length < 4) list.insertAdjacentHTML('beforeend', cardHtml);
 }
@@ -137,11 +137,31 @@ function initializeTestimonialsSwiper() {
     breakpoints: { 768: { slidesPerView: 2, spaceBetween: 20 }, 1024: { slidesPerView: 3, spaceBetween: 20 } }
   });
 }
+function initializeHeroSwiper() {
+  const hero = document.querySelector('.hero-swiper');
+  if (!hero || typeof window.Swiper !== 'function' || hero.swiper) return;
+  new window.Swiper(hero, {
+    slidesPerView: 1,
+    speed: 750,
+    loop: true,
+    grabCursor: true,
+    autoplay: { delay: 6000, disableOnInteraction: false },
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    pagination: { el: '.hero-swiper .hero-pagination', clickable: true },
+    navigation: { nextEl: '.hero-swiper .hero-nav--next', prevEl: '.hero-swiper .hero-nav--prev' },
+    keyboard: { enabled: true },
+    a11y: { enabled: true }
+  });
+}
 function initializeHomepageEnhancements() {
   injectSitePolishStyles();
   addRealFourthCards();
   loadStylesheet('https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.css');
-  loadScript('https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.js', initializeTestimonialsSwiper);
+  loadScript('https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.js', function () {
+    initializeTestimonialsSwiper();
+    initializeHeroSwiper();
+  });
 }
 
 if (document.readyState === 'loading') {
