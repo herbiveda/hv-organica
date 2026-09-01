@@ -1,10 +1,9 @@
 /*-----------------------------------*\
   #HERO REFINEMENT
   Structure:
-    1. hero-title (full width)
-    2. hero-body: hero-text | hero-banner  (column on ALL screens)
+    1. hero-body: hero-title | hero-banner
+    2. hero-text
     3. hero-btn-group
-  Fonts for .hero-title / .hero-text: home.css only.
 \*-----------------------------------*/
 
 /* Structure only */
@@ -92,12 +91,7 @@
   display: none !important;
 }
 
-/* Title full width — fonts from home.css */
-.hero-title {
-  margin-block-end: 0;
-}
-
-/* text | image column on every breakpoint */
+/* Title | image column */
 .hero-body {
   display: grid !important;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -106,9 +100,22 @@
   width: 100%;
 }
 
-.hero-body .hero-text {
+/* Ancient Wisdom → gunmetal-2; span (Validated…) → emerald */
+.hero-title {
   margin-block-end: 0;
+  color: var(--gunmetal-2) !important;
   min-width: 0;
+}
+
+.hero-title .span {
+  color: var(--emerald) !important;
+}
+
+/* Darker body copy from main.css palette */
+.hero-text {
+  color: var(--eerie-black) !important;
+  margin-block-end: 0;
+  max-width: 48rem;
 }
 
 .hero-btn-group {
@@ -178,7 +185,7 @@
   }
 }
 
-/* ---------- Mobile: keep text | image as columns ---------- */
+/* ---------- Mobile: title | image still columns ---------- */
 @media (max-width: 767px) {
   .nav-wrapper .container {
     display: grid !important;
@@ -240,7 +247,6 @@
     gap: 1rem;
   }
 
-  /* Stay two-column: text | image */
   .hero-body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr) !important;
     gap: 0.75rem;
