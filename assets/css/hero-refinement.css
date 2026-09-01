@@ -1,28 +1,42 @@
 /*-----------------------------------*\
   #HERO REFINEMENT
-  Blurred background image + column layout (text | banner)
-  + logo subtitle + protruding hero figure
+  - Original Herbiveda logo style + subtitle
+  - Mobile header: menu | centered logo+subtitle | search
+  - Blurred bg (~8px), column text+banner, protruding figure (no border)
 \*-----------------------------------*/
 
-/* Logo block: Herbiveda + Evidence-Based Ayurveda subtitle */
+/* ---------- Logo block (original style) ---------- */
 .logo-block {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.1rem;
-  line-height: 1.2;
+  gap: 0.15rem;
+  line-height: 1.15;
+}
+
+.logo-block .logo {
+  color: var(--gunmetal-2, hsl(206, 21%, 15%));
+  font-family: var(--ff-playfair-display, "Playfair Display", Georgia, serif);
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.logo-block .logo .span {
+  display: inline-block;
+  color: var(--emerald, hsl(152, 95%, 39%));
 }
 
 .logo-subtitle {
   font-family: var(--ff-playfair-display, "Playfair Display", Georgia, serif);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   color: #0f3c35;
   margin: 0;
 }
 
-/* Hero section with blurred full-bleed background */
+/* ---------- Hero with softer blur ---------- */
 .hero {
   position: relative;
   isolation: isolate;
@@ -46,8 +60,9 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: blur(14px) brightness(0.92) saturate(0.95);
-  transform: scale(1.12);
+  /* ~8px blur as requested */
+  filter: blur(8px) brightness(0.94) saturate(0.97);
+  transform: scale(1.08);
 }
 
 .hero-bg::after {
@@ -56,16 +71,17 @@
   inset: 0;
   background: linear-gradient(
     105deg,
-    rgba(238, 241, 240, 0.78) 0%,
-    rgba(238, 241, 240, 0.55) 45%,
-    rgba(238, 241, 240, 0.42) 100%
+    rgba(238, 241, 240, 0.72) 0%,
+    rgba(238, 241, 240, 0.5) 45%,
+    rgba(238, 241, 240, 0.38) 100%
   );
 }
 
+/* Column layout: text | banner */
 .hero .container {
   position: relative;
   z-index: 1;
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr 1fr;
   gap: clamp(1.75rem, 4vw, 3.5rem);
   align-items: center;
@@ -76,7 +92,7 @@
   padding-block: 24px;
 }
 
-/* Hide old subtitle (moved under logo) */
+/* Old hero subtitle stays hidden (now under logo) */
 .hero-subtitle {
   display: none !important;
 }
@@ -85,11 +101,11 @@
   color: #0f3c35 !important;
   max-width: 760px;
   text-wrap: balance;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.45);
 }
 
 .hero-title .span {
-  color: var(--emerald, #1dbf73) !important;
+  color: var(--emerald, hsl(152, 95%, 39%)) !important;
 }
 
 .hero-text {
@@ -98,7 +114,7 @@
   font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
   line-height: 1.7;
   text-wrap: pretty;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35);
 }
 
 .hero-btn-group {
@@ -107,7 +123,7 @@
   gap: 12px;
 }
 
-/* Protruding hero banner */
+/* ---------- Protruding banner (no border) ---------- */
 .hero-banner {
   display: flex !important;
   position: relative;
@@ -120,38 +136,39 @@
 .hero-banner::before {
   content: "";
   position: absolute;
-  inset: -10% -8%;
-  border-radius: 32px;
+  inset: -12% -10%;
+  border-radius: 28px;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(29, 191, 115, 0.12) 45%,
-    transparent 70%
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(29, 191, 115, 0.1) 50%,
+    transparent 72%
   );
   z-index: -1;
-  filter: blur(4px);
+  filter: blur(6px);
 }
 
 .hero-banner img {
   width: min(100%, 420px);
   height: auto;
   display: block;
-  border-radius: 20px;
+  border-radius: 18px;
   object-fit: cover;
-  border: 3px solid rgba(255, 255, 255, 0.65);
+  border: none !important;
+  outline: none;
   box-shadow:
-    0 24px 55px -14px rgba(15, 60, 53, 0.28),
-    0 10px 24px -10px rgba(15, 60, 53, 0.16);
-  transform: translateY(-14px) scale(1.04);
+    0 22px 50px -12px rgba(15, 60, 53, 0.26),
+    0 8px 20px -8px rgba(15, 60, 53, 0.14);
+  transform: translateY(-12px) scale(1.03);
   transition: transform 0.3s cubic-bezier(0.33, 0.85, 0.4, 0.96),
     box-shadow 0.3s cubic-bezier(0.33, 0.85, 0.4, 0.96);
 }
 
 .hero-banner:hover img {
-  transform: translateY(-22px) scale(1.05);
+  transform: translateY(-18px) scale(1.04);
   box-shadow:
-    0 32px 65px -14px rgba(15, 60, 53, 0.34),
-    0 14px 32px -10px rgba(15, 60, 53, 0.2);
+    0 28px 58px -12px rgba(15, 60, 53, 0.32),
+    0 12px 28px -8px rgba(15, 60, 53, 0.18);
 }
 
 /* Tablet */
@@ -163,28 +180,80 @@
   .hero-banner img {
     width: min(100%, 360px);
   }
+
+  .logo-block .logo {
+    font-size: 2.6rem;
+  }
 }
 
-/* Mobile: stacked column, banner on top */
+/* ---------- Mobile ---------- */
 @media (max-width: 767px) {
+  /* Header: hamburger | centered logo+subtitle | search */
+  .nav-wrapper .container {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr) 44px !important;
+    align-items: center !important;
+    column-gap: 8px !important;
+    row-gap: 0 !important;
+    padding: 12px 14px !important;
+    min-height: 58px;
+  }
+
+  .nav-wrapper .logo-block,
+  .nav-wrapper .h1 {
+    order: 2 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .logo-block .logo {
+    font-size: 2.4rem !important;
+    line-height: 1.1;
+  }
+
+  .logo-subtitle {
+    font-size: 0.72rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-open-btn {
+    order: 1 !important;
+    justify-self: start !important;
+  }
+
+  .header-action {
+    order: 3 !important;
+    min-width: 0 !important;
+    width: 44px !important;
+    justify-self: end !important;
+    justify-content: flex-end !important;
+  }
+
+  /* Hero */
   .hero {
     padding-block: 1.75rem 2rem;
   }
 
   .hero-bg img {
-    filter: blur(12px) brightness(0.9);
+    /* Slightly softer on small screens */
+    filter: blur(7px) brightness(0.93) saturate(0.96);
+    transform: scale(1.1);
   }
 
   .hero-bg::after {
     background: linear-gradient(
       180deg,
-      rgba(238, 241, 240, 0.72) 0%,
-      rgba(238, 241, 240, 0.55) 100%
+      rgba(238, 241, 240, 0.7) 0%,
+      rgba(238, 241, 240, 0.52) 100%
     );
   }
 
+  /* Keep column relationship: banner then text, both full width */
   .hero .container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     text-align: center;
     gap: 1.25rem;
   }
@@ -196,21 +265,37 @@
   }
 
   .hero-banner {
+    display: flex !important;
     order: 1;
   }
 
   .hero-banner img {
-    width: min(90vw, 300px);
+    width: min(88vw, 300px);
     margin-inline: auto;
     transform: translateY(-8px) scale(1.02);
+    border: none !important;
   }
 
   .hero-btn-group {
     justify-content: center;
   }
+}
+
+@media (max-width: 390px) {
+  .logo-block .logo {
+    font-size: 2.15rem !important;
+  }
 
   .logo-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+  }
+
+  .hero-bg img {
+    filter: blur(6px) brightness(0.93);
+  }
+
+  .hero-banner img {
+    width: min(85vw, 280px);
   }
 }
 
