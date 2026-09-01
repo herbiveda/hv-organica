@@ -1,30 +1,16 @@
 /*-----------------------------------*\
   #HERO REFINEMENT
-  Layout: title full width, then (hero-text + CTAs) | banner
-  Logo original Playfair 3rem; subtitle 1.4rem (scaled down on tab/mobile)
-  Lighter bg overlay, no frosted plate, protruding banner
+  Logo font/size come from main.css (.logo) — do not override here.
+  Layout: left = title + text + CTAs | right = banner (true column).
 \*-----------------------------------*/
 
-/* ---------- Logo block (original style) ---------- */
+/* Structure only — typography for .logo is defined in main.css */
 .logo-block {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.2rem;
   line-height: 1.15;
-}
-
-.logo-block .logo {
-  color: var(--gunmetal-2, hsl(206, 21%, 15%));
-  font-family: var(--ff-playfair-display);
-  font-size: 3rem;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-.logo-block .logo .span {
-  display: inline-block;
-  color: var(--emerald, hsl(152, 95%, 39%));
 }
 
 .logo-subtitle {
@@ -65,117 +51,134 @@
   transform: scale(1.08);
 }
 
-/* Lighter overlay so background image remains visible */
 .hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     105deg,
-    rgba(238, 241, 240, 0.48) 0%,
-    rgba(238, 241, 240, 0.32) 45%,
-    rgba(238, 241, 240, 0.22) 100%
+    rgba(238, 241, 240, 0.45) 0%,
+    rgba(238, 241, 240, 0.28) 50%,
+    rgba(238, 241, 240, 0.18) 100%
   );
 }
 
+/* Kill home.css 2-col on container — one child only */
 .hero .container {
   position: relative;
   z-index: 1;
   display: block !important;
+  grid-template-columns: none !important;
 }
 
 .hero-content {
-  max-width: none;
-  width: 100%;
-  padding-block: 12px 20px;
+  max-width: none !important;
+  width: 100% !important;
+  padding-block: 12px 8px;
 }
 
 .hero-subtitle {
   display: none !important;
 }
 
-.hero-title {
-  color: #0f3c35 !important;
-  max-width: 36rem;
-  margin-block-end: 1.25rem;
-  text-wrap: balance;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
-}
-
-.hero-title .span {
-  color: var(--emerald, hsl(152, 95%, 39%)) !important;
-}
-
-/* Row: body copy + buttons | banner */
+/* True column: copy (title+text+btns) | banner */
 .hero-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(1.5rem, 3.5vw, 3rem);
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(1.5rem, 4vw, 3.25rem);
   align-items: center;
+  width: 100%;
 }
 
 .hero-copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Override home.css oversized title / span */
+.hero-title {
+  color: #0f3c35 !important;
+  font-size: clamp(2.8rem, 4.2vw, 4.6rem) !important;
+  line-height: 1.12 !important;
+  max-width: 100% !important;
+  margin-block-end: 1rem !important;
+  text-wrap: balance;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.hero-title .span {
+  display: inline !important;
+  font-size: inherit !important;
+  color: var(--emerald, hsl(152, 95%, 39%)) !important;
+  font-family: var(--ff-playfair-display) !important;
+  font-weight: 700 !important;
 }
 
 .hero-text {
-  max-width: 34rem;
+  max-width: 36rem;
   color: #1f322e !important;
-  font-size: clamp(1rem, 1.35vw, 1.125rem);
-  line-height: 1.7;
-  margin-block-end: 1.5rem;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem) !important;
+  line-height: 1.7 !important;
+  margin-block-end: 1.5rem !important;
   text-wrap: pretty;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Desktop CTAs side by side */
 .hero-btn-group {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
+  flex-direction: row !important;
   gap: 12px;
   align-items: center;
 }
 
-/* ---------- Protruding banner (no border, no frosted plate) ---------- */
+/* ---------- Banner ---------- */
 .hero-banner {
   display: flex !important;
-  position: relative;
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: none !important;
   justify-content: center;
   align-items: center;
   margin: 0;
+  padding: 0 !important;
   background: none !important;
-  box-shadow: none;
+  box-shadow: none !important;
+  pointer-events: auto;
 }
 
-/* Soft glow only — not a solid frosted card */
 .hero-banner::before {
   content: "";
   position: absolute;
-  inset: -8% -6%;
+  inset: -6% -4%;
   border-radius: 24px;
   background: radial-gradient(
     circle at 50% 45%,
-    rgba(255, 255, 255, 0.22) 0%,
-    rgba(29, 191, 115, 0.06) 55%,
-    transparent 75%
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
   );
   z-index: -1;
-  filter: blur(8px);
+  filter: blur(10px);
   pointer-events: none;
 }
 
 .hero-banner img {
-  width: min(100%, 400px);
-  height: auto;
+  width: min(100%, 420px) !important;
+  max-height: none !important;
+  height: auto !important;
   display: block;
   border-radius: 16px;
-  object-fit: cover;
+  object-fit: contain !important;
   border: none !important;
-  outline: none;
-  background: transparent;
+  background: transparent !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
   box-shadow:
     0 20px 48px -12px rgba(15, 60, 53, 0.28),
-    0 8px 18px -8px rgba(15, 60, 53, 0.16);
+    0 8px 18px -8px rgba(15, 60, 53, 0.16) !important;
   transform: translateY(-10px) scale(1.02);
   transition: transform 0.3s cubic-bezier(0.33, 0.85, 0.4, 0.96),
     box-shadow 0.3s cubic-bezier(0.33, 0.85, 0.4, 0.96);
@@ -185,27 +188,26 @@
   transform: translateY(-16px) scale(1.03);
   box-shadow:
     0 28px 56px -12px rgba(15, 60, 53, 0.34),
-    0 12px 24px -8px rgba(15, 60, 53, 0.2);
+    0 12px 24px -8px rgba(15, 60, 53, 0.2) !important;
 }
 
 /* ---------- Tablet ---------- */
 @media (max-width: 1023px) and (min-width: 768px) {
-  .logo-block .logo {
-    font-family: var(--ff-playfair-display);
-    font-size: 2.75rem;
-  }
-
   .logo-subtitle {
     font-size: 1.2rem;
   }
 
   .hero-body {
-    grid-template-columns: 1fr 0.9fr;
+    grid-template-columns: 1fr 0.95fr;
     gap: 1.5rem;
   }
 
+  .hero-title {
+    font-size: clamp(2.6rem, 3.8vw, 3.6rem) !important;
+  }
+
   .hero-banner img {
-    width: min(100%, 340px);
+    width: min(100%, 360px) !important;
   }
 }
 
@@ -230,12 +232,7 @@
     text-align: center;
   }
 
-  .logo-block .logo {
-    font-family: var(--ff-playfair-display);
-    font-size: 2.4rem !important;
-    line-height: 1.1;
-  }
-
+  /* Logo size on mobile still from main/responsive; subtitle only here */
   .logo-subtitle {
     font-size: 1.05rem;
     text-align: center;
@@ -267,24 +264,17 @@
   .hero-bg::after {
     background: linear-gradient(
       180deg,
-      rgba(238, 241, 240, 0.42) 0%,
-      rgba(238, 241, 240, 0.3) 100%
+      rgba(238, 241, 240, 0.4) 0%,
+      rgba(238, 241, 240, 0.28) 100%
     );
   }
 
   .hero-content {
     text-align: center;
-    padding-block: 0.25rem 0;
   }
 
-  .hero-title {
-    margin-inline: auto;
-    margin-block-end: 1rem;
-  }
-
-  /* Stack: banner then copy (text still “in column” with banner as stacked column) */
   .hero-body {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 1.25rem;
   }
 
@@ -293,19 +283,29 @@
   }
 
   .hero-banner img {
-    width: min(88vw, 300px);
+    width: min(88vw, 300px) !important;
     margin-inline: auto;
     transform: translateY(-6px) scale(1.02);
+  }
+
+  .hero-title {
+    margin-inline: auto;
+    font-size: clamp(2.5rem, 8vw, 3.2rem) !important;
+  }
+
+  .hero-title .span {
+    font-size: inherit !important;
   }
 
   .hero-text {
     max-width: 100%;
     margin-inline: auto;
+    font-size: 1.4rem !important;
   }
 
   .hero-btn-group {
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   .hero-btn-group .btn {
@@ -315,10 +315,6 @@
 }
 
 @media (max-width: 390px) {
-  .logo-block .logo {
-    font-size: 2.15rem !important;
-  }
-
   .logo-subtitle {
     font-size: 0.95rem;
   }
@@ -328,7 +324,7 @@
   }
 
   .hero-banner img {
-    width: min(85vw, 280px);
+    width: min(85vw, 280px) !important;
   }
 }
 
