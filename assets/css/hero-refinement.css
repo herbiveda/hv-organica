@@ -1,7 +1,8 @@
 /*-----------------------------------*\
   #HERO REFINEMENT
-  Logo font/size come from main.css (.logo) — do not override here.
-  Layout: left = title + text + CTAs | right = banner (true column).
+  Logo font/size from main.css (.logo).
+  hero-title / hero-text fonts from home.css — not overridden here.
+  Layout: left = title + text + CTAs | right = banner.
 \*-----------------------------------*/
 
 /* Structure only — typography for .logo is defined in main.css */
@@ -42,24 +43,26 @@
   pointer-events: none;
 }
 
+/* Softer blur so titles stay readable */
 .hero-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: blur(8px) brightness(0.96) saturate(0.98);
-  transform: scale(1.08);
+  filter: blur(4px) brightness(0.97) saturate(0.98);
+  transform: scale(1.05);
 }
 
+/* Slightly stronger wash on the text side for contrast */
 .hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     105deg,
-    rgba(238, 241, 240, 0.45) 0%,
-    rgba(238, 241, 240, 0.28) 50%,
-    rgba(238, 241, 240, 0.18) 100%
+    rgba(238, 241, 240, 0.62) 0%,
+    rgba(238, 241, 240, 0.38) 48%,
+    rgba(238, 241, 240, 0.22) 100%
   );
 }
 
@@ -97,33 +100,11 @@
   justify-content: center;
 }
 
-/* Override home.css oversized title / span */
-.hero-title {
-  color: #0f3c35 !important;
-  font-size: clamp(2.8rem, 4.2vw, 4.6rem) !important;
-  line-height: 1.12 !important;
-  max-width: 100% !important;
-  margin-block-end: 1rem !important;
-  text-wrap: balance;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
-}
-
-.hero-title .span {
-  display: inline !important;
-  font-size: inherit !important;
-  color: var(--emerald, hsl(152, 95%, 39%)) !important;
-  font-family: var(--ff-playfair-display) !important;
-  font-weight: 700 !important;
-}
-
-.hero-text {
-  max-width: 36rem;
-  color: #1f322e !important;
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem) !important;
-  line-height: 1.7 !important;
-  margin-block-end: 1.5rem !important;
-  text-wrap: pretty;
-}
+/*
+  .hero-title and .hero-text font styles come from home.css
+  (color, font-size, line-height, margin, .span rules).
+  Do not override them here.
+*/
 
 .hero-btn-group {
   display: flex !important;
@@ -133,7 +114,7 @@
   align-items: center;
 }
 
-/* ---------- Banner ---------- */
+/* ---------- Banner (no box-shadow) ---------- */
 .hero-banner {
   display: flex !important;
   position: relative !important;
@@ -151,18 +132,7 @@
 }
 
 .hero-banner::before {
-  content: "";
-  position: absolute;
-  inset: -6% -4%;
-  border-radius: 24px;
-  background: radial-gradient(
-    circle at 50% 45%,
-    rgba(255, 255, 255, 0.2) 0%,
-    transparent 70%
-  );
-  z-index: -1;
-  filter: blur(10px);
-  pointer-events: none;
+  display: none;
 }
 
 .hero-banner img {
@@ -176,19 +146,14 @@
   background: transparent !important;
   filter: none !important;
   mix-blend-mode: normal !important;
-  box-shadow:
-    0 20px 48px -12px rgba(15, 60, 53, 0.28),
-    0 8px 18px -8px rgba(15, 60, 53, 0.16) !important;
-  transform: translateY(-10px) scale(1.02);
-  transition: transform 0.3s cubic-bezier(0.33, 0.85, 0.4, 0.96),
-    box-shadow 0.3s cubic-bezier(0.33, 0.85, 0.4, 0.96);
+  box-shadow: none !important;
+  transform: none;
+  transition: none;
 }
 
 .hero-banner:hover img {
-  transform: translateY(-16px) scale(1.03);
-  box-shadow:
-    0 28px 56px -12px rgba(15, 60, 53, 0.34),
-    0 12px 24px -8px rgba(15, 60, 53, 0.2) !important;
+  transform: none;
+  box-shadow: none !important;
 }
 
 /* ---------- Tablet ---------- */
@@ -200,10 +165,6 @@
   .hero-body {
     grid-template-columns: 1fr 0.95fr;
     gap: 1.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2.6rem, 3.8vw, 3.6rem) !important;
   }
 
   .hero-banner img {
@@ -232,7 +193,6 @@
     text-align: center;
   }
 
-  /* Logo size on mobile still from main/responsive; subtitle only here */
   .logo-subtitle {
     font-size: 1.05rem;
     text-align: center;
@@ -257,15 +217,15 @@
   }
 
   .hero-bg img {
-    filter: blur(7px) brightness(0.95) saturate(0.97);
-    transform: scale(1.1);
+    filter: blur(3px) brightness(0.97) saturate(0.98);
+    transform: scale(1.06);
   }
 
   .hero-bg::after {
     background: linear-gradient(
       180deg,
-      rgba(238, 241, 240, 0.4) 0%,
-      rgba(238, 241, 240, 0.28) 100%
+      rgba(238, 241, 240, 0.55) 0%,
+      rgba(238, 241, 240, 0.35) 100%
     );
   }
 
@@ -285,22 +245,7 @@
   .hero-banner img {
     width: min(88vw, 300px) !important;
     margin-inline: auto;
-    transform: translateY(-6px) scale(1.02);
-  }
-
-  .hero-title {
-    margin-inline: auto;
-    font-size: clamp(2.5rem, 8vw, 3.2rem) !important;
-  }
-
-  .hero-title .span {
-    font-size: inherit !important;
-  }
-
-  .hero-text {
-    max-width: 100%;
-    margin-inline: auto;
-    font-size: 1.4rem !important;
+    box-shadow: none !important;
   }
 
   .hero-btn-group {
@@ -320,16 +265,10 @@
   }
 
   .hero-bg img {
-    filter: blur(6px) brightness(0.95);
+    filter: blur(3px) brightness(0.97);
   }
 
   .hero-banner img {
     width: min(85vw, 280px) !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-banner img {
-    transition: none;
   }
 }
