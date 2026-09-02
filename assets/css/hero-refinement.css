@@ -1,9 +1,7 @@
 /*-----------------------------------*\
   #HERO REFINEMENT
-  Structure:
-    1. hero-body: hero-title | hero-banner (hero-banner.jpg)
-    2. hero-text (brief Learn / Heal / Retreat)
-    3. hero-btn-group: Learn | Heal | Retreat
+  Logo helpers only — hero layout/styles live in modernization.css
+  (full Swiper carousel: intro / learn / heal / retreat)
 \*-----------------------------------*/
 
 .logo-block {
@@ -20,7 +18,7 @@
 }
 
 .logo-subtitle {
-  font-family: var(--ff-playfair-display);
+  font-family: var(--ff-playfair-display, "Playfair Display", serif);
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -29,179 +27,23 @@
   line-height: 1.25;
 }
 
-/* ---------- Hero ---------- */
-.hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  min-height: 0;
-  background-color: #d8e0dc;
-  background-image: none !important;
-  padding-block: clamp(2.25rem, 4.5vw, 4rem);
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: blur(4px) brightness(0.97) saturate(0.98);
-  transform: scale(1.05);
-}
-
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    rgba(238, 241, 240, 0.62) 0%,
-    rgba(238, 241, 240, 0.38) 48%,
-    rgba(238, 241, 240, 0.22) 100%
-  );
-}
-
-.hero .container {
-  position: relative;
-  z-index: 1;
-  display: block !important;
-  grid-template-columns: none !important;
-}
-
-.hero-content {
-  max-width: none !important;
-  width: 100% !important;
-  padding-block: 12px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.hero-subtitle {
-  display: none !important;
-}
-
-/* Title | image */
-.hero-body {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(1rem, 3vw, 2.5rem);
-  align-items: center;
-  width: 100%;
-}
-
-.hero-title {
-  margin-block-end: 0;
-  color: var(--gunmetal-2) !important;
-  min-width: 0;
-}
-
-.hero-title .span {
-  color: var(--emerald) !important;
-}
-
-.hero-text {
-  color: var(--eerie-black) !important;
-  margin-block-end: 0;
-  max-width: 48rem;
-}
-
-.hero-btn-group {
-  display: flex !important;
-  flex-wrap: wrap;
-  flex-direction: row !important;
-  gap: 12px;
-  align-items: center;
-}
-
-/* Banner — soft floating / sliding motion */
-.hero-banner {
-  display: flex !important;
-  position: relative !important;
-  inset: auto !important;
-  transform: none !important;
-  width: 100% !important;
-  max-width: none !important;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0 !important;
-  background: none !important;
-  box-shadow: none !important;
-  pointer-events: auto;
-  min-width: 0;
-}
-
-.hero-banner::before {
-  display: none;
-}
-
-.hero-banner img {
-  width: min(100%, 420px) !important;
-  max-height: none !important;
-  height: auto !important;
-  display: block;
-  border-radius: 16px;
-  object-fit: contain !important;
-  border: none !important;
-  background: transparent !important;
-  filter: none !important;
-  mix-blend-mode: normal !important;
-  box-shadow: none !important;
-  animation: hero-banner-float 7s ease-in-out infinite;
-}
-
-@keyframes hero-banner-float {
-  0%,
-  100% {
-    transform: translateY(0) translateX(0);
-  }
-  40% {
-    transform: translateY(-12px) translateX(4px);
-  }
-  70% {
-    transform: translateY(-4px) translateX(-3px);
-  }
-}
-
-/* ---------- Tablet ---------- */
 @media (max-width: 1023px) and (min-width: 768px) {
   .logo-subtitle {
     font-size: 1.2rem;
   }
-
-  .hero-body {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-    gap: 1.25rem;
-  }
-
-  .hero-banner img {
-    width: min(100%, 340px) !important;
-  }
 }
 
-/* ---------- Mobile ---------- */
 @media (max-width: 767px) {
   .nav-wrapper .container {
     display: grid !important;
     grid-template-columns: 44px minmax(0, 1fr) 44px !important;
     align-items: center !important;
     column-gap: 8px !important;
-    row-gap: 0 !important;
     padding: 12px 14px !important;
     min-height: 58px;
   }
 
-  .nav-wrapper .logo-block,
-  .nav-wrapper .h1 {
+  .nav-wrapper .logo-block {
     order: 2 !important;
     min-width: 0 !important;
     width: 100% !important;
@@ -222,78 +64,13 @@
 
   .header-action {
     order: 3 !important;
-    min-width: 0 !important;
     width: 44px !important;
     justify-self: end !important;
-    justify-content: flex-end !important;
-  }
-
-  .hero {
-    padding-block: 1.5rem 1.75rem;
-  }
-
-  .hero-bg img {
-    filter: blur(3px) brightness(0.97) saturate(0.98);
-    transform: scale(1.06);
-  }
-
-  .hero-bg::after {
-    background: linear-gradient(
-      180deg,
-      rgba(238, 241, 240, 0.55) 0%,
-      rgba(238, 241, 240, 0.35) 100%
-    );
-  }
-
-  .hero-content {
-    text-align: left;
-    gap: 1rem;
-  }
-
-  .hero-body {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr) !important;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .hero-banner img {
-    width: min(100%, 160px) !important;
-    margin-inline: 0;
-    animation-duration: 8s;
-  }
-
-  .hero-btn-group {
-    justify-content: flex-start;
-    flex-direction: column !important;
-  }
-
-  .hero-btn-group .btn {
-    width: 100%;
-    justify-content: center;
   }
 }
 
 @media (max-width: 390px) {
   .logo-subtitle {
     font-size: 0.95rem;
-  }
-
-  .hero-bg img {
-    filter: blur(3px) brightness(0.97);
-  }
-
-  .hero-body {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) !important;
-    gap: 0.6rem;
-  }
-
-  .hero-banner img {
-    width: min(100%, 130px) !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-banner img {
-    animation: none !important;
   }
 }
