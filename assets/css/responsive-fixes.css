@@ -8,7 +8,8 @@
   overflow-y: visible !important;
   gap: 20px;
   padding-block: 4px 14px;
-  padding-inline: 2px;
+  padding-inline: 0;
+  margin-inline: 0;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
@@ -62,123 +63,36 @@
   transform: translateY(-6px);
 }
 
-/* Hero trust label handled in hero-refinement (moved under logo). */
 .hero-text strong {
   color: var(--ds-russian-violet);
   font-weight: 700;
 }
 
-/* Top bar: claim + partner link, responsive */
-.top-bar {
-  padding-block: 8px;
-}
-
-.top-bar p {
-  margin: 0;
-  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
-  line-height: 1.45;
-  text-align: center;
-  text-wrap: balance;
-}
-
-.top-bar a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 600;
-}
-
-.top-bar a:hover,
-.top-bar a:focus {
-  opacity: 0.9;
-}
+.top-bar { padding-block: 8px; }
+.top-bar p { margin: 0; font-size: clamp(1.15rem, 2.4vw, 1.4rem); line-height: 1.45; text-align: center; text-wrap: balance; }
+.top-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+.top-bar a:hover,.top-bar a:focus { opacity: 0.9; }
 
 /* Books & Guides — consistent card design aligned with pillars / courses */
-#books-guides .blog-list {
-  align-items: stretch;
-}
-
-#books-guides .blog-list > li {
-  display: flex;
-  height: 100%;
-}
-
-#books-guides .blog-card {
-  width: 100%;
-  height: 100%;
-  display: flex !important;
-  flex-direction: column !important;
-  background-color: var(--ds-white, #fff) !important;
-  border-radius: 12px !important;
-  overflow: hidden;
-  box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06);
-}
-
-#books-guides .blog-card .card-banner {
-  aspect-ratio: 1.45 / 1 !important;
-  overflow: hidden;
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: var(--ds-mint-cream, hsl(96, 36%, 95%));
-}
-
-#books-guides .blog-card .card-banner img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block;
-}
-
-#books-guides .blog-card .card-content {
-  flex: 1 1 auto;
-  display: flex !important;
-  flex-direction: column !important;
-  padding: 24px !important;
-  border: 0 !important;
-  background: transparent !important;
-}
-
-#books-guides .blog-card .card-subtitle {
-  margin-bottom: 8px !important;
-  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 1.5px !important;
-  text-transform: uppercase !important;
-  color: var(--ds-emerald, hsl(152, 95%, 39%)) !important;
-}
-
-#books-guides .blog-card .card-title {
-  margin-block: 0 12px !important;
-  font-family: var(--ff-display, 'Playfair Display', serif) !important;
-  font-weight: 500 !important;
-  color: var(--ds-russian-violet, hsl(245, 97%, 13%)) !important;
-}
-
-#books-guides .blog-card .card-text {
-  flex: 1 1 auto;
-  margin-bottom: 20px !important;
-  font-family: var(--ff-body, 'Roboto', sans-serif) !important;
-  color: var(--ds-sonic-silver, hsl(0, 0%, 45%)) !important;
-  line-height: 1.7 !important;
-}
-
-#books-guides .blog-card .btn {
-  margin-top: auto !important;
-  align-self: flex-start;
-}
+#books-guides .blog-list { align-items: stretch; }
+#books-guides .blog-list > li { display: flex; height: 100%; }
+#books-guides .blog-card { width: 100%; height: 100%; display: flex !important; flex-direction: column !important; background-color: var(--ds-white, #fff) !important; border-radius: 12px !important; overflow: hidden; box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.06); }
+#books-guides .blog-card .card-banner { aspect-ratio: 1.45 / 1 !important; overflow: hidden; margin: 0 !important; padding: 0 !important; background-color: var(--ds-mint-cream, hsl(96, 36%, 95%)); }
+#books-guides .blog-card .card-banner img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block; }
+#books-guides .blog-card .card-content { flex: 1 1 auto; display: flex !important; flex-direction: column !important; padding: 24px !important; border: 0 !important; background: transparent !important; }
+#books-guides .blog-card .card-subtitle { margin-bottom: 8px !important; font-family: var(--ff-body, 'Roboto', sans-serif) !important; font-size: 1.2rem !important; font-weight: 700 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; color: var(--ds-emerald, hsl(152, 95%, 39%)) !important; }
+#books-guides .blog-card .card-title { margin-block: 0 12px !important; font-family: var(--ff-display, 'Playfair Display', serif) !important; font-weight: 500 !important; color: var(--ds-russian-violet, hsl(245, 97%, 13%)) !important; }
+#books-guides .blog-card .card-text { flex: 1 1 auto; margin-bottom: 20px !important; font-family: var(--ff-body, 'Roboto', sans-serif) !important; color: var(--ds-sonic-silver, hsl(0, 0%, 45%)) !important; line-height: 1.7 !important; }
+#books-guides .blog-card .btn { margin-top: auto !important; align-self: flex-start; }
 
 @media (max-width: 767px) {
   body { padding-bottom: 64px; }
   .section { padding-block: 36px !important; }
   .container { width: min(100% - 28px, 540px); }
-
-  /* Hero layout only — title/text fonts stay from home.css */
   .hero { padding-block: 30px 26px !important; min-height: 0 !important; }
   .hero-banner { display: flex !important; }
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
-
   .service { padding-block: 22px !important; }
   .service-list { gap: 8px !important; }
   .service-item { min-height: 48px; gap: 9px; }
@@ -186,8 +100,7 @@
   .item-icon img { width: 26px; height: 26px; }
   .item-title { font-size: 1.35rem !important; }
   .section-title-wrapper { margin-bottom: 18px !important; }
-  .section-title,
-  .h2.section-title { font-size: clamp(2rem, 7.5vw, 2.7rem) !important; line-height: 1.2 !important; }
+  .section-title,.h2.section-title { font-size: clamp(2rem, 7.5vw, 2.7rem) !important; line-height: 1.2 !important; }
   .section-subtitle { font-size: 1.2rem !important; margin-bottom: 7px !important; }
   .section-text { font-size: 1.35rem !important; line-height: 1.6 !important; margin-bottom: 18px !important; }
   .pillar { padding-block: 34px !important; }
@@ -196,6 +109,7 @@
   .pillar-card .card-banner { aspect-ratio: 1.45 / 1 !important; }
   .pillar-card .card-title { font-size: 1.65rem !important; }
   .pillar-card .card-text { font-size: 1.3rem !important; line-height: 1.6 !important; }
+
   #featured-courses .grid-list,
   #books-guides .blog-list,
   #heal .grid-list,
@@ -205,157 +119,55 @@
     overflow-x: auto !important;
     overflow-y: visible !important;
     gap: 14px !important;
-    padding: 3px 2px 12px !important;
-    margin-inline: -2px !important;
+    padding: 3px 0 12px !important;
+    margin-inline: 0 !important;
+    scroll-padding-inline: 0 !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
   }
-  #featured-courses .grid-list > li,
-  #books-guides .blog-list > li,
-  #heal .grid-list > li,
-  #retreats .offer-list > li {
-    flex: 0 0 82% !important;
-    width: 82% !important;
-    min-width: 82% !important;
-    max-width: 340px !important;
-    scroll-snap-align: start;
-  }
-  #featured-courses .card-content,
-  #books-guides .card-content,
-  #heal .card-content,
-  #retreats .card-content { padding: 17px !important; }
-  #featured-courses .card-title,
-  #books-guides .card-title,
-  #heal .card-title,
-  #retreats .card-title { font-size: 1.6rem !important; }
-  #featured-courses .card-text,
-  #books-guides .card-text,
-  #heal .card-text,
-  #retreats .card-text { font-size: 1.3rem !important; line-height: 1.58 !important; }
-  #featured-courses .btn,
-  #books-guides .btn,
-  #heal .btn,
-  #retreats .btn { width: 100% !important; }
+  #featured-courses .grid-list > li,#books-guides .blog-list > li,#heal .grid-list > li,#retreats .offer-list > li { flex: 0 0 82% !important; width: 82% !important; min-width: 82% !important; max-width: 340px !important; scroll-snap-align: start; }
+  #featured-courses .card-content,#books-guides .card-content,#heal .card-content,#retreats .card-content { padding: 17px !important; }
+  #featured-courses .card-title,#books-guides .card-title,#heal .card-title,#retreats .card-title { font-size: 1.6rem !important; }
+  #featured-courses .card-text,#books-guides .card-text,#heal .card-text,#retreats .card-text { font-size: 1.3rem !important; line-height: 1.58 !important; }
+  #featured-courses .btn,#books-guides .btn,#heal .btn,#retreats .btn { width: 100% !important; }
   #books-guides .blog-card .btn { align-self: stretch; justify-content: center; }
   #consultation.cta { padding-block: 36px !important; }
   #consultation.cta .container { padding-inline: 14px !important; }
   #consultation.cta .section-title { font-size: 2.15rem !important; }
   #consultation.cta .cta-text { font-size: 1.35rem !important; line-height: 1.6 !important; margin-bottom: 18px !important; }
   #consultation.cta .btn { width: 100% !important; }
-  .partner,
-  .testimonials { padding-block: 28px !important; }
+  .partner,.testimonials { padding-block: 28px !important; }
   .partner-list { gap: 12px !important; }
   .partner-item { min-width: 0 !important; }
   .testi-list { gap: 14px !important; }
   .testi-item { min-width: 0 !important; margin-inline: 0 !important; }
 
-  /* Mobile header: hamburger | centered logo block | search */
-  .nav-wrapper .container {
-    display: grid !important;
-    grid-template-columns: 44px minmax(0, 1fr) 44px !important;
-    align-items: center !important;
-    column-gap: 8px !important;
-    row-gap: 0 !important;
-    padding: 12px 14px !important;
-    min-height: 58px;
-  }
-  .nav-wrapper .logo-block,
-  .nav-wrapper .h1 {
-    order: 2 !important;
-    min-width: 0 !important;
-    width: 100% !important;
-    text-align: center;
-    align-items: center;
-  }
-  .nav-wrapper .logo {
-    display: inline-block;
-    font-size: 2.4rem !important;
-    line-height: 1;
-  }
-  .nav-open-btn {
-    order: 1 !important;
-    justify-self: start !important;
-    width: 40px;
-    height: 40px;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem !important;
-    padding: 6px !important;
-    border-radius: 10px;
-  }
-  .header-action {
-    order: 3 !important;
-    min-width: 0 !important;
-    width: 44px !important;
-    justify-self: end !important;
-    justify-content: flex-end !important;
-  }
+  .nav-wrapper .container { display: grid !important; grid-template-columns: 44px minmax(0, 1fr) 44px !important; align-items: center !important; column-gap: 8px !important; row-gap: 0 !important; padding: 12px 14px !important; min-height: 58px; }
+  .nav-wrapper .logo-block,.nav-wrapper .h1 { order: 2 !important; min-width: 0 !important; width: 100% !important; text-align: center; align-items: center; }
+  .nav-wrapper .logo { display: inline-block; font-size: 2.4rem !important; line-height: 1; }
+  .nav-open-btn { order: 1 !important; justify-self: start !important; width: 40px; height: 40px; display: inline-flex !important; align-items: center; justify-content: center; font-size: 2.2rem !important; padding: 6px !important; border-radius: 10px; }
+  .header-action { order: 3 !important; min-width: 0 !important; width: 44px !important; justify-self: end !important; justify-content: flex-end !important; }
   .header-action .search-wrapper { position: relative; }
-  .header-action-btn {
-    width: 40px;
-    height: 40px;
-    padding: 8px !important;
-    font-size: 2rem !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .header-action .input-wrapper {
-    top: calc(100% + 14px);
-    right: 0;
-    left: auto;
-    width: min(250px, calc(100vw - 28px));
-    transform: translateX(0) scale(var(--scale, 0.5));
-    transform-origin: top right;
-  }
-  .header-action .search-wrapper.active .input-wrapper {
-    transform: translateX(0) scale(1);
-  }
-
-  .partner.section,
-  .testimonials.section { padding-block: clamp(22px, 5vw, 30px) !important; }
-  .partner-list {
-    gap: clamp(8px, 2.5vw, 14px) !important;
-  }
-  .partner-logo {
-    width: clamp(46px, 15vw, 74px) !important;
-    margin: 0 auto;
-  }
-  .partner-logo img {
-    width: 100% !important;
-    height: auto !important;
-  }
+  .header-action-btn { width: 40px; height: 40px; padding: 8px !important; font-size: 2rem !important; display: inline-flex; align-items: center; justify-content: center; }
+  .header-action .input-wrapper { top: calc(100% + 14px); right: 0; left: auto; width: min(250px, calc(100vw - 28px)); transform: translateX(0) scale(var(--scale, 0.5)); transform-origin: top right; }
+  .header-action .search-wrapper.active .input-wrapper { transform: translateX(0) scale(1); }
+  .partner.section,.testimonials.section { padding-block: clamp(22px, 5vw, 30px) !important; }
+  .partner-list { gap: clamp(8px, 2.5vw, 14px) !important; }
+  .partner-logo { width: clamp(46px, 15vw, 74px) !important; margin: 0 auto; }
+  .partner-logo img { width: 100% !important; height: auto !important; }
   .testi-list { gap: 12px !important; }
-  .testi-card {
-    padding: clamp(14px, 4vw, 18px) !important;
-  }
-  .testi-card .card-header {
-    margin-bottom: 10px !important;
-  }
-  .testi-card .card-avatar {
-    width: clamp(58px, 16vw, 72px) !important;
-    height: clamp(58px, 16vw, 72px) !important;
-  }
-  .testi-card .card-text {
-    font-size: clamp(1.2rem, 3.5vw, 1.35rem) !important;
-    line-height: 1.55 !important;
-  }
-  .testi-card .card-title {
-    font-size: clamp(1.45rem, 4vw, 1.7rem) !important;
-    margin-bottom: 4px !important;
-  }
-  .testi-card .card-subtitle {
-    font-size: clamp(1.05rem, 3vw, 1.2rem) !important;
-  }
-
+  .testi-card { padding: clamp(14px, 4vw, 18px) !important; }
+  .testi-card .card-header { margin-bottom: 10px !important; }
+  .testi-card .card-avatar { width: clamp(58px, 16vw, 72px) !important; height: clamp(58px, 16vw, 72px) !important; }
+  .testi-card .card-text { font-size: clamp(1.2rem, 3.5vw, 1.35rem) !important; line-height: 1.55 !important; }
+  .testi-card .card-title { font-size: clamp(1.45rem, 4vw, 1.7rem) !important; margin-bottom: 4px !important; }
+  .testi-card .card-subtitle { font-size: clamp(1.05rem, 3vw, 1.2rem) !important; }
   .footer-top { padding-block: 28px 20px !important; }
   .footer-top .container { gap: 20px !important; }
   .footer-brand { text-align: center; }
   .footer-brand .logo { font-size: 2.2rem !important; }
-  .footer-text,
-  .newsletter-text { font-size: 1.25rem !important; line-height: 1.55 !important; margin-bottom: 12px !important; }
+  .footer-text,.newsletter-text { font-size: 1.25rem !important; line-height: 1.55 !important; margin-bottom: 12px !important; }
   .social-list { gap: 8px !important; justify-content: center !important; }
   .footer-list { margin-bottom: 0 !important; }
   .footer-list-title { font-size: 1.35rem !important; margin-bottom: 8px !important; }
@@ -363,17 +175,9 @@
   .footer-form { margin-top: 10px !important; }
   .footer-bottom { padding-block: 14px !important; }
   .footer-bottom .container { gap: 8px !important; text-align: center !important; }
-  .copyright,
-  .footer-bottom-link { font-size: 1.1rem !important; }
-
-  .top-bar {
-    padding-block: 7px;
-  }
-
-  .top-bar p {
-    font-size: clamp(1.1rem, 3.2vw, 1.25rem);
-    padding-inline: 6px;
-  }
+  .copyright,.footer-bottom-link { font-size: 1.1rem !important; }
+  .top-bar { padding-block: 7px; }
+  .top-bar p { font-size: clamp(1.1rem, 3.2vw, 1.25rem); padding-inline: 6px; }
 }
 
 @media (max-width: 575px) {
@@ -381,39 +185,19 @@
   .container { width: min(100% - 26px, 540px); }
   .header .container { width: 100%; }
   .btn { padding: 12px 20px !important; }
-  .card-content,
-  .pillar-card .card-content,
-  #featured-courses .card-content,
-  #books-guides .card-content,
-  #heal .card-content,
-  #retreats .card-content { padding: 16px !important; }
-  #heal .grid-list > li,
-  #featured-courses .grid-list > li,
-  #books-guides .blog-list > li,
-  #retreats .offer-list > li {
-    flex-basis: 84% !important;
-    width: 84% !important;
-    min-width: 84% !important;
-  }
+  .card-content,.pillar-card .card-content,#featured-courses .card-content,#books-guides .card-content,#heal .card-content,#retreats .card-content { padding: 16px !important; }
+  #heal .grid-list > li,#featured-courses .grid-list > li,#books-guides .blog-list > li,#retreats .offer-list > li { flex-basis: 84% !important; width: 84% !important; min-width: 84% !important; }
   .footer-list { padding-block: 2px !important; }
 }
 
 @media (max-width: 390px) {
   .hero { padding-block: 26px 24px !important; }
-  .section-title,
-  .h2.section-title { font-size: 2rem !important; }
+  .section-title,.h2.section-title { font-size: 2rem !important; }
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
   .footer-top { padding-block: 24px 16px !important; }
   .top-bar p { font-size: 1.05rem; }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  #heal .grid-list > li,
-  #featured-courses .grid-list > li,
-  #books-guides .blog-list > li,
-  #retreats .offer-list > li {
-    flex-basis: 300px !important;
-    width: 300px !important;
-    min-width: 300px !important;
-  }
+  #heal .grid-list > li,#featured-courses .grid-list > li,#books-guides .blog-list > li,#retreats .offer-list > li { flex-basis: 300px !important; width: 300px !important; min-width: 300px !important; }
 }
