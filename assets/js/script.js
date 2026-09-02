@@ -74,6 +74,25 @@ function loadScript(src, callback) {
   script.onload = callback;
   document.head.appendChild(script);
 }
+function restoreTopHeaderPresentation() {
+  const header = document.querySelector('.header');
+  const container = header && header.querySelector(':scope > .container');
+  if (!header || !container || header.querySelector('.legacy-top-bar')) return;
+
+  header.classList.add('legacy-header-restored');
+  const topBar = document.createElement('div');
+  topBar.className = 'legacy-top-bar';
+  topBar.innerHTML = '<div class="container"><p>Every claim on this site is cited and practitioner-reviewed. <a href="./trade.html">Wholesale & retreat partner inquiries →</a></p></div>';
+  header.insertBefore(topBar, container);
+
+  const brand = container.querySelector('.header-brand');
+  if (brand && !brand.querySelector('.logo-subtitle')) {
+    const subtitle = document.createElement('p');
+    subtitle.className = 'logo-subtitle';
+    subtitle.textContent = 'Evidence-Based Ayurveda';
+    brand.appendChild(subtitle);
+  }
+}
 function injectSitePolishStyles() {
   if (document.getElementById('site-final-polish')) return;
   const style = document.createElement('style');
@@ -85,6 +104,13 @@ function injectSitePolishStyles() {
       --ds-green-pigment: rgba(11, 47, 42, 1) !important;
     }
     .partner { background-color: rgba(15, 60, 53, 1) !important; }
+    .legacy-top-bar { width:100%; background:rgba(15,60,53,1); color:#fff; }
+    .legacy-top-bar .container { min-height:36px; display:flex; align-items:center; justify-content:center; padding:6px 20px; }
+    .legacy-top-bar p { margin:0; text-align:center; font-size:1.15rem; line-height:1.4; color:#fff; }
+    .legacy-top-bar a { color:#fff; text-decoration:underline; text-underline-offset:2px; }
+    .legacy-header-restored > .container { min-height:72px; }
+    .legacy-header-restored .header-brand { display:flex; flex-direction:column; justify-content:center; min-width:180px; }
+    .legacy-header-restored .header-brand .logo-subtitle { margin:2px 0 0; font-size:1rem; letter-spacing:1.4px; color:var(--ds-sonic-silver); }
     .testimonials-swiper { position:relative; width:100%; overflow:hidden; padding-block:4px 28px; }
     .testimonials-swiper .swiper-wrapper { display:flex !important; align-items:stretch; gap:0 !important; }
     .testimonials-swiper .swiper-slide { height:auto; display:flex; }
@@ -93,6 +119,11 @@ function injectSitePolishStyles() {
     .testimonials-swiper .swiper-button-prev,.testimonials-swiper .swiper-button-next { color:rgba(15, 60, 53, 1); width:38px; height:38px; border:1px solid rgba(15, 60, 53, .25); border-radius:50%; background:rgba(255, 255, 255, .95); }
     .testimonials-swiper .swiper-button-prev::after,.testimonials-swiper .swiper-button-next::after { font-size:15px; font-weight:700; }
     @media (max-width:767px) {
+      .legacy-top-bar .container { min-height:32px; padding-inline:14px; }
+      .legacy-top-bar p { font-size:0.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .legacy-header-restored > .container { min-height:62px; }
+      .legacy-header-restored .header-brand { min-width:0; }
+      .legacy-header-restored .header-brand .logo-subtitle { display:none; }
       .testimonials-swiper .swiper-button-prev,.testimonials-swiper .swiper-button-next { display:none; }
     }
   `;
@@ -126,11 +157,7 @@ function initializeTestimonialsSwiper() {
   swiper.insertAdjacentHTML('beforeend', '<div class="swiper-pagination"></div><div class="swiper-button-prev" aria-label="Previous testimonial"></div><div class="swiper-button-next" aria-label="Next testimonial"></div>');
   list.replaceWith(swiper);
   new window.Swiper('.testimonials-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 18,
-    speed: 650,
-    loop: true,
-    grabCursor: true,
+    slidesPerView: 1, spaceBetween: 18, speed: 650, loop: true, grabCursor: true,
     autoplay: { delay: 5000, disableOnInteraction: false },
     pagination: { el: '.testimonials-swiper .swiper-pagination', clickable: true },
     navigation: { nextEl: '.testimonials-swiper .swiper-button-next', prevEl: '.testimonials-swiper .swiper-button-prev' },
@@ -141,20 +168,16 @@ function initializeHeroSwiper() {
   const hero = document.querySelector('.hero-swiper');
   if (!hero || typeof window.Swiper !== 'function' || hero.swiper) return;
   new window.Swiper(hero, {
-    slidesPerView: 1,
-    speed: 750,
-    loop: true,
-    grabCursor: true,
+    slidesPerView: 1, speed: 750, loop: true, grabCursor: true,
     autoplay: { delay: 6000, disableOnInteraction: false },
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
+    effect: 'fade', fadeEffect: { crossFade: true },
     pagination: { el: '.hero-swiper .hero-pagination', clickable: true },
     navigation: { nextEl: '.hero-swiper .hero-nav--next', prevEl: '.hero-swiper .hero-nav--prev' },
-    keyboard: { enabled: true },
-    a11y: { enabled: true }
+    keyboard: { enabled: true }, a11y: { enabled: true }
   });
 }
 function initializeHomepageEnhancements() {
+  restoreTopHeaderPresentation();
   injectSitePolishStyles();
   addRealFourthCards();
   loadStylesheet('https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.css');
