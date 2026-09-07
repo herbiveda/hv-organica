@@ -77,12 +77,12 @@
 .hero-slide--retreat .hero-banner {
   padding: 10px;
   border: 1px solid rgba(15, 60, 53, 0.16) !important;
-  border-radius: 32px 22px 32px 22px;
+  border-radius: 42% 18% 42% 18% / 24% 38% 24% 38%;
 }
 .hero-slide--learn .hero-banner img,
 .hero-slide--heal .hero-banner img,
 .hero-slide--retreat .hero-banner img {
-  border-radius: 28px 18px 28px 18px;
+  border-radius: 38% 16% 38% 16% / 22% 34% 22% 34%;
 }
 .hero-slide .hero-subtitle,
 .hero-slide .hero-kicker { color: var(--ds-russian-violet) !important; }
@@ -176,6 +176,6 @@ html body .btn.btn-secondary:hover,html body .btn.btn-secondary:focus,.btn-secon
   .hero-slide { min-height:auto; }
   .hero-slide-grid { width:min(100% - 28px, 540px); grid-template-columns:1fr; gap:10px; }
   .hero-slide .hero-content { padding-block:34px 12px; order:1; }
-  .hero-slide .hero-banner { order:2; padding:4px 0 36px; }
+  .hero-slide .hero-banner { padding:4px 0 36px; order:2; }
   .hero-slide .hero-banner img { width:min(100%,420px); max-width:100%; border-radius:20px; }
 }
