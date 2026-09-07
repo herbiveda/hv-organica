@@ -73,6 +73,39 @@
 .top-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 .top-bar a:hover,.top-bar a:focus { opacity: 0.9; }
 
+/* Partner logos: keep the six marks in one compact horizontal row on desktop,
+   while allowing the existing smaller-screen behavior to continue below 1023px. */
+.partner-list {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(18px, 3vw, 42px) !important;
+  width: 100% !important;
+}
+.partner-item {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.partner-logo {
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 132px;
+}
+.partner-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 /* Books & Guides — consistent card design aligned with pillars / courses */
 #books-guides .blog-list { align-items: stretch; }
 #books-guides .blog-list > li { display: flex; height: 100%; }
