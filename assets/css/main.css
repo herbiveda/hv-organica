@@ -294,13 +294,10 @@ body {
   transition: var(--transition-2);
 }
 
-.product-card:is(:hover, :focus-within) { outline-color: var(--emerald); }
+.product-card:is(:hover, :focus-within) /**{ outline-color: var(--emerald); }**/
 
 .product-card .card-banner {
-  position: relative;
-  max-width: max-content;
-  margin-inline: auto;
-  margin-block-end: 20px;
+ 
 }
 
 .product-card .card-banner img { transition: var(--transition-2); }
