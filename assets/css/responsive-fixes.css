@@ -22,6 +22,21 @@
   scroll-snap-align: start;
 }
 
+/* Heal product cards: center title + description */
+#heal .product-card {
+  text-align: center;
+}
+
+#heal .product-card .card-title,
+#heal .product-card h4.card-title,
+#heal .product-card .card-text {
+  text-align: center;
+}
+
+#heal .product-card .btn {
+  margin-inline: auto;
+}
+
 #consultation.cta {
   background-image: url("../images/cta-bg.png") !important;
   background-repeat: no-repeat !important;
