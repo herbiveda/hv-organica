@@ -37,6 +37,45 @@
   margin-inline: auto;
 }
 
+/* Retreat cards: price, dates, proof */
+#retreats .offer-card .retreat-meta {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: var(--ds-russian-violet, hsl(245, 97%, 13%));
+  font-weight: 600;
+}
+
+#retreats .offer-card .retreat-meta strong {
+  color: var(--ds-emerald, hsl(152, 95%, 39%));
+  font-weight: 700;
+}
+
+#retreats .offer-card .retreat-proof {
+  margin: 10px 0 16px;
+  padding: 10px 12px;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--ds-sonic-silver, hsl(0, 0%, 40%));
+  background: var(--ds-mint-cream, hsl(96, 36%, 95%));
+  border-radius: 8px;
+  border-left: 3px solid var(--ds-emerald, hsl(152, 95%, 39%));
+}
+
+#retreats .offer-card .card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#retreats .offer-card .card-banner {
+  aspect-ratio: 1.45 / 1;
+  overflow: hidden;
+  background: var(--ds-mint-cream, hsl(96, 36%, 95%));
+}
+
 #consultation.cta {
   background-image: url("../images/cta-bg.png") !important;
   background-repeat: no-repeat !important;
@@ -180,6 +219,8 @@
   #featured-courses .card-text,#books-guides .card-text,#heal .card-text,#retreats .card-text { font-size: 1.3rem !important; line-height: 1.58 !important; }
   #featured-courses .btn,#books-guides .btn,#heal .btn,#retreats .btn { width: 100% !important; }
   #books-guides .blog-card .btn { align-self: stretch; justify-content: center; }
+  #retreats .offer-card .retreat-meta { font-size: 1.25rem !important; }
+  #retreats .offer-card .retreat-proof { font-size: 1.2rem !important; }
   #consultation.cta { padding-block: 36px !important; }
   #consultation.cta .container { padding-inline: 14px !important; }
   #consultation.cta .section-title { font-size: 2.15rem !important; }
