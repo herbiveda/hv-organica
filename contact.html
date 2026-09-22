@@ -3,28 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Herbiveda</title>
+  <title>Enquire with Herbiveda | Courses, Products & Retreats</title>
+  <meta name="description" content="Send an enquiry to Herbiveda about Ayurveda courses, certified herbs and products, retreats, Panchakarma and wellness experiences.">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/css/main.css">
   <link rel="stylesheet" href="./assets/css/home.css">
   <link rel="stylesheet" href="./assets/css/modernization.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .enquiry-page { min-height: 100vh; background: var(--mint-cream); padding-block: 50px 70px; }
+    .enquiry-wrap { max-width: 850px; margin-inline: auto; }
+    .enquiry-brand { display: inline-block; margin-block-end: 30px; }
+    .enquiry-card { background: var(--white); padding: 30px; border-radius: var(--radius-4); box-shadow: var(--shadow-1); }
+    .enquiry-intro { margin-block-end: 28px; }
+    .enquiry-intro .card-text { max-width: 700px; line-height: 1.8; }
+    .enquiry-grid { display: grid; gap: 18px; }
+    .enquiry-field { display: grid; gap: 8px; }
+    .enquiry-field label { color: var(--gunmetal-2); font-size: var(--fs-6); font-weight: var(--fw-700); }
+    .enquiry-field label span { color: var(--emerald); }
+    .enquiry-field input,
+    .enquiry-field select,
+    .enquiry-field textarea {
+      width: 100%;
+      border: 1px solid hsl(150 18% 78%);
+      background: var(--white);
+      color: var(--gunmetal-2);
+      font: inherit;
+      padding: 13px 15px;
+      border-radius: var(--radius-4);
+      outline: none;
+      transition: var(--transition-1);
+    }
+    .enquiry-field textarea { min-height: 135px; resize: vertical; }
+    .enquiry-field input:focus,
+    .enquiry-field select:focus,
+    .enquiry-field textarea:focus { border-color: var(--emerald); box-shadow: 0 0 0 3px hsl(150 45% 35% / 0.10); }
+    .enquiry-grid-two { display: grid; gap: 18px; }
+    .enquiry-choice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .enquiry-choice label { position: relative; }
+    .enquiry-choice input { position: absolute; opacity: 0; pointer-events: none; }
+    .enquiry-choice span {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid hsl(150 18% 78%);
+      border-radius: var(--radius-4);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-1);
+      font-size: var(--fs-6);
+    }
+    .enquiry-choice input:checked + span { border-color: var(--emerald); background: hsl(150 45% 35% / 0.08); color: var(--emerald); font-weight: var(--fw-700); }
+    .enquiry-note { font-size: var(--fs-7); line-height: 1.7; color: var(--battleship-gray); }
+    .enquiry-submit { margin-block-start: 8px; }
+    @media (min-width: 700px) {
+      .enquiry-card { padding: 42px; }
+      .enquiry-grid-two { grid-template-columns: 1fr 1fr; }
+      .enquiry-choice { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 479px) {
+      .enquiry-page { padding-inline: 16px; }
+      .enquiry-card { padding: 22px 18px; }
+    }
+  </style>
 </head>
 <body id="top">
-  <main>
-    <section class="section">
-      <div class="container">
-        <a href="./index.html" class="logo">Herbi<span class="span">veda</span></a>
-        <div class="conversion-card" style="margin-block-start:30px;">
-          <p class="section-subtitle">Consultation</p>
-          <h1 class="h2 card-title">Start with a Free Consultation</h1>
-          <p class="card-text">Tell us what you are trying to understand or explore. A BAMS-qualified practitioner can help you make sense of the available options and the evidence behind them.</p>
-          <p class="card-text" style="margin-block:20px;">Email <a href="mailto:ecom.herbiveda@gmail.com">ecom.herbiveda@gmail.com</a> to request a consultation.</p>
-          <a href="./index.html#pillars" class="btn btn-secondary">Back to Herbiveda</a>
+  <main class="enquiry-page">
+    <div class="container enquiry-wrap">
+      <a href="./index.html" class="logo enquiry-brand">Herbi<span class="span">veda</span></a>
+
+      <section class="enquiry-card">
+        <div class="enquiry-intro">
+          <p class="section-subtitle">Enquiry</p>
+          <h1 class="h2 section-title">Explore Ayurveda with Herbiveda</h1>
+          <p class="card-text">Interested in a course, an Ayurvedic product, or a retreat? Tell us what you are looking for and our team will get back to you with the relevant details, availability and next steps.</p>
         </div>
-      </div>
-    </section>
+
+        <form action="https://formsubmit.co/ecom.herbiveda@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Herbiveda Lead — Course, Product or Retreat Enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://herbiveda.com/thanks.html">
+          <input type="hidden" name="_url" value="https://herbiveda.com/contact.html">
+          <input type="hidden" name="_autoresponse" value="Thank you for contacting Herbiveda. We have received your enquiry and our team will review it and get back to you soon.">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="enquiry-grid">
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="name">Full Name <span>*</span></label>
+                <input id="name" type="text" name="name" autocomplete="name" required>
+              </div>
+              <div class="enquiry-field">
+                <label for="email">Email Address <span>*</span></label>
+                <input id="email" type="email" name="email" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="phone">Phone / WhatsApp</label>
+                <input id="phone" type="tel" name="phone" autocomplete="tel">
+              </div>
+              <div class="enquiry-field">
+                <label for="location">City / Country</label>
+                <input id="location" type="text" name="location" autocomplete="address-level2" placeholder="e.g. Delhi, India">
+              </div>
+            </div>
+
+            <div class="enquiry-field">
+              <label>What are you interested in? <span>*</span></label>
+              <div class="enquiry-choice">
+                <label><input type="radio" name="interest" value="Courses" required><span>Courses</span></label>
+                <label><input type="radio" name="interest" value="Products"><span>Products</span></label>
+                <label><input type="radio" name="interest" value="Retreats"><span>Retreats</span></label>
+                <label><input type="radio" name="interest" value="Multiple / Not Sure"><span>Not Sure</span></label>
+              </div>
+            </div>
+
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="specific">Course / Product / Retreat</label>
+                <input id="specific" type="text" name="specific_interest" placeholder="Name or topic, if known">
+              </div>
+              <div class="enquiry-field">
+                <label for="contact-preference">Preferred Contact</label>
+                <select id="contact-preference" name="preferred_contact">
+                  <option value="Email">Email</option>
+                  <option value="Phone">Phone</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="enquiry-field">
+              <label for="message">How can we help?</label>
+              <textarea id="message" name="message" placeholder="Tell us what you would like to know about the course, product or retreat."></textarea>
+            </div>
+
+            <p class="enquiry-note">By submitting this form, you are asking Herbiveda to contact you regarding your enquiry. Please do not include sensitive medical or financial information.</p>
+
+            <div class="enquiry-submit">
+              <button type="submit" class="btn btn-primary">Send Enquiry</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <p style="text-align:center; margin-block-start:24px;">
+        <a href="./index.html" class="btn btn-secondary">Back to Herbiveda</a>
+      </p>
+    </div>
   </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const interest = params.get("interest");
+    const interestMap = {
+      panchakarma: "Retreats",
+      kriya: "Retreats",
+      pilgrimage: "Retreats",
+      transformation: "Retreats",
+      course: "Courses",
+      product: "Products",
+      retreat: "Retreats"
+    };
+    const mappedInterest = interestMap[(interest || "").toLowerCase()];
+    if (mappedInterest) {
+      const input = document.querySelector('input[name="interest"][value="' + mappedInterest + '"]');
+      if (input) input.checked = true;
+      const specific = document.getElementById("specific");
+      if (specific && interest !== "course" && interest !== "product" && interest !== "retreat") {
+        specific.value = interest.replace(/-/g, " ");
+      }
+    }
+  </script>
 </body>
 </html>
