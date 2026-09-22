@@ -15,18 +15,22 @@
   <style>
     .enquiry-page { min-height: 100vh; background: var(--mint-cream); padding-block: 50px 90px; }
     .enquiry-wrap { max-width: 850px; margin-inline: auto; }
-    .enquiry-brand { display: inline-block; margin-block-end: 30px; }
+    .enquiry-brand-block {
+      display: block;
+      margin-block-end: 30px;
+      text-decoration: none;
+    }
+    .enquiry-brand-block .logo { display: inline-block; }
+    .enquiry-brand-block .logo-subtitle {
+      margin: 4px 0 0;
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      letter-spacing: 0.02em;
+      color: var(--battleship-gray);
+    }
     .enquiry-card { background: var(--white); padding: 30px; border-radius: var(--radius-4); box-shadow: var(--shadow-1); }
     .enquiry-intro { margin-block-end: 28px; }
     .enquiry-intro .card-text { max-width: 700px; line-height: 1.8; }
-    .enquiry-brand-line {
-      margin: 0 0 10px;
-      font-size: var(--fs-7);
-      font-weight: var(--fw-700);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--emerald);
-    }
     .enquiry-grid { display: grid; gap: 18px; }
     .enquiry-field { display: grid; gap: 8px; }
     .enquiry-field label { color: var(--gunmetal-2); font-size: var(--fs-6); font-weight: var(--fw-700); }
@@ -71,7 +75,6 @@
       color: var(--battleship-gray);
     }
     .enquiry-hint[hidden] { display: none !important; }
-    .enquiry-note { font-size: var(--fs-7); line-height: 1.7; color: var(--battleship-gray); }
     .enquiry-consent {
       display: flex;
       align-items: flex-start;
@@ -88,7 +91,6 @@
     .enquiry-submit { margin-block-start: 8px; }
     .enquiry-submit .btn { min-width: 160px; }
 
-    /* Sticky mobile CTA */
     .enquiry-sticky-bar {
       display: none;
       position: fixed;
@@ -123,14 +125,16 @@
 <body id="top">
   <main class="enquiry-page">
     <div class="container enquiry-wrap">
-      <a href="./index.html" class="logo enquiry-brand">Herbi<span class="span">veda</span></a>
+      <a href="./index.html" class="enquiry-brand-block">
+        <span class="logo">Herbi<span class="span">veda</span></span>
+        <p class="logo-subtitle">Evidence-Based Ayurveda</p>
+      </a>
 
       <section class="enquiry-card">
         <div class="enquiry-intro">
           <p class="section-subtitle">Enquiry</p>
-          <p class="enquiry-brand-line">Ayurveda that shows its work</p>
-          <h1 class="h2 section-title">Tell us what you’re looking for</h1>
-          <p class="card-text">Physician-reviewed courses, certified herbs, and vetted retreats — we’ll reply with details and next steps, usually within <strong>24–48 hours</strong>.</p>
+          <h1 class="h2 section-title">Explore Ayurveda with Herbiveda</h1>
+          <p class="card-text">Interested in a course, an Ayurvedic product, or a retreat? Tell us what you are looking for and our team will get back to you with the relevant details, availability and next steps.</p>
         </div>
 
         <form id="enquiry-form" action="https://formsubmit.co/ecom.herbiveda@gmail.com" method="POST">
@@ -160,7 +164,7 @@
             <div class="enquiry-grid-two">
               <div class="enquiry-field">
                 <label for="phone">Phone / WhatsApp</label>
-                <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="Include country code, e.g. +91…">
+                <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="Include country code, e.g. +1…">
               </div>
               <div class="enquiry-field">
                 <label for="location">City / Country</label>
@@ -172,7 +176,7 @@
               <label>What are you interested in? <span>*</span></label>
               <div class="enquiry-choice" role="radiogroup" aria-label="Interest type">
                 <label><input type="radio" name="interest" value="Courses" required><span>Courses</span></label>
-                <label><input type="radio" name="interest" value="Products"><span>Herbs & products</span></label>
+                <label><input type="radio" name="interest" value="Products"><span>Products</span></label>
                 <label><input type="radio" name="interest" value="Retreats"><span>Retreats</span></label>
                 <label><input type="radio" name="interest" value="Not Sure"><span>Not Sure</span></label>
               </div>
@@ -295,7 +299,6 @@
         }
       }
 
-      // Prefill from ?interest=
       var mapped = interestMap[interestParam];
       if (mapped) {
         var input = document.querySelector('input[name="interest"][value="' + mapped.chip + '"]');
@@ -303,7 +306,6 @@
         if (specific && mapped.topic) specific.value = mapped.topic;
       }
 
-      // Social / UTM tracking (same form on Facebook, Instagram, X)
       utmSource.value = params.get('utm_source') || '';
       utmMedium.value = params.get('utm_medium') || '';
       utmCampaign.value = params.get('utm_campaign') || '';
