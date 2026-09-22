@@ -13,12 +13,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    .enquiry-page { min-height: 100vh; background: var(--mint-cream); padding-block: 50px 70px; }
+    .enquiry-page { min-height: 100vh; background: var(--mint-cream); padding-block: 50px 90px; }
     .enquiry-wrap { max-width: 850px; margin-inline: auto; }
     .enquiry-brand { display: inline-block; margin-block-end: 30px; }
     .enquiry-card { background: var(--white); padding: 30px; border-radius: var(--radius-4); box-shadow: var(--shadow-1); }
     .enquiry-intro { margin-block-end: 28px; }
     .enquiry-intro .card-text { max-width: 700px; line-height: 1.8; }
+    .enquiry-brand-line {
+      margin: 0 0 10px;
+      font-size: var(--fs-7);
+      font-weight: var(--fw-700);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--emerald);
+    }
     .enquiry-grid { display: grid; gap: 18px; }
     .enquiry-field { display: grid; gap: 8px; }
     .enquiry-field label { color: var(--gunmetal-2); font-size: var(--fs-6); font-weight: var(--fw-700); }
@@ -55,12 +63,56 @@
       font-size: var(--fs-6);
     }
     .enquiry-choice input:checked + span { border-color: var(--emerald); background: hsl(150 45% 35% / 0.08); color: var(--emerald); font-weight: var(--fw-700); }
+    .enquiry-choice input:focus-visible + span { outline: 2px solid var(--emerald); outline-offset: 2px; }
+    .enquiry-hint {
+      margin: 0;
+      font-size: var(--fs-7);
+      line-height: 1.55;
+      color: var(--battleship-gray);
+    }
+    .enquiry-hint[hidden] { display: none !important; }
     .enquiry-note { font-size: var(--fs-7); line-height: 1.7; color: var(--battleship-gray); }
+    .enquiry-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: var(--fs-7);
+      line-height: 1.55;
+      color: var(--gunmetal-2);
+    }
+    .enquiry-consent input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--emerald);
+    }
     .enquiry-submit { margin-block-start: 8px; }
+    .enquiry-submit .btn { min-width: 160px; }
+
+    /* Sticky mobile CTA */
+    .enquiry-sticky-bar {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: hsl(0 0% 100% / 0.94);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid hsl(150 18% 88%);
+      box-shadow: 0 -6px 24px hsl(0 0% 0% / 0.06);
+    }
+    .enquiry-sticky-bar .btn { width: 100%; }
+
     @media (min-width: 700px) {
       .enquiry-card { padding: 42px; }
       .enquiry-grid-two { grid-template-columns: 1fr 1fr; }
       .enquiry-choice { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 699px) {
+      .enquiry-page { padding-block-end: 110px; }
+      .enquiry-sticky-bar { display: block; }
+      .enquiry-submit { display: none; }
     }
     @media (max-width: 479px) {
       .enquiry-page { padding-inline: 16px; }
@@ -76,17 +128,22 @@
       <section class="enquiry-card">
         <div class="enquiry-intro">
           <p class="section-subtitle">Enquiry</p>
-          <h1 class="h2 section-title">Explore Ayurveda with Herbiveda</h1>
-          <p class="card-text">Interested in a course, an Ayurvedic product, or a retreat? Tell us what you are looking for and our team will get back to you with the relevant details, availability and next steps.</p>
+          <p class="enquiry-brand-line">Ayurveda that shows its work</p>
+          <h1 class="h2 section-title">Tell us what you’re looking for</h1>
+          <p class="card-text">Physician-reviewed courses, certified herbs, and vetted retreats — we’ll reply with details and next steps, usually within <strong>24–48 hours</strong>.</p>
         </div>
 
-        <form action="https://formsubmit.co/ecom.herbiveda@gmail.com" method="POST">
+        <form id="enquiry-form" action="https://formsubmit.co/ecom.herbiveda@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New Herbiveda Lead — Course, Product or Retreat Enquiry">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_next" value="https://herbiveda.com/thanks.html">
           <input type="hidden" name="_url" value="https://herbiveda.com/contact.html">
-          <input type="hidden" name="_autoresponse" value="Thank you for contacting Herbiveda. We have received your enquiry and our team will review it and get back to you soon.">
-          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_autoresponse" value="Thank you for contacting Herbiveda. We have received your enquiry and usually reply within 24–48 hours. Our team will review your message and get back with the relevant details and next steps.">
+          <input type="hidden" name="source" id="lead-source" value="website">
+          <input type="hidden" name="utm_source" id="utm-source" value="">
+          <input type="hidden" name="utm_medium" id="utm-medium" value="">
+          <input type="hidden" name="utm_campaign" id="utm-campaign" value="">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="enquiry-grid">
             <div class="enquiry-grid-two">
@@ -103,7 +160,7 @@
             <div class="enquiry-grid-two">
               <div class="enquiry-field">
                 <label for="phone">Phone / WhatsApp</label>
-                <input id="phone" type="tel" name="phone" autocomplete="tel">
+                <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="Include country code, e.g. +91…">
               </div>
               <div class="enquiry-field">
                 <label for="location">City / Country</label>
@@ -113,17 +170,18 @@
 
             <div class="enquiry-field">
               <label>What are you interested in? <span>*</span></label>
-              <div class="enquiry-choice">
+              <div class="enquiry-choice" role="radiogroup" aria-label="Interest type">
                 <label><input type="radio" name="interest" value="Courses" required><span>Courses</span></label>
-                <label><input type="radio" name="interest" value="Products"><span>Products</span></label>
+                <label><input type="radio" name="interest" value="Products"><span>Herbs & products</span></label>
                 <label><input type="radio" name="interest" value="Retreats"><span>Retreats</span></label>
-                <label><input type="radio" name="interest" value="Multiple / Not Sure"><span>Not Sure</span></label>
+                <label><input type="radio" name="interest" value="Not Sure"><span>Not Sure</span></label>
               </div>
+              <p class="enquiry-hint" id="hint-not-sure" hidden>Not sure where to start? We’ll guide you — often with a free consultation.</p>
             </div>
 
             <div class="enquiry-grid-two">
               <div class="enquiry-field">
-                <label for="specific">Course / Product / Retreat</label>
+                <label for="specific">Specific interest <span class="enquiry-optional">(optional)</span></label>
                 <input id="specific" type="text" name="specific_interest" placeholder="Name or topic, if known">
               </div>
               <div class="enquiry-field">
@@ -139,12 +197,16 @@
             <div class="enquiry-field">
               <label for="message">How can we help?</label>
               <textarea id="message" name="message" placeholder="Tell us what you would like to know about the course, product or retreat."></textarea>
+              <p class="enquiry-hint" id="hint-message">Share anything that helps us reply faster.</p>
             </div>
 
-            <p class="enquiry-note">By submitting this form, you are asking Herbiveda to contact you regarding your enquiry. Please do not include sensitive medical or financial information.</p>
+            <label class="enquiry-consent">
+              <input type="checkbox" name="consent" value="yes" required>
+              <span>I agree to be contacted by Herbiveda about this enquiry. Please do not include sensitive medical or financial information.</span>
+            </label>
 
             <div class="enquiry-submit">
-              <button type="submit" class="btn btn-primary">Send Enquiry</button>
+              <button type="submit" class="btn btn-primary">Send my enquiry</button>
             </div>
           </div>
         </form>
@@ -156,27 +218,114 @@
     </div>
   </main>
 
+  <div class="enquiry-sticky-bar" aria-hidden="false">
+    <button type="submit" form="enquiry-form" class="btn btn-primary">Send my enquiry</button>
+  </div>
+
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const interest = params.get("interest");
-    const interestMap = {
-      panchakarma: "Retreats",
-      kriya: "Retreats",
-      pilgrimage: "Retreats",
-      transformation: "Retreats",
-      course: "Courses",
-      product: "Products",
-      retreat: "Retreats"
-    };
-    const mappedInterest = interestMap[(interest || "").toLowerCase()];
-    if (mappedInterest) {
-      const input = document.querySelector('input[name="interest"][value="' + mappedInterest + '"]');
-      if (input) input.checked = true;
-      const specific = document.getElementById("specific");
-      if (specific && interest !== "course" && interest !== "product" && interest !== "retreat") {
-        specific.value = interest.replace(/-/g, " ");
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var interestParam = (params.get('interest') || '').toLowerCase().trim();
+      var sourceParam = (params.get('source') || params.get('utm_source') || '').toLowerCase().trim();
+
+      var interestMap = {
+        panchakarma: { chip: 'Retreats', topic: 'Panchakarma & Rejuvenation' },
+        kriya: { chip: 'Retreats', topic: 'Kriya Yoga Immersion' },
+        vipassana: { chip: 'Retreats', topic: 'Kriya Yoga Immersion' },
+        pilgrimage: { chip: 'Retreats', topic: 'Detox, Nature & Pilgrimage' },
+        transformation: { chip: 'Retreats', topic: 'Complete Transformation Journeys' },
+        retreat: { chip: 'Retreats', topic: '' },
+        retreats: { chip: 'Retreats', topic: '' },
+        course: { chip: 'Courses', topic: '' },
+        courses: { chip: 'Courses', topic: '' },
+        product: { chip: 'Products', topic: '' },
+        products: { chip: 'Products', topic: '' },
+        heal: { chip: 'Products', topic: '' },
+        learn: { chip: 'Courses', topic: '' }
+      };
+
+      var topicPlaceholders = {
+        Courses: 'e.g. Stress & trauma course',
+        Products: 'e.g. Ashwagandha, wholesale',
+        Retreats: 'e.g. Panchakarma · Nov 2026',
+        'Not Sure': 'e.g. not sure — open to guidance'
+      };
+
+      var messageHints = {
+        Courses: 'Tip: share your level (beginner / advanced) and what you want to learn.',
+        Products: 'Tip: personal use or clinic/wholesale? Any herb or formula in mind?',
+        Retreats: 'Tip: preferred dates, duration, solo/couple/group, and budget range help us reply faster.',
+        'Not Sure': 'Tip: tell us your goal — stress, learning, herbs, or a retreat — and we’ll suggest a starting point.'
+      };
+
+      var messagePlaceholders = {
+        Courses: 'What would you like to learn? Any preferred course or topic?',
+        Products: 'Which herb or product are you interested in? Personal use or wholesale?',
+        Retreats: 'Preferred dates, duration, group size, and any budget range.',
+        'Not Sure': 'What are you hoping to improve or explore? We’ll guide you from there.'
+      };
+
+      var specific = document.getElementById('specific');
+      var message = document.getElementById('message');
+      var hintMessage = document.getElementById('hint-message');
+      var hintNotSure = document.getElementById('hint-not-sure');
+      var leadSource = document.getElementById('lead-source');
+      var utmSource = document.getElementById('utm-source');
+      var utmMedium = document.getElementById('utm-medium');
+      var utmCampaign = document.getElementById('utm-campaign');
+
+      function selectedInterest() {
+        var checked = document.querySelector('input[name="interest"]:checked');
+        return checked ? checked.value : '';
       }
-    }
+
+      function updatePrompts() {
+        var value = selectedInterest();
+        if (specific && topicPlaceholders[value]) {
+          specific.placeholder = topicPlaceholders[value];
+        }
+        if (message && messagePlaceholders[value]) {
+          message.placeholder = messagePlaceholders[value];
+        }
+        if (hintMessage) {
+          hintMessage.textContent = messageHints[value] || 'Share anything that helps us reply faster.';
+        }
+        if (hintNotSure) {
+          hintNotSure.hidden = value !== 'Not Sure';
+        }
+      }
+
+      // Prefill from ?interest=
+      var mapped = interestMap[interestParam];
+      if (mapped) {
+        var input = document.querySelector('input[name="interest"][value="' + mapped.chip + '"]');
+        if (input) input.checked = true;
+        if (specific && mapped.topic) specific.value = mapped.topic;
+      }
+
+      // Social / UTM tracking (same form on Facebook, Instagram, X)
+      utmSource.value = params.get('utm_source') || '';
+      utmMedium.value = params.get('utm_medium') || '';
+      utmCampaign.value = params.get('utm_campaign') || '';
+
+      if (sourceParam) {
+        leadSource.value = sourceParam;
+      } else if (params.get('utm_source')) {
+        leadSource.value = params.get('utm_source');
+      } else if (document.referrer) {
+        try {
+          var host = new URL(document.referrer).hostname.replace(/^www\./, '');
+          if (/facebook|fb\.com|instagram|twitter|x\.com|t\.co/i.test(host)) {
+            leadSource.value = host;
+          }
+        } catch (e) {}
+      }
+
+      document.querySelectorAll('input[name="interest"]').forEach(function (radio) {
+        radio.addEventListener('change', updatePrompts);
+      });
+      updatePrompts();
+    })();
   </script>
 </body>
 </html>
