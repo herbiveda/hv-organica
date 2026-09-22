@@ -26,15 +26,25 @@
       font-size: var(--fs-7);
       font-weight: var(--fw-500);
       letter-spacing: 0.02em;
-      color: var(--battleship-gray);
+      color: #0f3c35;
     }
     .enquiry-card { background: var(--white); padding: 30px; border-radius: var(--radius-4); box-shadow: var(--shadow-1); }
     .enquiry-intro { margin-block-end: 28px; }
     .enquiry-intro .card-text { max-width: 700px; line-height: 1.8; }
     .enquiry-grid { display: grid; gap: 18px; }
     .enquiry-field { display: grid; gap: 8px; }
-    .enquiry-field label { color: var(--gunmetal-2); font-size: var(--fs-6); font-weight: var(--fw-700); }
-    .enquiry-field label span { color: var(--emerald); }
+    .enquiry-field > label {
+      display: block;
+      color: var(--gunmetal-2);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-700);
+      white-space: nowrap;
+    }
+    .enquiry-field > label span {
+      display: inline;
+      color: var(--emerald);
+      margin-left: 2px;
+    }
     .enquiry-field input,
     .enquiry-field select,
     .enquiry-field textarea {
@@ -152,11 +162,11 @@
           <div class="enquiry-grid">
             <div class="enquiry-grid-two">
               <div class="enquiry-field">
-                <label for="name">Full Name <span>*</span></label>
+                <label for="name">Full Name<span>*</span></label>
                 <input id="name" type="text" name="name" autocomplete="name" required>
               </div>
               <div class="enquiry-field">
-                <label for="email">Email Address <span>*</span></label>
+                <label for="email">Email Address<span>*</span></label>
                 <input id="email" type="email" name="email" autocomplete="email" required>
               </div>
             </div>
@@ -168,12 +178,12 @@
               </div>
               <div class="enquiry-field">
                 <label for="location">City / Country</label>
-                <input id="location" type="text" name="location" autocomplete="address-level2" placeholder="e.g. Delhi, India">
+                <input id="location" type="text" name="location" autocomplete="address-level2" placeholder="e.g. Austin, TX">
               </div>
             </div>
 
             <div class="enquiry-field">
-              <label>What are you interested in? <span>*</span></label>
+              <label>What are you interested in?<span>*</span></label>
               <div class="enquiry-choice" role="radiogroup" aria-label="Interest type">
                 <label><input type="radio" name="interest" value="Courses" required><span>Courses</span></label>
                 <label><input type="radio" name="interest" value="Products"><span>Products</span></label>
@@ -185,7 +195,7 @@
 
             <div class="enquiry-grid-two">
               <div class="enquiry-field">
-                <label for="specific">Specific interest <span class="enquiry-optional">(optional)</span></label>
+                <label for="specific">Specific interest</label>
                 <input id="specific" type="text" name="specific_interest" placeholder="Name or topic, if known">
               </div>
               <div class="enquiry-field">
