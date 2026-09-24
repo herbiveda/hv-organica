@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wholesale & Partner Enquiries | Herbiveda</title>
+  <meta name="description" content="Wholesale herbs, clinic supply, spa formulations and retreat partnerships with Herbiveda. Batch certificates available. Partner enquiry form.">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/home.css">
+  <link rel="stylesheet" href="./assets/css/modernization.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .enquiry-page { min-height: 100vh; background: var(--mint-cream); padding-block: 50px 90px; }
+    .enquiry-wrap { max-width: 850px; margin-inline: auto; }
+    .enquiry-brand-block {
+      display: block;
+      margin-block-end: 30px;
+      text-decoration: none;
+    }
+    .enquiry-brand-block .logo { display: inline-block; }
+    .enquiry-brand-block .logo-subtitle {
+      margin: 4px 0 0;
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      letter-spacing: 0.02em;
+      color: #0f3c35;
+    }
+    .enquiry-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--radius-4);
+      box-shadow: var(--shadow-1);
+    }
+    .enquiry-intro { margin-block-end: 28px; }
+    .enquiry-intro .card-text { max-width: 700px; line-height: 1.8; }
+    .trade-benefits {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+    .trade-benefits li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: var(--fs-6);
+      line-height: 1.6;
+      color: var(--gunmetal-2);
+    }
+    .trade-benefits li::before {
+      content: "✓";
+      flex-shrink: 0;
+      color: var(--emerald);
+      font-weight: var(--fw-700);
+    }
+    .enquiry-grid { display: grid; gap: 18px; }
+    .enquiry-field { display: grid; gap: 8px; }
+    .enquiry-field > label {
+      display: block;
+      color: var(--gunmetal-2);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-700);
+      white-space: nowrap;
+    }
+    .enquiry-field > label span {
+      display: inline;
+      color: var(--emerald);
+      margin-left: 2px;
+    }
+    .enquiry-field input,
+    .enquiry-field select,
+    .enquiry-field textarea {
+      width: 100%;
+      border: 1px solid hsl(150 18% 78%);
+      background: var(--white);
+      color: var(--gunmetal-2);
+      font: inherit;
+      padding: 13px 15px;
+      border-radius: var(--radius-4);
+      outline: none;
+      transition: var(--transition-1);
+    }
+    .enquiry-field textarea { min-height: 135px; resize: vertical; }
+    .enquiry-field input:focus,
+    .enquiry-field select:focus,
+    .enquiry-field textarea:focus {
+      border-color: var(--emerald);
+      box-shadow: 0 0 0 3px hsl(150 45% 35% / 0.10);
+    }
+    .enquiry-grid-two { display: grid; gap: 18px; }
+    .enquiry-choice {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .enquiry-choice label { position: relative; }
+    .enquiry-choice input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .enquiry-choice span {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid hsl(150 18% 78%);
+      border-radius: var(--radius-4);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-1);
+      font-size: var(--fs-6);
+    }
+    .enquiry-choice input:checked + span {
+      border-color: var(--emerald);
+      background: hsl(150 45% 35% / 0.08);
+      color: var(--emerald);
+      font-weight: var(--fw-700);
+    }
+    .enquiry-choice input:focus-visible + span {
+      outline: 2px solid var(--emerald);
+      outline-offset: 2px;
+    }
+    .enquiry-hint {
+      margin: 0;
+      font-size: var(--fs-7);
+      line-height: 1.55;
+      color: var(--battleship-gray);
+    }
+    .enquiry-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: var(--fs-7);
+      line-height: 1.55;
+      color: var(--gunmetal-2);
+    }
+    .enquiry-consent input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--emerald);
+    }
+    .enquiry-submit { margin-block-start: 8px; }
+    .enquiry-submit .btn { min-width: 160px; }
+
+    .enquiry-sticky-bar {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: hsl(0 0% 100% / 0.94);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid hsl(150 18% 88%);
+      box-shadow: 0 -6px 24px hsl(0 0% 0% / 0.06);
+    }
+    .enquiry-sticky-bar .btn { width: 100%; }
+
+    @media (min-width: 700px) {
+      .enquiry-card { padding: 42px; }
+      .enquiry-grid-two { grid-template-columns: 1fr 1fr; }
+      .enquiry-choice { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 699px) {
+      .enquiry-page { padding-block-end: 110px; }
+      .enquiry-sticky-bar { display: block; }
+      .enquiry-submit { display: none; }
+    }
+    @media (max-width: 479px) {
+      .enquiry-page { padding-inline: 16px; }
+      .enquiry-card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body id="top">
+  <main class="enquiry-page">
+    <div class="container enquiry-wrap">
+      <a href="./index.html" class="enquiry-brand-block">
+        <span class="logo">Herbi<span class="span">veda</span></span>
+        <p class="logo-subtitle">Evidence-Based Ayurveda</p>
+      </a>
+
+      <section class="enquiry-card">
+        <div class="enquiry-intro">
+          <p class="section-subtitle">Trade & Partners</p>
+          <h1 class="h2 section-title">Wholesale & retreat partner enquiries</h1>
+          <p class="card-text">Certified herbs with batch documentation, clinic and spa supply, and vetted retreat partnerships. Tell us about your business and we’ll reply with pricing, MOQs and next steps.</p>
+        </div>
+
+        <ul class="trade-benefits">
+          <li>Batch certificates of analysis available on request</li>
+          <li>Wholesale pricing for clinics, spas, retailers and practitioners</li>
+          <li>Retreat centres: listing after in-person or documented vetting</li>
+          <li>Physician-reviewed product notes you can share with clients</li>
+        </ul>
+
+        <form id="enquiry-form" action="https://formsubmit.co/ecom.herbiveda@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Herbiveda Trade Lead — Wholesale / Partner Enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://herbiveda.com/thanks.html">
+          <input type="hidden" name="_url" value="https://herbiveda.com/trade.html">
+          <input type="hidden" name="_autoresponse" value="Thank you for your wholesale or partner enquiry with Herbiveda. We have received your message and usually reply within 24–48 hours with pricing, availability and next steps.">
+          <input type="hidden" name="source" id="lead-source" value="trade">
+          <input type="hidden" name="utm_source" id="utm-source" value="">
+          <input type="hidden" name="utm_medium" id="utm-medium" value="">
+          <input type="hidden" name="utm_campaign" id="utm-campaign" value="">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="enquiry-grid">
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="name">Full Name<span>*</span></label>
+                <input id="name" type="text" name="name" autocomplete="name" required>
+              </div>
+              <div class="enquiry-field">
+                <label for="email">Work Email<span>*</span></label>
+                <input id="email" type="email" name="email" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="phone">Phone / WhatsApp</label>
+                <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="Include country code, e.g. +1…">
+              </div>
+              <div class="enquiry-field">
+                <label for="company">Business / Centre name</label>
+                <input id="company" type="text" name="company" autocomplete="organization" placeholder="e.g. clinic, spa or retreat name">
+              </div>
+            </div>
+
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="location">City / Country</label>
+                <input id="location" type="text" name="location" autocomplete="address-level2" placeholder="e.g. Austin, TX">
+              </div>
+              <div class="enquiry-field">
+                <label for="website">Website</label>
+                <input id="website" type="url" name="website" placeholder="https://">
+              </div>
+            </div>
+
+            <div class="enquiry-field">
+              <label>I am enquiring as<span>*</span></label>
+              <div class="enquiry-choice" role="radiogroup" aria-label="Partner type">
+                <label><input type="radio" name="partner_type" value="Wholesale" required><span>Wholesale</span></label>
+                <label><input type="radio" name="partner_type" value="Retailer"><span>Retailer</span></label>
+                <label><input type="radio" name="partner_type" value="Clinic"><span>Clinic</span></label>
+                <label><input type="radio" name="partner_type" value="Spa"><span>Spa</span></label>
+                <label><input type="radio" name="partner_type" value="Retreat Partner"><span>Retreat Partner</span></label>
+                <label><input type="radio" name="partner_type" value="Other"><span>Other</span></label>
+              </div>
+            </div>
+
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="products">Products or focus</label>
+                <input id="products" type="text" name="products_interest" placeholder="e.g. Ashwagandha, oils, full catalog">
+              </div>
+              <div class="enquiry-field">
+                <label for="volume">Est. monthly volume</label>
+                <select id="volume" name="monthly_volume">
+                  <option value="">Select if known</option>
+                  <option value="Under 50 units">Under 50 units</option>
+                  <option value="50–200 units">50–200 units</option>
+                  <option value="200–500 units">200–500 units</option>
+                  <option value="500+ units">500+ units</option>
+                  <option value="Retreat partnership only">Retreat partnership only</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="enquiry-grid-two">
+              <div class="enquiry-field">
+                <label for="contact-preference">Preferred Contact</label>
+                <select id="contact-preference" name="preferred_contact">
+                  <option value="Email">Email</option>
+                  <option value="Phone">Phone</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                </select>
+              </div>
+              <div class="enquiry-field">
+                <label for="timeline">Timeline</label>
+                <select id="timeline" name="timeline">
+                  <option value="">Select if known</option>
+                  <option value="ASAP">ASAP</option>
+                  <option value="This month">This month</option>
+                  <option value="1–3 months">1–3 months</option>
+                  <option value="Exploring only">Exploring only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="enquiry-field">
+              <label for="message">How can we help?</label>
+              <textarea id="message" name="message" placeholder="Tell us about your business, products of interest, or retreat partnership goals."></textarea>
+              <p class="enquiry-hint" id="hint-message">Share MOQ needs, certifications required, or centre location for retreats.</p>
+            </div>
+
+            <label class="enquiry-consent">
+              <input type="checkbox" name="consent" value="yes" required>
+              <span>I agree to be contacted by Herbiveda about this trade or partner enquiry. Please do not include sensitive medical or financial information.</span>
+            </label>
+
+            <div class="enquiry-submit">
+              <button type="submit" class="btn btn-primary">Send partner enquiry</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <p style="text-align:center; margin-block-start:24px;">
+        <a href="./index.html" class="btn btn-secondary">Back to Herbiveda</a>
+      </p>
+    </div>
+  </main>
+
+  <div class="enquiry-sticky-bar" aria-hidden="false">
+    <button type="submit" form="enquiry-form" class="btn btn-primary">Send partner enquiry</button>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var interestParam = (params.get('interest') || params.get('type') || '').toLowerCase().trim();
+      var sourceParam = (params.get('source') || params.get('utm_source') || '').toLowerCase().trim();
+
+      var partnerMap = {
+        wholesale: 'Wholesale',
+        retailer: 'Retailer',
+        retail: 'Retailer',
+        clinic: 'Clinic',
+        spa: 'Spa',
+        retreat: 'Retreat Partner',
+        'retreat-partner': 'Retreat Partner',
+        partner: 'Retreat Partner',
+        other: 'Other'
+      };
+
+      var messagePlaceholders = {
+        Wholesale: 'Products of interest, target MOQ, and any certification requirements.',
+        Retailer: 'Store type, categories you stock, and estimated order size.',
+        Clinic: 'Formulations you use most, patient volume, and COA needs.',
+        Spa: 'Oils, treatments, or retail SKUs you plan to offer guests.',
+        'Retreat Partner': 'Location, capacity, programmes offered, and partnership goal.',
+        Other: 'Describe your organisation and how you’d like to work with Herbiveda.'
+      };
+
+      var messageHints = {
+        Wholesale: 'Tip: share expected monthly volume and preferred shipping region.',
+        Retailer: 'Tip: brick-and-mortar, online, or both helps us quote correctly.',
+        Clinic: 'Tip: practitioner type (BAMS, ND, integrative) is useful context.',
+        Spa: 'Tip: number of treatment rooms or locations helps with supply planning.',
+        'Retreat Partner': 'Tip: centre photos, licences, and next available dates speed review.',
+        Other: 'Tip: a short note on your model is enough to start the conversation.'
+      };
+
+      var message = document.getElementById('message');
+      var hintMessage = document.getElementById('hint-message');
+      var leadSource = document.getElementById('lead-source');
+      var utmSource = document.getElementById('utm-source');
+      var utmMedium = document.getElementById('utm-medium');
+      var utmCampaign = document.getElementById('utm-campaign');
+
+      function selectedPartner() {
+        var checked = document.querySelector('input[name="partner_type"]:checked');
+        return checked ? checked.value : '';
+      }
+
+      function updatePrompts() {
+        var value = selectedPartner();
+        if (message && messagePlaceholders[value]) {
+          message.placeholder = messagePlaceholders[value];
+        }
+        if (hintMessage) {
+          hintMessage.textContent = messageHints[value] || 'Share MOQ needs, certifications required, or centre location for retreats.';
+        }
+      }
+
+      var mapped = partnerMap[interestParam];
+      if (mapped) {
+        var input = document.querySelector('input[name="partner_type"][value="' + mapped + '"]');
+        if (input) input.checked = true;
+      }
+
+      utmSource.value = params.get('utm_source') || '';
+      utmMedium.value = params.get('utm_medium') || '';
+      utmCampaign.value = params.get('utm_campaign') || '';
+
+      if (sourceParam) {
+        leadSource.value = sourceParam;
+      } else if (params.get('utm_source')) {
+        leadSource.value = params.get('utm_source');
+      }
+
+      document.querySelectorAll('input[name="partner_type"]').forEach(function (radio) {
+        radio.addEventListener('change', updatePrompts);
+      });
+      updatePrompts();
+    })();
+  </script>
+</body>
+</html>
