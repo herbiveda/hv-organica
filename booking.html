@@ -94,8 +94,7 @@
       var validBookingUrl = false;
       try {
         var parsed = new URL(GOOGLE_CALENDAR_BOOKING_URL);
-        validBookingUrl = parsed.protocol === "https:" &&
-          /(^|\\.)calendar\\.google\\.com$|(^|\\.)calendar\\.app\\.google$/.test(parsed.hostname);
+        validBookingUrl = parsed.protocol === "https:" && (parsed.hostname === "calendar.google.com" || parsed.hostname.endsWith(".calendar.google.com") || parsed.hostname === "calendar.app.google");
       } catch (error) {}
 
       if (validBookingUrl) {
