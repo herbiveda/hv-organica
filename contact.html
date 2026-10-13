@@ -119,7 +119,7 @@
     @media (min-width: 700px) {
       .enquiry-card { padding: 42px; }
       .enquiry-grid-two { grid-template-columns: 1fr 1fr; }
-      .enquiry-choice { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .enquiry-choice { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (max-width: 699px) {
       .enquiry-page { padding-block-end: 110px; }
@@ -189,6 +189,7 @@
                 <label><input type="radio" name="interest" value="Products"><span>Products</span></label>
                 <label><input type="radio" name="interest" value="Retreats"><span>Retreats</span></label>
                 <label><input type="radio" name="interest" value="Not Sure"><span>Not Sure</span></label>
+                <label><input type="radio" name="interest" value="Consultation"><span>Consultation</span></label>
               </div>
               <p class="enquiry-hint" id="hint-not-sure" hidden>Not sure where to start? We’ll guide you — often with a free consultation.</p>
             </div>
@@ -243,6 +244,8 @@
       var sourceParam = (params.get('source') || params.get('utm_source') || '').toLowerCase().trim();
 
       var interestMap = {
+        consultation: { chip: 'Consultation', topic: 'Free 20-minute consultation' },
+        consult: { chip: 'Consultation', topic: 'Free 20-minute consultation' },
         panchakarma: { chip: 'Retreats', topic: 'Panchakarma & Rejuvenation' },
         kriya: { chip: 'Retreats', topic: 'Kriya Yoga Immersion' },
         vipassana: { chip: 'Retreats', topic: 'Kriya Yoga Immersion' },
@@ -259,6 +262,7 @@
       };
 
       var topicPlaceholders = {
+        Consultation: 'Free 20-minute consultation',
         Courses: 'e.g. Stress & trauma course',
         Products: 'e.g. Ashwagandha, wholesale',
         Retreats: 'e.g. Panchakarma · Nov 2026',
@@ -266,6 +270,7 @@
       };
 
       var messageHints = {
+        Consultation: 'Tip: tell us whether you prefer a video call or phone call, plus a suitable day/time.',
         Courses: 'Tip: share your level (beginner / advanced) and what you want to learn.',
         Products: 'Tip: personal use or clinic/wholesale? Any herb or formula in mind?',
         Retreats: 'Tip: preferred dates, duration, solo/couple/group, and budget range help us reply faster.',
@@ -273,6 +278,7 @@
       };
 
       var messagePlaceholders = {
+        Consultation: 'Preferred meeting format (video or phone) and a suitable day/time.',
         Courses: 'What would you like to learn? Any preferred course or topic?',
         Products: 'Which herb or product are you interested in? Personal use or wholesale?',
         Retreats: 'Preferred dates, duration, group size, and any budget range.',
