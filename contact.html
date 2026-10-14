@@ -188,9 +188,9 @@
                 <label><input type="radio" name="interest" value="Courses" required><span>Courses</span></label>
                 <label><input type="radio" name="interest" value="Products"><span>Products</span></label>
                 <label><input type="radio" name="interest" value="Retreats"><span>Retreats</span></label>
-                <label><input type="radio" name="interest" value="Not Sure"><span>Not Sure</span></label>
                 <label><input type="radio" name="interest" value="Consultation"><span>Consultation</span></label>
                 <label><input type="radio" name="interest" value="Guides"><span>Guides</span></label>
+                <label><input type="radio" name="interest" value="Not Sure"><span>Not Sure</span></label>
               </div>
               <p class="enquiry-hint" id="hint-not-sure" hidden>Not sure where to start? We’ll guide you — often with a free consultation.</p>
             </div>
@@ -198,7 +198,8 @@
             <div class="enquiry-grid-two">
               <div class="enquiry-field">
                 <label for="specific">Specific interest</label>
-                <input id="specific" type="text" name="specific_interest" placeholder="Name or topic, if known">
+                <input id="specific" type="text" name="specific_interest" list="specific-interest-options" placeholder="Choose a topic or type your own">
+                <datalist id="specific-interest-options"></datalist>
               </div>
               <div class="enquiry-field">
                 <label for="contact-preference">Preferred Contact</label>
@@ -266,12 +267,35 @@
       };
 
       var topicPlaceholders = {
-        Guides: 'e.g. Ayurveda for Neurological Disorders',
+        Courses: 'Choose a course or type your own',
+        Guides: 'Choose a guide or type your own',
+        Retreats: 'Choose a retreat or type your own',
         Consultation: 'Free 20-minute consultation',
         Courses: 'e.g. Stress & trauma course',
         Products: 'e.g. Ashwagandha, wholesale',
         Retreats: 'e.g. Panchakarma · Nov 2026',
         'Not Sure': 'e.g. not sure — open to guidance'
+      };
+
+      var specificInterestOptions = {
+        Courses: [
+          'Ayurvedic Stress Management & Trauma-Informed Wellness',
+          'Clinically Tested Ayurvedic Herbs for Health & Wellness',
+          'How to Make Ayurvedic Herbal Formulas at Home',
+          'Panchakarma Training & Ayurvedic Wellness Centre Setup',
+          'All Ayurveda Courses'
+        ],
+        Guides: [
+          'Ayurveda for Neurological Disorders',
+          'Nutrition in Prenatal & Postnatal Life',
+          'Ayurveda and Healthy Aging'
+        ],
+        Retreats: [
+          'Panchakarma & Rejuvenation',
+          'Kriya Yoga Immersion',
+          'Detox, Nature & Pilgrimage',
+          'Complete Transformation Journeys'
+        ]
       };
 
       var messageHints = {
@@ -310,6 +334,15 @@
         var value = selectedInterest();
         if (specific && topicPlaceholders[value]) {
           specific.placeholder = topicPlaceholders[value];
+        }
+        var specificOptions = document.getElementById('specific-interest-options');
+        if (specificOptions) {
+          specificOptions.replaceChildren();
+          (specificInterestOptions[value] || []).forEach(function (topic) {
+            var option = document.createElement('option');
+            option.value = topic;
+            specificOptions.appendChild(option);
+          });
         }
         if (message && messagePlaceholders[value]) {
           message.placeholder = messagePlaceholders[value];
