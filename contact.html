@@ -63,6 +63,22 @@
     .enquiry-field select:focus,
     .enquiry-field textarea:focus { border-color: var(--emerald); box-shadow: 0 0 0 3px hsl(150 45% 35% / 0.10); }
     .specific-interest-control { position: relative; min-width: 0; }
+    .specific-interest-control > input { padding-right: 42px; }
+    .specific-interest-chevron {
+      position: absolute;
+      top: 21px;
+      right: 17px;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--battleship-gray);
+      border-bottom: 2px solid var(--battleship-gray);
+      transform: rotate(45deg);
+      pointer-events: none;
+      transition: transform 160ms ease;
+    }
+    .specific-interest-control:focus-within .specific-interest-chevron {
+      border-color: var(--emerald);
+    }
     .specific-interest-dropdown {
       position: absolute;
       top: calc(100% + 5px);
@@ -242,6 +258,7 @@
                 <label for="specific">Specific interest</label>
                 <div class="specific-interest-control">
                   <input id="specific" type="text" name="specific_interest" placeholder="Choose a topic or type your own" autocomplete="off" aria-autocomplete="list" aria-controls="specific-interest-dropdown" aria-expanded="false">
+                  <span class="specific-interest-chevron" aria-hidden="true"></span>
                   <div id="specific-interest-dropdown" class="specific-interest-dropdown" role="listbox" aria-label="Specific interest suggestions" hidden></div>
                 </div>
               </div>
