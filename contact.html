@@ -190,6 +190,7 @@
                 <label><input type="radio" name="interest" value="Retreats"><span>Retreats</span></label>
                 <label><input type="radio" name="interest" value="Not Sure"><span>Not Sure</span></label>
                 <label><input type="radio" name="interest" value="Consultation"><span>Consultation</span></label>
+                <label><input type="radio" name="interest" value="Guides"><span>Guides</span></label>
               </div>
               <p class="enquiry-hint" id="hint-not-sure" hidden>Not sure where to start? We’ll guide you — often with a free consultation.</p>
             </div>
@@ -241,10 +242,13 @@
     (function () {
       var params = new URLSearchParams(window.location.search);
       var interestParam = (params.get('interest') || '').toLowerCase().trim();
+      var topicParam = (params.get('topic') || params.get('specific') || '').trim();
       var sourceParam = (params.get('source') || params.get('utm_source') || '').toLowerCase().trim();
 
       var interestMap = {
         consultation: { chip: 'Consultation', topic: 'Free 20-minute consultation' },
+        guide: { chip: 'Guides', topic: '' },
+        guides: { chip: 'Guides', topic: '' },
         consult: { chip: 'Consultation', topic: 'Free 20-minute consultation' },
         panchakarma: { chip: 'Retreats', topic: 'Panchakarma & Rejuvenation' },
         kriya: { chip: 'Retreats', topic: 'Kriya Yoga Immersion' },
@@ -262,6 +266,7 @@
       };
 
       var topicPlaceholders = {
+        Guides: 'e.g. Ayurveda for Neurological Disorders',
         Consultation: 'Free 20-minute consultation',
         Courses: 'e.g. Stress & trauma course',
         Products: 'e.g. Ashwagandha, wholesale',
@@ -270,6 +275,7 @@
       };
 
       var messageHints = {
+        Guides: 'Tip: tell us which guide or research topic you would like to explore.',
         Consultation: 'Tip: tell us whether you prefer a video call or phone call, plus a suitable day/time.',
         Courses: 'Tip: share your level (beginner / advanced) and what you want to learn.',
         Products: 'Tip: personal use or clinic/wholesale? Any herb or formula in mind?',
@@ -278,6 +284,7 @@
       };
 
       var messagePlaceholders = {
+        Guides: 'Which guide or research topic are you interested in?',
         Consultation: 'Preferred meeting format (video or phone) and a suitable day/time.',
         Courses: 'What would you like to learn? Any preferred course or topic?',
         Products: 'Which herb or product are you interested in? Personal use or wholesale?',
@@ -319,7 +326,9 @@
       if (mapped) {
         var input = document.querySelector('input[name="interest"][value="' + mapped.chip + '"]');
         if (input) input.checked = true;
-        if (specific && mapped.topic) specific.value = mapped.topic;
+        if (specific && (topicParam || mapped.topic)) specific.value = topicParam || mapped.topic;
+      } else if (topicParam && specific) {
+        specific.value = topicParam;
       }
 
       utmSource.value = params.get('utm_source') || '';
