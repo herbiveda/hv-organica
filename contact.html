@@ -281,18 +281,77 @@
           'Clinically Tested Ayurvedic Herbs for Health & Wellness',
           'How to Make Ayurvedic Herbal Formulas at Home',
           'Panchakarma Training & Ayurvedic Wellness Centre Setup',
+          'Foundations of Ayurveda: Tridosha, Agni & Ama',
+          'Dinacharya & Ritucharya: Daily and Seasonal Routines',
+          'Ayurvedic Nutrition and Ahara Vidhi',
+          'Dravyaguna: Ayurvedic Herbs and Materia Medica',
+          'Practical Herbal Preparations: Churna, Kwatha and More',
+          'Reading PubMed: Clinical Research and Evidence Appraisal',
+          'Ashwagandha: Research on Stress and Sleep',
+          'Ayurveda and Osteoarthritis: Understanding the Clinical Evidence',
+          'Ayurveda, Yoga and Sleep Research',
+          'Herbal Product Quality, Safety and Certificates of Analysis',
+          'Ayurvedic Formulations: Safety and Quality Control',
           'All Ayurveda Courses'
         ],
-        Guides: [
-          'Ayurveda for Neurological Disorders',
-          'Nutrition in Prenatal & Postnatal Life',
-          'Ayurveda and Healthy Aging'
+        Products: [
+          'Ashwagandha',
+          'Turmeric (Curcumin)',
+          'Boswellia (Shallaki)',
+          'Triphala',
+          'Shatavari',
+          'Brahmi (Bacopa)',
+          'Shilajit',
+          'Trikatu',
+          'Neem',
+          'Fenugreek',
+          'Valerian',
+          'Licorice (Yashtimadhu)',
+          'Herbal powders and extracts',
+          'Oils and formulations',
+          'Wholesale supply and batch certificates'
         ],
         Retreats: [
           'Panchakarma & Rejuvenation',
           'Kriya Yoga Immersion',
           'Detox, Nature & Pilgrimage',
-          'Complete Transformation Journeys'
+          'Complete Transformation Journeys',
+          'Kerala Ayurveda Retreat',
+          'Ayurveda and Yoga Introduction Retreat',
+          'Practical Ayurveda and Medicinal Herb Walk',
+          'Guided Yoga, Pranayama and Meditation',
+          'Dinacharya and Seasonal Wellness Retreat',
+          'Rest, Sleep and Stress-Management Practices',
+          'Ayurvedic Food and Lifestyle Workshop',
+          'Gentle Yoga and Mobility Retreat'
+        ],
+        Consultation: [
+          'Free 20-minute consultation',
+          'Course guidance',
+          'Product and herb guidance',
+          'Retreat planning'
+        ],
+        Guides: [
+          'Ayurveda for Neurological Disorders',
+          'Nutrition in Prenatal & Postnatal Life',
+          'Ayurveda and Healthy Aging',
+          'Ashwagandha and Sleep: Systematic Review',
+          'Ashwagandha, Stress and Anxiety: Research Review',
+          'Ayurveda and Knee Osteoarthritis: Trial Evidence',
+          'Ayurveda and Diabetes: Scope and Quality of Evidence',
+          'Heavy Metals and Safety in Ayurvedic Products',
+          'Herbal Product Quality Control and Standardization',
+          'Foundations of Ayurveda: Tridosha, Agni & Ama',
+          'Dinacharya and Ritucharya',
+          'Yoga, Pranayama and Osteoarthritis Research',
+          'Evidence-Based Ayurveda: Critical Appraisal',
+          'Standardization and Analytical Methods in Rasa Shastra'
+        ],
+        'Not Sure': [
+          'Help me choose a course',
+          'Help me choose a guide or research topic',
+          'Help me choose a retreat',
+          'Help me choose an Ayurvedic product'
         ]
       };
 
@@ -379,8 +438,33 @@
         } catch (e) {}
       }
 
+      var lastInterest = selectedInterest();
+
+      function handleInterestChange() {
+        var nextInterest = selectedInterest();
+        var currentTopic = specific ? specific.value.trim() : '';
+        var previousTopics = specificInterestOptions[lastInterest] || [];
+        var wasSuggestedTopic = !currentTopic || previousTopics.indexOf(currentTopic) !== -1;
+
+        updatePrompts();
+
+        // When the previous value came from the suggested list, switch it to
+        // a relevant topic for the newly selected interest. Preserve anything
+        // the visitor typed freely.
+        if (specific && wasSuggestedTopic) {
+          if (nextInterest === 'Consultation') {
+            specific.value = 'Free 20-minute consultation';
+          } else {
+            var nextTopics = specificInterestOptions[nextInterest] || [];
+            specific.value = nextTopics.length ? nextTopics[0] : '';
+          }
+        }
+
+        lastInterest = nextInterest;
+      }
+
       document.querySelectorAll('input[name="interest"]').forEach(function (radio) {
-        radio.addEventListener('change', updatePrompts);
+        radio.addEventListener('change', handleInterestChange);
       });
       updatePrompts();
     })();
