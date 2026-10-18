@@ -77,7 +77,7 @@
   <div class="cart-overlay" data-cart-overlay></div>
 
   <main>
-    <article>
+    <article class="product-details-page-article">
       <div class="breadcumb-wrapper">
         <div class="container">
           <h2 class="page-title" data-pd-name>Product</h2>
@@ -92,11 +92,14 @@
       <section class="section product-details">
         <div class="container">
           <div class="wrapper">
-            <div class="product-details-img">
-              <figure class="product-display">
+            <div class="product-details-img product-gallery" data-pd-gallery>
+              <div class="product-gallery-main">
                 <img src="./assets/images/ashwagandha.webp" width="700" height="700" loading="lazy"
                   alt="" class="w-100" data-pd-image data-product-display>
-              </figure>
+                <button type="button" class="product-gallery-nav prev" data-gallery-prev aria-label="Previous image">‹</button>
+                <button type="button" class="product-gallery-nav next" data-gallery-next aria-label="Next image">›</button>
+              </div>
+              <ul class="product-gallery-thumbs" data-pd-thumbs></ul>
             </div>
 
             <div class="product-details-content">
@@ -119,8 +122,8 @@
 
               <div class="product-qty" style="margin-top:20px;gap:12px;">
                 <button type="button" class="btn btn-primary product-qty-btn" data-pd-add>Add to Cart</button>
-                <a href="./contact.html?interest=consultation" class="btn" style="border:1.5px solid var(--russian-violet);color:var(--russian-violet);background:transparent;" data-pd-consult>
-                  Free Consultation
+                <a href="./contact.html?interest=guides&topic=Herb%20Guide%20Library" class="btn" style="border:1.5px solid var(--russian-violet);color:var(--russian-violet);background:transparent;" data-pd-guide>
+                  Get Herb Guide
                 </a>
               </div>
 
@@ -146,13 +149,13 @@
             </table>
           </div>
 
-          <div style="margin-top:56px;padding:32px;background:linear-gradient(118deg,#edf5ef 0%,#f7f5ed 100%);border-radius:16px;text-align:center;">
-            <h3 style="font-family:var(--ff-playfair-display,serif);color:var(--russian-violet);margin-bottom:12px;">Not sure where to start?</h3>
-            <p style="color:var(--sonic-silver);max-width:520px;margin:0 auto 20px;line-height:1.7;">
+          <div class="pd-consult-cta">
+            <h3>Not sure where to start?</h3>
+            <p>
               Book a free consultation with a BAMS-qualified practitioner. They will help you understand your constitution and point you only to what the evidence supports.
             </p>
             <a href="./contact.html?interest=consultation" class="btn btn-primary">Start a Free Consultation</a>
-            <p style="margin-top:16px;"><a href="./shop.html" style="color:var(--ds-emerald);">← Back to all herbs</a></p>
+            <p><a href="./shop.html" class="pd-back-link">← Back to all herbs</a></p>
           </div>
         </div>
       </section>
@@ -222,11 +225,45 @@
     set('[data-pd-desc]', p.description);
     set('[data-pd-price]', '$' + p.price.toFixed(2));
 
+    var gallery = [p.image];
+    if (p.images && p.images.length) {
+      gallery = p.images.slice();
+    } else {
+      gallery = [p.image, './assets/images/product-details-2.jpg', './assets/images/product-details-3.jpg'];
+    }
     var img = document.querySelector('[data-pd-image]');
+    var thumbs = document.querySelector('[data-pd-thumbs]');
+    var galleryIndex = 0;
+    function showSlide(i) {
+      if (!gallery.length || !img) return;
+      galleryIndex = (i + gallery.length) % gallery.length;
+      img.src = gallery[galleryIndex];
+      img.alt = p.name + ' — Herbiveda certified (' + (galleryIndex + 1) + '/' + gallery.length + ')';
+      if (thumbs) {
+        thumbs.querySelectorAll('li').forEach(function (li, idx) {
+          li.classList.toggle('active', idx === galleryIndex);
+        });
+      }
+    }
     if (img) {
-      img.src = p.image;
+      img.src = gallery[0];
       img.alt = p.name + ' — Herbiveda certified';
     }
+    if (thumbs) {
+      thumbs.innerHTML = gallery.map(function (src, idx) {
+        return '<li class="' + (idx === 0 ? 'active' : '') + '" data-slide="' + idx + '">' +
+          '<img src="' + src + '" alt="" loading="lazy" width="96" height="96"></li>';
+      }).join('');
+      thumbs.querySelectorAll('li').forEach(function (li) {
+        li.addEventListener('click', function () {
+          showSlide(parseInt(li.getAttribute('data-slide'), 10));
+        });
+      });
+    }
+    var prevBtn = document.querySelector('[data-gallery-prev]');
+    var nextBtn = document.querySelector('[data-gallery-next]');
+    if (prevBtn) prevBtn.addEventListener('click', function () { showSlide(galleryIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { showSlide(galleryIndex + 1); });
 
     setHtml('[data-pd-evidence]', (p.evidence || []).map(function (e) {
       return '<li>' + e + '</li>';
@@ -249,8 +286,8 @@
       });
     }
 
-    var consult = document.querySelector('[data-pd-consult]');
-    if (consult) consult.href = './contact.html?interest=consultation&topic=' + encodeURIComponent(p.name);
+    var guide = document.querySelector('[data-pd-guide]');
+    if (guide) guide.href = './contact.html?interest=guides&topic=' + encodeURIComponent('Herb Guide — ' + p.name);
   })();
   </script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
