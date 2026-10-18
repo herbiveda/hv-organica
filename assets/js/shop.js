@@ -89,6 +89,7 @@
         removeFromCart(btn.getAttribute('data-remove'));
       });
     });
+    updateCheckoutLinks();
   }
 
   function openCart() {
@@ -96,6 +97,7 @@
     var overlay = document.querySelector('[data-cart-overlay]');
     if (drawer) drawer.classList.add('active');
     if (overlay) overlay.classList.add('active');
+    updateCheckoutLinks();
   }
 
   function closeCart() {
@@ -142,9 +144,29 @@
     });
   }
 
+  function buildContactUrl() {
+    var cart = getCart();
+    var base = './contact.html?interest=consultation&source=cart';
+    if (!cart.length) return base;
+    var items = cart.map(function (i) {
+      return i.name + (i.qty > 1 ? ' x' + i.qty : '');
+    }).join(', ');
+    var slugs = cart.map(function (i) { return i.slug + ':' + i.qty; }).join(',');
+    return base + '&topic=' + encodeURIComponent('Cart: ' + items) +
+      '&cart=' + encodeURIComponent(slugs) +
+      '&message=' + encodeURIComponent('I would like practitioner guidance on these cart items before purchasing:\n' + items);
+  }
+
+  function updateCheckoutLinks() {
+    document.querySelectorAll('.cart-checkout-btn').forEach(function (a) {
+      a.href = buildContactUrl();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderGrid('all');
     updateCartUI();
+    updateCheckoutLinks();
 
     document.querySelectorAll('[data-filter]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -176,6 +198,7 @@
     get: getCart,
     updateUI: updateCartUI,
     open: openCart,
-    close: closeCart
+    close: closeCart,
+    buildContactUrl: buildContactUrl
   };
 })();
