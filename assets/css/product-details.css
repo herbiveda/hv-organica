@@ -357,3 +357,18 @@
     padding: 36px 20px;
   }
 }
+
+/* Distinct product-page breadcrumb background */
+.breadcumb-wrapper--product {
+  background-color: #0f3c35;
+  background-image: linear-gradient(120deg, rgba(15, 60, 53, 0.75) 0%, rgba(26, 10, 60, 0.6) 100%),
+    url("../images/product-page-bg.webp"), url("../images/breadcumb-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-block: 48px 40px;
+  color: #fff;
+}
+
+.breadcumb-wrapper--product .page-title { color: #fff; }
+.breadcumb-wrapper--product .breadcumb-link { color: rgba(255, 255, 255, 0.85); }
+.breadcumb-wrapper--product .breadcumb-item { color: rgba(255, 255, 255, 0.7); }
