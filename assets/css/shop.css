@@ -368,8 +368,7 @@
 
 .breadcumb-wrapper {
   background-color: #0f3c35;
-  background-image: linear-gradient(120deg, rgba(15, 60, 53, 0.72) 0%, rgba(26, 10, 60, 0.55) 100%),
-    url("../images/shop-bg.webp");
+  background-image: url("../images/shop-bg.webp");
   background-size: cover;
   background-position: center;
   padding-block: 48px 40px;
@@ -394,8 +393,7 @@
 
 /* Product-details uses product-page-bg via .breadcumb-wrapper--product */
 .breadcumb-wrapper--product {
-  background-image: linear-gradient(120deg, rgba(15, 60, 53, 0.72) 0%, rgba(26, 10, 60, 0.55) 100%),
-    url("../images/product-page-bg.webp");
+  background-image: url("../images/product-page-bg.webp");
   background-size: cover;
   background-position: center;
 }
