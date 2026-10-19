@@ -122,8 +122,8 @@
 
               <div class="product-qty" style="margin-top:20px;gap:12px;">
                 <button type="button" class="btn btn-primary product-qty-btn" data-pd-add>Add to Cart</button>
-                <a href="./contact.html?interest=guides&topic=Herb%20Guide%20Library" class="btn" style="border:1.5px solid var(--russian-violet);color:var(--russian-violet);background:transparent;" data-pd-guide>
-                  Get Herb Guide
+                <a href="./assets/docs/Herbiveda-Herb-Catalogue.pdf" class="btn" style="border:1.5px solid var(--russian-violet);color:var(--russian-violet);background:transparent;" data-pd-guide download>
+                  Download Herb Catalogue
                 </a>
               </div>
 
@@ -155,6 +155,7 @@
               Book a free consultation with a BAMS-qualified practitioner. They will help you understand your constitution and point you only to what the evidence supports.
             </p>
             <a href="./contact.html?interest=consultation" class="btn btn-primary">Start a Free Consultation</a>
+            <p class="pd-catalogue-note" style="margin-top:14px;"><a href="./assets/docs/Herbiveda-Herb-Catalogue.pdf" download>Download the full Herb Catalogue (PDF)</a> — free, no email required.</p>
             <p><a href="./shop.html" class="pd-back-link">← Back to all herbs</a></p>
           </div>
         </div>
@@ -286,8 +287,7 @@
       });
     }
 
-    var guide = document.querySelector('[data-pd-guide]');
-    if (guide) guide.href = './contact.html?interest=guides&topic=' + encodeURIComponent('Herb Guide — ' + p.name);
+    // Herb catalogue is a direct PDF download (data-pd-guide)
   })();
   </script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
