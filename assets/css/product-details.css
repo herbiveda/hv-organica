@@ -195,7 +195,8 @@
 
 .product-details-page-article {
   background-color: #f7f9f7;
-  background-image: url("../images/product-article.webp");
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.93) 0%, rgba(255, 255, 255, 0.97) 100%),
+    url("../images/product-article.webp");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
