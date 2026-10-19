@@ -195,8 +195,7 @@
 
 .product-details-page-article {
   background-color: #f7f9f7;
-  background-image: linear-gradient(180deg, rgba(247, 249, 247, 0.88) 0%, rgba(247, 249, 247, 0.95) 100%),
-    url("../images/shop-bg.webp");
+  background-image: url("../images/product-article.webp");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -361,8 +360,7 @@
 /* Distinct product-page breadcrumb background */
 .breadcumb-wrapper--product {
   background-color: #0f3c35;
-  background-image: linear-gradient(120deg, rgba(15, 60, 53, 0.75) 0%, rgba(26, 10, 60, 0.6) 100%),
-    url("../images/product-page-bg.webp");
+  background-image: url("../images/product-page-bg.webp");
   background-size: cover;
   background-position: center;
   padding-block: 48px 40px;
