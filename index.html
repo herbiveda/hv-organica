@@ -1,1 +1,49 @@
-PLACEHOLDER_SEE_NEXT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herbiveda | Evidence-Based Ayurveda — Courses, Certified Herbs & Vetted Retreats</title>
+  <meta name="description" content="Evidence-based Ayurveda marketplace. Practitioner-reviewed courses, certified herbs with batch certificates, and vetted Panchakarma & yoga retreats. Every claim cited.">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; color: #0f3c35; background: #eef1f0; }
+    .boot { max-width: 28rem; margin: 3rem auto; padding: 0 1.25rem; text-align: center; }
+    .boot p { color: #5a6b66; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="boot" id="boot">
+    <p><strong>Herbiveda</strong></p>
+    <p>Loading homepage…</p>
+  </div>
+  <script>
+  (function () {
+    var SRC = 'https://cdn.jsdelivr.net/gh/herbiveda/hv-organica@6bd17f75357562e6491484c66fa0ef778b7c3ea9/index.html';
+    function fail(msg) {
+      var el = document.getElementById('boot');
+      if (!el) return;
+      el.innerHTML = '<p><strong>Herbiveda</strong></p><p>' + (msg || 'Could not load homepage.') + '</p>' +
+        '<p><a href="./shop.html">Shop</a> · <a href="./contact.html">Contact</a> · <a href="./trade.html">Trade</a> · ' +
+        '<a href="./assets/docs/Herbiveda-Herb-Catalogue.pdf" download>Herb Catalogue</a></p>';
+    }
+    fetch(SRC, { cache: 'force-cache' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function (html) {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(function () {
+        return fetch('https://raw.githubusercontent.com/herbiveda/hv-organica/6bd17f75357562e6491484c66fa0ef778b7c3ea9/index.html', { cache: 'force-cache' })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+          .then(function (html) { document.open(); document.write(html); document.close(); })
+          .catch(function () { fail('Please hard-refresh or open Shop / Contact.'); });
+      });
+  })();
+  </script>
+</body>
+</html>
