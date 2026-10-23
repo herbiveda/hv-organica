@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustration of purple saffron crocus flowers and red stigmas">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fff9f1"/><stop offset="1" stop-color="#edf4ef"/></linearGradient></defs>
+  <rect width="400" height="400" rx="26" fill="url(#bg)"/><circle cx="200" cy="205" r="132" fill="#e0e6d9" opacity=".6"/>
+  <path d="M198 321 Q196 259 192 195 M198 321 Q244 258 267 190 M195 319 Q156 259 133 204" fill="none" stroke="#587f51" stroke-width="7" stroke-linecap="round"/>
+  <g stroke="#7c4d9c" stroke-width="2.5" fill="#a782c8">
+    <path d="M193 198 Q143 170 155 126 Q185 128 193 198Z"/><path d="M193 198 Q171 136 206 102 Q225 143 193 198Z"/><path d="M193 198 Q223 144 253 158 Q241 192 193 198Z"/>
+    <path d="M132 207 Q92 171 110 138 Q135 156 132 207Z"/><path d="M132 207 Q122 150 154 137 Q168 174 132 207Z"/><path d="M132 207 Q166 173 184 196 Q165 220 132 207Z"/>
+    <path d="M267 194 Q235 158 255 127 Q282 146 267 194Z"/><path d="M267 194 Q274 139 307 141 Q315 175 267 194Z"/><path d="M267 194 Q300 169 321 194 Q301 216 267 194Z"/>
+  </g>
+  <g stroke="#d33b2f" stroke-width="5" stroke-linecap="round" fill="none"><path d="M191 182 Q184 210 174 230"/><path d="M197 183 Q201 209 199 235"/><path d="M204 183 Q216 208 222 225"/><path d="M132 195 Q126 218 120 235"/><path d="M138 195 Q144 216 149 227"/><path d="M267 181 Q256 206 253 224"/><path d="M273 181 Q285 206 294 219"/></g>
+  <path d="M65 340 H335" stroke="#cdb8db" stroke-width="2" stroke-linecap="round"/>
+</svg>
