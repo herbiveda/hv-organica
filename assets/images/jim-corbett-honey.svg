@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustration of a jar of golden wild honey with forest landscape">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fdf8ed"/><stop offset="1" stop-color="#eaf2e8"/></linearGradient><linearGradient id="honey" x2="0" y2="1"><stop stop-color="#ffd56c"/><stop offset="1" stop-color="#c47c1d"/></linearGradient></defs>
+  <rect width="400" height="400" rx="26" fill="url(#bg)"/><circle cx="200" cy="205" r="132" fill="#dfe9d6" opacity=".7"/>
+  <g fill="#71916a"><path d="M44 257 L74 176 L104 257Z"/><path d="M80 265 L117 151 L154 265Z"/><path d="M251 263 L287 155 L323 263Z"/><path d="M292 263 L327 184 L362 263Z"/></g>
+  <g fill="#456b4a"><path d="M63 260 L86 194 L109 260Z"/><path d="M112 267 L143 171 L174 267Z"/><path d="M226 264 L257 173 L288 264Z"/><path d="M300 269 L333 199 L366 269Z"/></g>
+  <path d="M54 275 Q131 251 200 269 T347 267 L347 315 L54 315Z" fill="#c5d5b6"/>
+  <ellipse cx="200" cy="308" rx="92" ry="18" fill="#9fb59c" opacity=".45"/>
+  <rect x="143" y="132" width="114" height="38" rx="8" fill="#7b5738"/><rect x="151" y="137" width="98" height="29" rx="5" fill="#c7a36c"/>
+  <path d="M144 163 Q136 170 136 187 L143 278 Q145 296 163 299 H237 Q255 296 257 278 L264 187 Q264 170 256 163Z" fill="url(#honey)" stroke="#9c6a27" stroke-width="3"/>
+  <path d="M154 178 Q150 188 151 205 L157 266 Q159 277 169 280" fill="none" stroke="#fff2bb" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+  <rect x="154" y="213" width="92" height="49" rx="7" fill="#fff7df" stroke="#d0a04b" stroke-width="2"/>
+  <path d="M200 220 l7 7 -7 7 -7 -7Z" fill="#d18a22"/><path d="M200 220 v14" stroke="#d18a22" stroke-width="2"/>
+  <path d="M174 243 H226" stroke="#c28a35" stroke-width="3" stroke-linecap="round"/><path d="M184 251 H216" stroke="#c28a35" stroke-width="2" stroke-linecap="round"/>
+  <path d="M65 340 H335" stroke="#d5bd8d" stroke-width="2" stroke-linecap="round"/>
+</svg>
