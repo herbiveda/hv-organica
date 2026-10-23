@@ -13,6 +13,23 @@
     cognitive: ['brahmi', 'ashwagandha']
   };
 
+  const categoryKeys = [
+    'herbs-botanicals',
+    'polyherbal-formulations',
+    'personal-care',
+    'ayurvedic-products',
+    'natural-foods',
+    'accessories'
+  ];
+
+  function getCategories(product) {
+    if (Array.isArray(product.categories)) return product.categories;
+    if (['triphala', 'trikatu'].indexOf(product.slug) !== -1) {
+      return ['polyherbal-formulations', 'ayurvedic-products'];
+    }
+    return ['herbs-botanicals', 'ayurvedic-products'];
+  }
+
   function getCart() {
     try {
       return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
@@ -30,7 +47,7 @@
     qty = qty || 1;
     const products = window.HERBIVEDA_PRODUCTS || {};
     const p = products[slug];
-    if (!p) return;
+    if (!p || typeof p.price !== 'number' || p.purchaseable === false) return;
     const cart = getCart();
     const existing = cart.find(function (i) { return i.slug === slug; });
     if (existing) {
@@ -113,13 +130,92 @@
     if (!grid || !window.HERBIVEDA_PRODUCT_LIST) return;
 
     var list = window.HERBIVEDA_PRODUCT_LIST;
-    if (filter && filter !== 'all' && categoryMap[filter]) {
+    if (filter && filter !== 'all' && categoryKeys.indexOf(filter) !== -1) {
+      list = list.filter(function (p) { return getCategories(p).indexOf(filter) !== -1; });
+    } else if (filter && filter !== 'all' && categoryMap[filter]) {
       list = list.filter(function (p) { return categoryMap[filter].indexOf(p.slug) !== -1; });
     }
 
     if (countEl) countEl.textContent = list.length;
 
+    if (!list.length) {
+      var requestedCategory = filter === 'personal-care' ? 'Soaps & Personal Care' :
+        filter === 'accessories' ? 'Accessories' :
+        filter === 'natural-foods' ? 'Natural Foods & Honey' : 'this category';
+      grid.innerHTML = '<div class="shop-empty-state"><h3>More coming soon</h3>' +
+        '<p>There are no items listed in ' + requestedCategory + ' yet. Contact us to ask about upcoming availability.</p>' +
+        '<a href="./contact.html?interest=products&source=shop-category&topic=' + encodeURIComponent(requestedCategory) + '" class="btn btn-outline">Enquire about this category</a></div>';
+      return;
+    }
+
     grid.innerHTML = list.map(function (p) {
+      var hasPrice = typeof p.price === 'number' && Number.isFinite(p.price) && p.purchaseable !== false;
+      var priceMarkup = hasPrice ? '
+  }
+
+  function buildContactUrl() {
+    var cart = getCart();
+    var base = './contact.html?interest=consultation&source=cart';
+    if (!cart.length) return base;
+    var items = cart.map(function (i) {
+      return i.name + (i.qty > 1 ? ' x' + i.qty : '');
+    }).join(', ');
+    var slugs = cart.map(function (i) { return i.slug + ':' + i.qty; }).join(',');
+    return base + '&topic=' + encodeURIComponent('Cart: ' + items) +
+      '&cart=' + encodeURIComponent(slugs) +
+      '&message=' + encodeURIComponent('I would like practitioner guidance on these cart items before purchasing:\n' + items);
+  }
+
+  function updateCheckoutLinks() {
+    document.querySelectorAll('.cart-checkout-btn').forEach(function (a) {
+      a.href = buildContactUrl();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    renderGrid('all');
+    updateCartUI();
+    updateCheckoutLinks();
+
+    document.querySelectorAll('[data-filter]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-filter]').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        renderGrid(btn.getAttribute('data-filter'));
+      });
+    });
+
+    document.querySelectorAll('[data-cart-toggle]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var drawer = document.querySelector('[data-cart-drawer]');
+        if (drawer && drawer.classList.contains('active')) closeCart();
+        else openCart();
+      });
+    });
+
+    var overlay = document.querySelector('[data-cart-overlay]');
+    if (overlay) overlay.addEventListener('click', closeCart);
+
+    var clearBtn = document.querySelector('[data-cart-clear]');
+    if (clearBtn) clearBtn.addEventListener('click', clearCart);
+  });
+
+  window.HerbivedaCart = {
+    add: addToCart,
+    remove: removeFromCart,
+    clear: clearCart,
+    get: getCart,
+    updateUI: updateCartUI,
+    open: openCart,
+    close: closeCart,
+    buildContactUrl: buildContactUrl
+  };
+})();
+ + p.price.toFixed(2) : 'Price on enquiry';
+      var actionMarkup = hasPrice
+        ? '<button type="button" class="btn btn-primary" data-add="' + p.slug + '">Add</button>'
+        : '<a href="./contact.html?interest=products&source=shop-product&topic=' + encodeURIComponent(p.name) + '" class="btn btn-primary">Enquire</a>';
+
       return '<article class="product-card" data-slug="' + p.slug + '">' +
         '<a href="./product-details.html?product=' + p.slug + '" class="product-card-img">' +
         '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy" width="400" height="400"></a>' +
@@ -129,10 +225,10 @@
         '<p class="product-card-botanical">' + p.botanical + '</p>' +
         '<p class="product-card-text">' + p.short + '</p>' +
         '<div class="product-card-footer">' +
-        '<span class="product-card-price">$' + p.price.toFixed(2) + '</span>' +
+        '<span class="product-card-price">' + priceMarkup + '</span>' +
         '<div class="product-card-actions">' +
         '<a href="./product-details.html?product=' + p.slug + '" class="btn btn-outline">Details</a>' +
-        '<button type="button" class="btn btn-primary" data-add="' + p.slug + '">Add</button>' +
+        actionMarkup +
         '</div></div></div></article>';
     }).join('');
 
