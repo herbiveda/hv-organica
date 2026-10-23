@@ -42,6 +42,7 @@ window.HERBIVEDA_PRODUCTS = {
   triphala: {
     slug: "triphala",
     name: "Triphala",
+    categories: ["polyherbal-formulations", "ayurvedic-products"],
     botanical: "Emblica + Terminalia blend",
     short: "Signature polyherb with strong documentation for gut health and microbiome support.",
     price: 22.00,
@@ -90,6 +91,7 @@ window.HERBIVEDA_PRODUCTS = {
   trikatu: {
     slug: "trikatu",
     name: "Trikatu",
+    categories: ["polyherbal-formulations", "ayurvedic-products"],
     botanical: "Three-spice formula",
     short: "Classical three-spice formula to kindle digestion and support nutrient absorption.",
     price: 18.00,
@@ -146,6 +148,105 @@ window.HERBIVEDA_PRODUCTS = {
     evidence: ["Throat & gut lining", "Classical harmonizer", "Demulcent action"],
     forms: ["Root Powder", "Extract"],
     description: "Yashtimadhu (licorice) is the classical soothing and harmonizing herb used both alone and in many polyherbal formulas. Demulcent properties support throat and gut lining."
+  
+  ladakh-seabuckthorn: {
+    slug: "ladakh-seabuckthorn",
+    name: "Ladakh Sea Buckthorn",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Hippophae rhamnoides L.",
+    short: "A Himalayan berry known for its vivid orange fruit and tart, distinctive flavour.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/seabuckthorn.svg",
+    badge: "Himalayan Botanical",
+    evidence: ["Known as Leh berry", "Orange edible berries", "Used in food and personal-care products"],
+    forms: [],
+    description: "Sea buckthorn is a hardy shrub of Himalayan cold-desert regions, including Ladakh. Its tart orange berries are used in foods, beverages, oils and personal-care products. Product origin, plant part, processing method and composition should be checked against the current supplier and batch documentation before making specific quality or health claims."
+  },
+  hind: {
+    slug: "hind",
+    name: "Hind",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Botanical identification pending",
+    short: "The supplied name needs confirmation before a reliable plant profile can be assigned.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/hind-botanical.svg",
+    badge: "Identity to Confirm",
+    evidence: ["Common name is ambiguous", "Species and plant part require confirmation"],
+    forms: [],
+    description: "The name Hind alone could not be matched confidently to one plant species in the botanical sources reviewed. To prevent plant misidentification, confirm the intended English common name, accepted botanical name and plant part before offering this item for sale or describing its traditional uses."
+  },
+  kashmir-saffron: {
+    slug: "kashmir-saffron",
+    name: "Kashmir Saffron",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Crocus sativus L.",
+    short: "Aromatic red stigmas prized as a culinary spice and a traditional ingredient.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/kashmir-saffron.svg",
+    badge: "Regional Spice",
+    evidence: ["Saffron flower stigmas", "Culinary and traditional use", "Origin documentation matters"],
+    forms: [],
+    description: "Saffron is obtained from the red stigmas of Crocus sativus L. and is valued for its aroma, colour and culinary use. Kashmir Saffron is a registered geographical indication in India, so claims of Kashmir origin should be supported by traceable, GI-compliant sourcing and relevant supplier documentation."
+  },
+  tulsi: {
+    slug: "tulsi",
+    name: "Tulsi (Holy Basil)",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Ocimum tenuiflorum L.",
+    short: "An aromatic leafy herb deeply rooted in Indian household, culinary and Ayurvedic traditions.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/tulsi.svg",
+    badge: "Traditional Botanical",
+    evidence: ["Also called Holy Basil", "Leaves used in traditional preparations", "Botanical name verified"],
+    forms: [],
+    description: "Tulsi, also called Holy Basil, is generally identified botanically as Ocimum tenuiflorum L. (also historically referenced as Ocimum sanctum). The aromatic leaves are used in household, culinary and traditional herbal preparations. Product form, plant part and source should be confirmed from the batch label."
+  },
+  ustukhuddus: {
+    slug: "ustukhuddus",
+    name: "Lavender (Ustukhuddus)",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Lavandula stoechas L.",
+    short: "A fragrant lavender species known in medicinal plant references by the name Ustukhuddus.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/ustukhuddus.svg",
+    badge: "Aromatic Botanical",
+    evidence: ["Ustukhuddus name matched to Lavandula stoechas", "Distinct from English lavender", "Aromatic flowering herb"],
+    forms: [],
+    description: "Ustukhuddus is recorded in Kew's Medicinal Plant Names Services as a non-scientific name for Lavandula stoechas L., commonly associated with Spanish lavender. It should not automatically be treated as interchangeable with English lavender (Lavandula angustifolia). Confirm species and plant part on the supplier label."
+  },
+  kava-root: {
+    slug: "kava-root",
+    name: "Kava Root",
+    categories: ["herbs-botanicals"],
+    botanical: "Piper methysticum G.Forst.",
+    short: "A South Pacific traditional botanical; safety review is essential because kava products have been linked to liver injury.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/kava-root.svg",
+    badge: "Safety Review Required",
+    evidence: ["Native to the South Pacific", "Some human research has examined anxiety", "Rare but serious liver injury has been reported"],
+    forms: [],
+    safetyNote: "Safety warning: kava products have been linked to rare cases of serious or fatal liver injury. Do not combine with alcohol or sedatives. People taking medicines, and anyone pregnant or breastfeeding, should avoid use unless advised by a qualified healthcare professional. Regulatory requirements vary by market.",
+    description: "Kava (Piper methysticum) is a pepper-family plant native to the South Pacific and traditionally used in ceremonial beverages. Human research has examined some anxiety-related uses, but evidence is limited for other conditions. Because kava products have been linked to rare, sometimes severe liver injury, this listing should be treated as informational until safety, sourcing and local regulatory requirements have been reviewed."
+  },
+  jim-corbett-wild-honey: {
+    slug: "jim-corbett-wild-honey",
+    name: "Jim Corbett Wild Honey",
+    categories: ["natural-foods"],
+    botanical: "Natural honey product",
+    short: "A honey selection presented under the Jim Corbett Wild Honey name; floral source and origin should be verified by batch.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/jim-corbett-honey.svg",
+    badge: "Natural Food",
+    evidence: ["Food product", "Verify harvest region and floral source", "Check batch and quality information"],
+    forms: [],
+    description: "A honey product presented under the Jim Corbett Wild Honey name. Honey can be enjoyed as a food sweetener in everyday meals and drinks. Confirm harvest area, floral source, processing, purity testing and traceability against supplier and batch documentation before making origin or quality claims. Do not give honey to children younger than 12 months."
   }
 };
 
