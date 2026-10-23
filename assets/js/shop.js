@@ -144,13 +144,42 @@
         filter === 'natural-foods' ? 'Natural Foods & Honey' : 'this category';
       grid.innerHTML = '<div class="shop-empty-state"><h3>More coming soon</h3>' +
         '<p>There are no items listed in ' + requestedCategory + ' yet. Contact us to ask about upcoming availability.</p>' +
-        '<a href="./contact.html?interest=products&source=shop-category&topic=' + encodeURIComponent(requestedCategory) + '" class="btn btn-outline">Enquire about this category</a></div>';
+        '<a href="./contact.html?interest=products&amp;source=shop-category&amp;topic=' + encodeURIComponent(requestedCategory) + '" class="btn btn-outline">Enquire about this category</a></div>';
       return;
     }
 
     grid.innerHTML = list.map(function (p) {
       var hasPrice = typeof p.price === 'number' && Number.isFinite(p.price) && p.purchaseable !== false;
-      var priceMarkup = hasPrice ? '
+      var priceMarkup = hasPrice ? ('$' + p.price.toFixed(2)) : 'Price on enquiry';
+      var actionMarkup;
+      if (hasPrice) {
+        actionMarkup = '<button type="button" class="btn btn-primary" data-add="' + p.slug + '">Add</button>';
+      } else {
+        actionMarkup = '<a href="./contact.html?interest=products&amp;source=shop-product&amp;topic=' + encodeURIComponent(p.name) + '" class="btn btn-primary">Enquire</a>';
+      }
+
+      return '<article class="product-card" data-slug="' + p.slug + '">' +
+        '<a href="./product-details.html?product=' + p.slug + '" class="product-card-img">' +
+        '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy" width="400" height="400"></a>' +
+        '<div class="product-card-body">' +
+        '<span class="product-card-badge">' + p.badge + '</span>' +
+        '<h2 class="product-card-title"><a href="./product-details.html?product=' + p.slug + '">' + p.name + '</a></h2>' +
+        '<p class="product-card-botanical">' + p.botanical + '</p>' +
+        '<p class="product-card-text">' + p.short + '</p>' +
+        '<div class="product-card-footer">' +
+        '<span class="product-card-price">' + priceMarkup + '</span>' +
+        '<div class="product-card-actions">' +
+        '<a href="./product-details.html?product=' + p.slug + '" class="btn btn-outline">Details</a>' +
+        actionMarkup +
+        '</div></div></div></article>';
+    }).join('');
+
+    grid.querySelectorAll('[data-add]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        addToCart(btn.getAttribute('data-add'), 1);
+      });
+    });
   }
 
   function buildContactUrl() {
