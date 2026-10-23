@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustration of orange sea buckthorn berries and leaves">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#edf5ef"/></linearGradient></defs>
+  <rect width="400" height="400" rx="26" fill="url(#bg)"/><circle cx="200" cy="210" r="132" fill="#dce8db" opacity=".65"/>
+  <path d="M58 300 Q132 236 176 184 T322 88 M144 228 L105 156 M190 187 L248 235 M232 151 L212 84 M260 130 L322 166 M127 251 L207 287" fill="none" stroke="#755139" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#718a62" stroke="#536f4c" stroke-width="2"><path d="M112 166 Q66 110 45 152 Q82 193 112 166Z"/><path d="M139 212 Q180 152 207 178 Q188 222 139 212Z"/><path d="M213 155 Q243 94 274 118 Q259 160 213 155Z"/><path d="M251 136 Q297 90 327 116 Q300 154 251 136Z"/><path d="M188 265 Q148 301 119 278 Q147 247 188 265Z"/><path d="M272 223 Q311 185 338 211 Q314 243 272 223Z"/></g>
+  <g fill="#e89a27" stroke="#c87518" stroke-width="3"><circle cx="147" cy="199" r="17"/><circle cx="171" cy="218" r="16"/><circle cx="191" cy="237" r="17"/><circle cx="208" cy="212" r="16"/><circle cx="232" cy="193" r="17"/><circle cx="252" cy="175" r="16"/><circle cx="225" cy="244" r="15"/><circle cx="261" cy="219" r="16"/><circle cx="284" cy="195" r="15"/><circle cx="183" cy="175" r="14"/><circle cx="218" cy="166" r="15"/></g>
+  <g fill="#ffe0a3" opacity=".85"><circle cx="141" cy="194" r="4"/><circle cx="165" cy="213" r="4"/><circle cx="202" cy="207" r="4"/><circle cx="246" cy="170" r="4"/><circle cx="278" cy="191" r="4"/></g>
+  <path d="M65 340 H335" stroke="#a9c4ac" stroke-width="2" stroke-linecap="round"/>
+</svg>
