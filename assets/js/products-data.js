@@ -148,10 +148,10 @@ window.HERBIVEDA_PRODUCTS = {
     evidence: ["Throat & gut lining", "Classical harmonizer", "Demulcent action"],
     forms: ["Root Powder", "Extract"],
     description: "Yashtimadhu (licorice) is the classical soothing and harmonizing herb used both alone and in many polyherbal formulas. Demulcent properties support throat and gut lining."
-  
-  ladakh-seabuckthorn: {
+  },
+  "ladakh-seabuckthorn": {
     slug: "ladakh-seabuckthorn",
-    name: "Ladakh Sea Buckthorn",
+    name: "Ladakh Seabuckthorn",
     categories: ["herbs-botanicals", "ayurvedic-products"],
     botanical: "Hippophae rhamnoides L.",
     short: "A Himalayan berry known for its vivid orange fruit and tart, distinctive flavour.",
@@ -177,7 +177,7 @@ window.HERBIVEDA_PRODUCTS = {
     forms: [],
     description: "The name Hind alone could not be matched confidently to one plant species in the botanical sources reviewed. To prevent plant misidentification, confirm the intended English common name, accepted botanical name and plant part before offering this item for sale or describing its traditional uses."
   },
-  kashmir-saffron: {
+  "kashmir-saffron": {
     slug: "kashmir-saffron",
     name: "Kashmir Saffron",
     categories: ["herbs-botanicals", "ayurvedic-products"],
@@ -219,7 +219,7 @@ window.HERBIVEDA_PRODUCTS = {
     forms: [],
     description: "Ustukhuddus is recorded in Kew's Medicinal Plant Names Services as a non-scientific name for Lavandula stoechas L., commonly associated with Spanish lavender. It should not automatically be treated as interchangeable with English lavender (Lavandula angustifolia). Confirm species and plant part on the supplier label."
   },
-  kava-root: {
+  "kava-root": {
     slug: "kava-root",
     name: "Kava Root",
     categories: ["herbs-botanicals"],
@@ -234,7 +234,7 @@ window.HERBIVEDA_PRODUCTS = {
     safetyNote: "Safety warning: kava products have been linked to rare cases of serious or fatal liver injury. Do not combine with alcohol or sedatives. People taking medicines, and anyone pregnant or breastfeeding, should avoid use unless advised by a qualified healthcare professional. Regulatory requirements vary by market.",
     description: "Kava (Piper methysticum) is a pepper-family plant native to the South Pacific and traditionally used in ceremonial beverages. Human research has examined some anxiety-related uses, but evidence is limited for other conditions. Because kava products have been linked to rare, sometimes severe liver injury, this listing should be treated as informational until safety, sourcing and local regulatory requirements have been reviewed."
   },
-  jim-corbett-wild-honey: {
+  "jim-corbett-wild-honey": {
     slug: "jim-corbett-wild-honey",
     name: "Jim Corbett Wild Honey",
     categories: ["natural-foods"],
