@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustration of kava root rhizomes">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fbf5eb"/><stop offset="1" stop-color="#edf3e9"/></linearGradient><linearGradient id="root" x2="1" y2="1"><stop stop-color="#d3b58c"/><stop offset="1" stop-color="#96714a"/></linearGradient></defs>
+  <rect width="400" height="400" rx="26" fill="url(#bg)"/><circle cx="200" cy="210" r="132" fill="#e8e0cf" opacity=".7"/>
+  <path d="M88 276 Q129 214 159 187 Q187 159 213 174 Q239 188 226 218 Q213 247 192 270 Q173 291 184 321" fill="none" stroke="#8d6a45" stroke-width="24" stroke-linecap="round"/>
+  <path d="M88 276 Q129 214 159 187 Q187 159 213 174 Q239 188 226 218 Q213 247 192 270 Q173 291 184 321" fill="none" stroke="url(#root)" stroke-width="17" stroke-linecap="round"/>
+  <g fill="none" stroke="#a78156" stroke-width="15" stroke-linecap="round"><path d="M153 191 Q133 145 103 118 Q85 102 77 82"/><path d="M170 179 Q176 135 206 103 Q220 86 221 69"/><path d="M202 183 Q251 155 281 126 Q299 110 312 89"/><path d="M213 222 Q266 221 293 244 Q313 261 333 259"/><path d="M194 270 Q151 294 127 324 Q117 338 111 348"/></g>
+  <g fill="none" stroke="#d7bd98" stroke-width="4" stroke-linecap="round"><path d="M145 194 Q124 152 100 131"/><path d="M179 177 Q190 137 213 111"/><path d="M220 186 Q263 158 289 133"/><path d="M222 225 Q267 228 295 247"/><path d="M190 277 Q153 302 134 325"/></g>
+  <path d="M65 340 H335" stroke="#c8b99f" stroke-width="2" stroke-linecap="round"/>
+</svg>
