@@ -113,6 +113,7 @@
               <div class="product-highlights" style="margin:24px 0;padding:16px 20px;background:#f3f7f3;border-radius:12px;border-left:4px solid var(--ds-emerald,#0f9d58);">
                 <p style="margin:0 0 8px;font-weight:600;color:var(--russian-violet);">Evidence highlights</p>
                 <ul data-pd-evidence style="margin:0;padding-left:18px;color:var(--sonic-silver);line-height:1.7;font-size:1.45rem;"></ul>
+                <p data-pd-safety style="display:none;margin-top:14px;padding:12px 14px;border-radius:8px;background:#fff4e5;border-left:4px solid #b86b17;color:#673d12;font-size:1.4rem;line-height:1.65;"></p>
               </div>
 
               <div class="product-weight-wrapper">
@@ -122,6 +123,7 @@
 
               <div class="product-qty" style="margin-top:20px;gap:12px;">
                 <button type="button" class="btn btn-primary product-qty-btn" data-pd-add>Add to Cart</button>
+                <a href="./contact.html?interest=products" class="btn btn-primary" data-pd-enquire style="display:none;">Enquire about this product</a>
                 <a href="#download-herb-guide" download="Herbiveda-Herb-Guide.pdf" class="btn" style="border:1.5px solid var(--russian-violet);color:var(--russian-violet);background:transparent;" data-pd-guide>
                   Get Herb Guide
                 </a>
@@ -223,7 +225,8 @@
     set('[data-pd-badge]', p.badge);
     set('[data-pd-short]', p.short);
     set('[data-pd-desc]', p.description);
-    set('[data-pd-price]', '$' + p.price.toFixed(2));
+    var hasPrice = typeof p.price === 'number' && Number.isFinite(p.price) && p.purchaseable !== false;
+    set('[data-pd-price]', hasPrice ? '$' + p.price.toFixed(2) : 'Price on enquiry');
 
     var gallery = [p.image];
     if (p.images && p.images.length) {
@@ -269,21 +272,42 @@
       return '<li>' + e + '</li>';
     }).join(''));
 
+    var safetyEl = document.querySelector('[data-pd-safety]');
+    if (safetyEl && p.safetyNote) {
+      safetyEl.textContent = p.safetyNote;
+      safetyEl.style.display = 'block';
+    }
+
     var formsEl = document.querySelector('[data-pd-forms]');
-    if (formsEl && p.forms) {
+    var formsWrapper = document.querySelector('.product-weight-wrapper');
+    if (formsEl && Array.isArray(p.forms) && p.forms.length) {
       formsEl.innerHTML = p.forms.map(function (f, i) {
         var id = 'form-' + i;
         return '<li class="product-weight-item">' +
           '<input type="radio" name="form" id="' + id + '" class="product-weight-radio"' + (i === 0 ? ' checked' : '') + '>' +
           '<label for="' + id + '" class="product-weight-label">' + f + '</label></li>';
       }).join('');
+      if (formsWrapper) formsWrapper.style.display = '';
+    } else if (formsWrapper) {
+      formsWrapper.style.display = 'none';
     }
 
     var addBtn = document.querySelector('[data-pd-add]');
-    if (addBtn) {
-      addBtn.addEventListener('click', function () {
-        if (window.HerbivedaCart) window.HerbivedaCart.add(p.slug, 1);
-      });
+    var enquireBtn = document.querySelector('[data-pd-enquire]');
+    if (!hasPrice) {
+      if (addBtn) addBtn.style.display = 'none';
+      if (enquireBtn) {
+        enquireBtn.href = './contact.html?interest=products&source=product-detail&topic=' + encodeURIComponent(p.name);
+        enquireBtn.style.display = 'inline-flex';
+      }
+    } else {
+      if (addBtn) {
+        addBtn.style.display = '';
+        addBtn.addEventListener('click', function () {
+          if (window.HerbivedaCart) window.HerbivedaCart.add(p.slug, 1);
+        });
+      }
+      if (enquireBtn) enquireBtn.style.display = 'none';
     }
 
     var guide = document.querySelector('[data-pd-guide]');
