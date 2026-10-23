@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustration of tulsi holy basil leaves and flowering stem">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fbfaf2"/><stop offset="1" stop-color="#eaf4ed"/></linearGradient></defs>
+  <rect width="400" height="400" rx="26" fill="url(#bg)"/><circle cx="200" cy="210" r="133" fill="#dce9dc" opacity=".65"/>
+  <path d="M195 325 Q208 260 194 201 T213 88 M198 255 L129 220 M198 250 L267 210 M197 208 L130 165 M201 172 L266 142 M207 132 L167 104" fill="none" stroke="#4f7d4d" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#5b9660" stroke="#42734a" stroke-width="2.5">
+    <path d="M129 220 Q65 221 70 177 Q111 173 129 220Z"/><path d="M129 220 Q91 161 119 145 Q146 175 129 220Z"/>
+    <path d="M198 250 Q237 185 277 193 Q270 232 198 250Z"/><path d="M198 250 Q210 188 245 179 Q248 218 198 250Z"/>
+    <path d="M130 165 Q78 151 85 111 Q119 113 130 165Z"/><path d="M130 165 Q125 113 161 105 Q177 139 130 165Z"/>
+    <path d="M201 172 Q243 112 278 122 Q270 161 201 172Z"/><path d="M201 172 Q209 128 243 112 Q254 148 201 172Z"/>
+    <path d="M213 108 Q183 71 202 47 Q229 70 213 108Z"/>
+  </g>
+  <g fill="#9277b2"><circle cx="213" cy="91" r="6"/><circle cx="224" cy="77" r="5"/><circle cx="209" cy="70" r="5"/><circle cx="226" cy="60" r="5"/><circle cx="213" cy="52" r="4"/></g>
+  <path d="M65 340 H335" stroke="#a9c9ae" stroke-width="2" stroke-linecap="round"/>
+</svg>
