@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Neutral botanical illustration for Hind, plant identity to be confirmed">
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#fbfaf3"/><stop offset="1" stop-color="#eaf3ec"/></linearGradient></defs>
+  <rect width="400" height="400" rx="26" fill="url(#bg)"/><circle cx="200" cy="207" r="132" fill="#d9e7d8" opacity=".7"/>
+  <path d="M105 315 Q174 259 196 196 Q208 147 239 95" stroke="#557c55" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <g fill="#71996c" stroke="#547b53" stroke-width="2.5">
+    <path d="M155 279 Q82 262 80 210 Q129 208 155 279Z"/><path d="M172 251 Q229 200 276 222 Q249 267 172 251Z"/>
+    <path d="M188 208 Q120 172 128 129 Q178 148 188 208Z"/><path d="M208 174 Q270 129 310 148 Q284 192 208 174Z"/>
+    <path d="M226 135 Q193 88 215 60 Q249 95 226 135Z"/>
+  </g>
+  <path d="M82 338 Q200 319 318 338" fill="none" stroke="#b1cbb2" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="200" cy="207" r="146" fill="none" stroke="#c5d8c5" stroke-width="2"/>
+</svg>
