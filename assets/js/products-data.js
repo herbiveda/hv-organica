@@ -255,6 +255,53 @@ window.HERBIVEDA_PRODUCTS = {
     forms: [],
     description: "A honey product presented under the Jim Corbett Wild Honey name. Honey can be enjoyed as a food sweetener in everyday meals and drinks. Confirm harvest area, floral source, processing, purity testing and traceability against supplier and batch documentation before making origin or quality claims. Do not give honey to children younger than 12 months."
   }
+,
+  "milk-thistle": {
+    slug: "milk-thistle",
+    name: "Milk Thistle",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Silybum marianum (L.) Gaertn.",
+    short: "A flowering plant whose seeds contain silymarin, a group of compounds studied for liver-related effects.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/milk-thistle.svg",
+    images: ["./assets/images/milk-thistle.svg"],
+    badge: "Botanical Information",
+    evidence: ["Seed-derived silymarin is the main research focus", "Evidence varies by condition and preparation", "Discuss use with a qualified clinician"],
+    forms: [],
+    description: "Milk thistle (Silybum marianum) is a flowering plant whose seeds contain silymarin, a mixture of compounds studied in liver-related research. Evidence for clinical benefits is mixed and depends on the condition and preparation. It should not replace medical assessment or prescribed treatment; people with liver disease, allergies to related plants, or regular medicines should seek professional advice before use."
+  },
+  sarpgandha: {
+    slug: "sarpgandha",
+    name: "Sarpgandha (Indian Snakeroot)",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Rauvolfia serpentina (L.) Benth. ex Kurz",
+    short: "A potent medicinal plant containing reserpine-related alkaloids; use requires medical supervision.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/sarpgandha.svg",
+    images: ["./assets/images/sarpgandha.svg"],
+    badge: "Medical Supervision Required",
+    evidence: ["Contains pharmacologically active alkaloids", "Can lower blood pressure and affect heart rate and mood", "Not suitable for unsupervised self-medication"],
+    forms: [],
+    safetyNote: "Important safety warning: Sarpgandha can cause significant low blood pressure, slow heart rate, sedation, and psychiatric side effects, and it can interact with medicines. Do not self-prescribe or use it to replace prescribed blood-pressure treatment. Use only under qualified medical supervision.",
+    description: "Sarpgandha (Rauvolfia serpentina), also called Indian snakeroot, is a potent medicinal plant with alkaloids including reserpine-related compounds. Because it can strongly affect blood pressure, heart rate, and mood, it must not be self-prescribed. Product identity, plant part, legal requirements, and clinical oversight must be verified before any sale or use."
+  },
+  haritaki: {
+    slug: "haritaki",
+    name: "Haritaki",
+    categories: ["herbs-botanicals", "ayurvedic-products"],
+    botanical: "Terminalia chebula Retz.",
+    short: "A fruit used in classical Ayurveda, including as one of the three ingredients in Triphala.",
+    price: null,
+    purchaseable: false,
+    image: "./assets/images/haritaki.svg",
+    images: ["./assets/images/haritaki.svg"],
+    badge: "Traditional Botanical",
+    evidence: ["Classical Ayurvedic fruit", "One of Triphala's three ingredients", "Confirm product form and batch details"],
+    forms: [],
+    description: "Haritaki (Terminalia chebula) is a fruit used in classical Ayurvedic preparations and is one of the three fruits in Triphala. Traditional use should not be treated as proof of effectiveness for a particular condition. Confirm the plant part, preparation, sourcing, quality documentation, and suitability with a qualified healthcare professional, especially when taking medicines or managing a health condition."
+  }
 };
 
 window.HERBIVEDA_PRODUCT_LIST = Object.values(window.HERBIVEDA_PRODUCTS);
