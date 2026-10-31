@@ -181,11 +181,41 @@
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
   .service { padding-block: 22px !important; }
-  .service-list { gap: 8px !important; }
-  .service-item { min-height: 48px; gap: 9px; }
-  .item-icon { padding: 10px !important; }
-  .item-icon img { width: 26px; height: 26px; }
-  .item-title { font-size: 1.35rem !important; }
+  /* Service bar: single compact horizontal row (same approach as .partner-list) */
+  .service-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: clamp(6px, 2vw, 12px) !important;
+    width: 100% !important;
+  }
+  .service-item {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 6px !important;
+    min-height: 0 !important;
+  }
+  .service-item .item-icon {
+    padding: 8px !important;
+    margin: 0 auto;
+  }
+  .service-item .item-icon img {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .service-item .item-title {
+    font-size: clamp(1.05rem, 3.2vw, 1.25rem) !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+  }
   .section-title-wrapper { margin-bottom: 18px !important; }
   .section-title,.h2.section-title { font-size: clamp(2rem, 7.5vw, 2.7rem) !important; line-height: 1.2 !important; }
   .section-subtitle { font-size: 1.2rem !important; margin-bottom: 7px !important; }
@@ -285,6 +315,9 @@
   .mobile-action-bar .btn { font-size: 1.25rem !important; }
   .footer-top { padding-block: 24px 16px !important; }
   .top-bar p { font-size: 1.05rem; }
+  .service-item .item-icon { padding: 7px !important; }
+  .service-item .item-icon img { width: 20px !important; height: 20px !important; }
+  .service-item .item-title { font-size: 1rem !important; }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
