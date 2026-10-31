@@ -181,6 +181,45 @@
   .hero-btn-group { display: grid !important; gap: 10px !important; }
   .hero-btn-group .btn { width: 100% !important; min-width: 0 !important; }
   .service { padding-block: 22px !important; }
+  .service .container { width: 100%; }
+  .service-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: clamp(6px, 2vw, 12px) !important;
+    width: 100% !important;
+  }
+  .service-item {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 6px !important;
+    padding-inline: 2px !important;
+  }
+  .service-item .item-icon {
+    flex: 0 0 auto;
+    padding: 8px !important;
+    margin: 0 auto;
+  }
+  .service-item .item-icon img {
+    display: block;
+    width: 22px !important;
+    height: 22px !important;
+    object-fit: contain;
+  }
+  .service-item .item-title {
+    font-size: clamp(1rem, 3.2vw, 1.25rem) !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    overflow-wrap: anywhere;
+  }
   /* Service bar: single compact horizontal row (same approach as .partner-list) */
   .service-list {
     display: flex !important;
