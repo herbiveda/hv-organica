@@ -319,16 +319,15 @@
           <p class="section-text" style="margin-block-start:12px;">Prefer email only for now? <a href="./contact.html?interest=retreats&topic=Panchakarma%20waitlist&source=retreat-lp-waitlist" style="color:var(--btn-primary-bg);font-weight:600;">Join the waitlist</a>.</p>
         </div>
         <div class="rlp-form-card">
-          <form id="retreat-apply-form" action="https://formsubmit.co/ecom.herbiveda@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Herbiveda Retreat Application — 14-Day Panchakarma">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://herbiveda.com/thanks.html">
-            <input type="hidden" name="_url" value="https://herbiveda.com/retreat.html">
-            <input type="hidden" name="_autoresponse" value="Thank you for applying to a Herbiveda retreat. We have received your details and usually reply within 24–48 hours with next steps or a short clarification.">
-            <input type="hidden" name="interest" value="Retreats">
-            <input type="hidden" name="specific_interest" value="14-Day Deep Detox Panchakarma">
-            <input type="hidden" name="source" value="retreat-lp">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<form id="retreat-apply-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="b3b4fbf7-d6be-4229-8af2-c23c067000a9">
+  <input type="hidden" name="subject" value="Herbiveda Retreat Application — 14-Day Panchakarma">
+  <input type="hidden" name="from_name" value="Herbiveda Retreat">
+  <input type="hidden" name="redirect" value="https://herbiveda.com/thanks.html">
+  <input type="hidden" name="interest" value="Retreats">
+  <input type="hidden" name="specific_interest" value="14-Day Deep Detox Panchakarma">
+  <input type="hidden" name="source" value="retreat-lp">
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
             <div class="rlp-field">
               <label for="rlp-name">Full name <span>*</span></label>
