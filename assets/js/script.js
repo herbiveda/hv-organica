@@ -192,3 +192,32 @@ if (document.readyState === 'loading') {
 } else {
   initializeHomepageEnhancements();
 }
+
+
+/** WhatsApp click-to-chat support */
+(function initializeWhatsAppChat() {
+  var link = document.querySelector('[data-whatsapp-chat]');
+  if (!link) return;
+  var path = window.location.pathname.toLowerCase();
+  var params = new URLSearchParams(window.location.search);
+  var topic = params.get('topic') || params.get('product') || '';
+  var routes = [
+    [/retreat/, 'Hi Herbiveda, I am interested in your Panchakarma retreat. Please share the programme details, dates and availability.'],
+    [/trade|wholesale|partner/, 'Hi Herbiveda, I am interested in wholesale or partnership enquiries. Please share your pricing and next steps.'],
+    [/product-details/, 'Hi Herbiveda, I have a question about ' + (topic || 'an Ayurvedic product') + '. Please share more details.'],
+    [/shop/, 'Hi Herbiveda, I have a question about your Ayurvedic herbs and products.'],
+    [/contact/, 'Hi Herbiveda, I would like to enquire about your courses, products or retreats.']
+  ];
+  var message = 'Hi Herbiveda, I have a question about your Ayurveda offerings.';
+  for (var i = 0; i < routes.length; i += 1) {
+    if (routes[i][0].test(path)) { message = routes[i][1]; break; }
+  }
+  if (topic && !/product-details/.test(path)) message += ' My topic is: ' + topic + '.';
+  var destination = 'https://wa.me/919076757022?text=' + encodeURIComponent(message);
+  link.href = destination;
+  link.addEventListener('click', function () {
+    var data = { event_category: 'engagement', event_label: path || '/', page_path: path || '/', link_url: destination, utm_source: params.get('utm_source') || 'website', utm_medium: params.get('utm_medium') || 'whatsapp', utm_campaign: params.get('utm_campaign') || '' };
+    if (typeof window.gtag === 'function') window.gtag('event', 'whatsapp_click', data);
+    else if (window.dataLayer && typeof window.dataLayer.push === 'function') window.dataLayer.push(Object.assign({ event: 'whatsapp_click' }, data));
+  });
+})();
