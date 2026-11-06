@@ -372,3 +372,38 @@ body {
   .container { max-width: 1200px; }
   .nav-wrapper .container { max-width: 1200px; }
 }
+
+
+/* Floating Herbiveda WhatsApp support button */
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  box-shadow: 0 8px 24px hsl(0 0% 0% / 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wa-float ion-icon { display: block; font-size: 29px; }
+.wa-float:hover,
+.wa-float:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 10px 28px hsl(0 0% 0% / 0.22);
+  color: #fff;
+}
+.wa-float:focus-visible { outline: 3px solid #0f6b3a; outline-offset: 3px; }
+@media (max-width: 767px) {
+  .wa-float { right: 16px; bottom: calc(90px + env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-float { transition: none; }
+  .wa-float:hover { transform: none; }
+}
