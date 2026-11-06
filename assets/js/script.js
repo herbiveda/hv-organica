@@ -213,7 +213,7 @@ if (document.readyState === 'loading') {
     if (routes[i][0].test(path)) { message = routes[i][1]; break; }
   }
   if (topic && !/product-details/.test(path)) message += ' My topic is: ' + topic + '.';
-  var destination = 'https://wa.me/919076757022?text=' + encodeURIComponent(message);
+  var destination = 'https://wa.me/918076757022?text=' + encodeURIComponent(message);
   link.href = destination;
   link.addEventListener('click', function () {
     var data = { event_category: 'engagement', event_label: path || '/', page_path: path || '/', link_url: destination, utm_source: params.get('utm_source') || 'website', utm_medium: params.get('utm_medium') || 'whatsapp', utm_campaign: params.get('utm_campaign') || '' };
