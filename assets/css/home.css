@@ -664,3 +664,57 @@
   .partner-item { min-width: 16.66%; }
 
 }
+
+/* Homepage refinements: mobile service layout and testimonial card borders */
+.service-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.testi-card {
+  border: 1px solid var(--emerald);
+  border-radius: var(--radius-4);
+  height: 100%;
+  overflow: visible;
+}
+
+.testi-list {
+  align-items: stretch;
+}
+
+@media (max-width: 767px) {
+  .service-list {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 18px 14px;
+  }
+
+  .service-item {
+    min-width: 0;
+    justify-content: flex-start;
+  }
+
+  .service-item .item-title {
+    font-size: clamp(1.35rem, 4vw, 1.7rem);
+    line-height: 1.35;
+  }
+
+  .service-item .item-icon {
+    flex: 0 0 auto;
+    padding: 14px;
+  }
+
+  .testi-item {
+    min-width: min(88vw, 360px);
+    margin-inline: 8px;
+  }
+
+  .testi-card {
+    min-height: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .testi-card .card-text {
+    white-space: normal;
+    overflow: visible;
+    display: block;
+  }
+}
