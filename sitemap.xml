@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://herbiveda.com/</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/shop</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/retreat/</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/contact</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/trade</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/privacy</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/terms</loc>
-  </url>
-  <url>
-    <loc>https://herbiveda.com/refund-cancellation</loc>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://herbiveda.com/sitemap-pages.xml</loc></sitemap>
+  <sitemap><loc>https://herbiveda.com/sitemap-products.xml</loc></sitemap>
+</sitemapindex>
