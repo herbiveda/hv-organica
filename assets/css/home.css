@@ -719,27 +719,28 @@
   }
 }
 
-/* Header contact details in the top bar */
+/* Header contact details in the top bar
+   Trade message stays centered; email/phone sit on the left without shifting it. */
 .top-bar-content {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px 24px;
   flex-wrap: wrap;
+  min-height: 2.6em;
 }
 
 .top-bar-contact {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   color: inherit;
   font-size: inherit;
   font-weight: inherit;
   text-align: left;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  line-height: 1.35;
 }
 
 .top-bar-contact a {
@@ -754,6 +755,22 @@
 
 .top-bar-content > p {
   margin: 0;
+  text-align: center;
+  flex: 0 1 auto;
+  max-width: min(100%, 52rem);
+}
+
+@media (min-width: 768px) {
+  .top-bar-contact {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .top-bar-content > p {
+    margin-inline: auto;
+  }
 }
 
 /* Legal footer column */
@@ -763,11 +780,15 @@
 
 @media (max-width: 767px) {
   .top-bar-content {
+    flex-direction: column;
     justify-content: center;
     text-align: center;
+    gap: 6px;
   }
 
   .top-bar-contact {
+    position: static;
+    transform: none;
     align-items: center;
     text-align: center;
   }
