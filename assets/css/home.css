@@ -733,8 +733,13 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  color: var(--white);
-  font-size: var(--fs-7);
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: left;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
 
 .top-bar-contact a {
@@ -763,6 +768,20 @@
   }
 
   .top-bar-contact {
-    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
+}
+
+
+/* Keep the complete six-column footer aligned on desktop */
+@media (min-width: 992px) {
+  .footer-top > .container {
+    grid-template-columns: 1.45fr 0.72fr 0.72fr 0.78fr 1.05fr 1.1fr;
+    gap: 24px;
+  }
+}
+
+.footer-legal .footer-link {
+  overflow-wrap: anywhere;
 }
