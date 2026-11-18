@@ -718,3 +718,51 @@
     display: block;
   }
 }
+
+/* Header contact details in the top bar */
+.top-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+
+.top-bar-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--white);
+  font-size: var(--fs-7);
+}
+
+.top-bar-contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-bar-contact a:hover,
+.top-bar-contact a:focus-visible {
+  text-decoration: underline;
+}
+
+.top-bar-content > p {
+  margin: 0;
+}
+
+/* Legal footer column */
+.footer-legal .footer-link {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+  .top-bar-content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .top-bar-contact {
+    justify-content: center;
+  }
+}
