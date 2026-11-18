@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product | Herbiveda — Evidence-Based Ayurveda</title>
-  <link rel="canonical" id="product-canonical" href="https://herbiveda.com/product-details">
-  <meta name="description" content="Lab-tested, practitioner-reviewed Ayurvedic herbs with batch certificates. Free consultation available.">
+  <title>Product Details | Herbiveda — Evidence-Based Ayurveda</title>
+  <link rel="canonical" id="product-canonical" href="https://herbiveda.com/product-details?product=ashwagandha">
+  <meta name="description" id="product-meta-description" content="Explore Ayurvedic herbs and botanicals with botanical details, product information and availability from Herbiveda.">
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/css/main.css">
   <link rel="stylesheet" href="./assets/css/home.css">
@@ -201,17 +201,42 @@
   <script>
   (function () {
     var params = new URLSearchParams(window.location.search);
-    var slug = (params.get('product') || 'ashwagandha').toLowerCase();
+    var requestedSlug = (params.get('product') || 'ashwagandha').toLowerCase().trim();
     var canonical = document.getElementById('product-canonical');
     var products = window.HERBIVEDA_PRODUCTS || {};
-    var p = products[slug] || products.ashwagandha;
-    // Set the canonical only after resolving the product actually rendered.
-    var resolvedSlug = (p && p.slug ? p.slug : slug).toLowerCase();
+    var p = products[requestedSlug] || products.ashwagandha;
+    // Canonical follows the product record actually rendered.
+    var resolvedSlug = (p && p.slug ? p.slug : 'ashwagandha').toLowerCase();
+    var productMeta = {
+      "ashwagandha": { title: "Ashwagandha | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Ashwagandha at Herbiveda. Strongest single-herb evidence for stress, anxiety and sleep — meta-analyses plus ongoing long-COVID research. View..." },
+      "turmeric": { title: "Turmeric (Curcumin) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Turmeric (Curcumin) at Herbiveda. The most-researched herbal compound worldwide — meta-analyses for inflammation, arthritis, IBD and more. View..." },
+      "boswellia": { title: "Boswellia (Shallaki) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Boswellia (Shallaki) at Herbiveda. Solid RCTs for osteoarthritis pain and function; studied for inflammation support. View botanical details,..." },
+      "triphala": { title: "Triphala | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Triphala at Herbiveda. Signature polyherb with strong documentation for gut health and microbiome support. View botanical details, product..." },
+      "shatavari": { title: "Shatavari | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Shatavari at Herbiveda. Classical women's tonic with clinical support for lactation and reproductive wellness. View botanical details, product..." },
+      "brahmi": { title: "Brahmi (Bacopa) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Brahmi (Bacopa) at Herbiveda. Positive RCTs for age-related memory and cognitive performance. View botanical details, product information and..." },
+      "shilajit": { title: "Shilajit | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Shilajit at Herbiveda. Mineral-rich adaptogen studied for energy, fatigue and mitochondrial support. View botanical details, product information and..." },
+      "trikatu": { title: "Trikatu | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Trikatu at Herbiveda. Classical three-spice formula to kindle digestion and support nutrient absorption. View botanical details, product information..." },
+      "neem": { title: "Neem | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Neem at Herbiveda. Traditional blood-and-skin support herb with antimicrobial and metabolic interest. View botanical details, product information..." },
+      "fenugreek": { title: "Fenugreek | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Fenugreek at Herbiveda. Meta-analysis support for blood glucose in type 2 diabetes; listed in NIH LactMed for lactation. View botanical details,..." },
+      "valerian": { title: "Valerian | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Valerian at Herbiveda. Well-studied for sleep onset and mild insomnia support. View botanical details, product information and availability." },
+      "licorice": { title: "Licorice (Yashtimadhu) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Licorice (Yashtimadhu) at Herbiveda. Soothing demulcent for throat and gut lining; classical harmonizing herb in formulas. View botanical details,..." },
+      "ladakh-seabuckthorn": { title: "Ladakh Seabuckthorn | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Ladakh Seabuckthorn at Herbiveda. A Himalayan berry known for its vivid orange fruit and tart, distinctive flavour. View botanical details, product..." },
+      "hind": { title: "Hing (Asafoetida) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Hing (Asafoetida) at Herbiveda. A pungent aromatic oleo-gum-resin used as a traditional seasoning in South Asian cooking. View botanical details,..." },
+      "kashmir-saffron": { title: "Kashmir Saffron | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Kashmir Saffron at Herbiveda. Aromatic red stigmas prized as a culinary spice and a traditional ingredient. View botanical details, product..." },
+      "tulsi": { title: "Tulsi (Holy Basil) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Tulsi (Holy Basil) at Herbiveda. An aromatic leafy herb deeply rooted in Indian household, culinary and Ayurvedic traditions. View botanical..." },
+      "ustukhuddus": { title: "Lavender (Ustukhuddus) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Lavender (Ustukhuddus) at Herbiveda. A fragrant lavender species known in medicinal plant references by the name Ustukhuddus. View botanical..." },
+      "kava-root": { title: "Kava Root | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Kava Root at Herbiveda. A South Pacific traditional botanical; safety review is essential because kava products have been linked to liver injury...." },
+      "jim-corbett-wild-honey": { title: "Jim Corbett Wild Honey | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Jim Corbett Wild Honey at Herbiveda. A honey selection presented under the Jim Corbett Wild Honey name; floral source and origin should be verified..." },
+      "milk-thistle": { title: "Milk Thistle | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Milk Thistle at Herbiveda. A flowering plant whose seeds contain silymarin, a group of compounds studied for liver-related effects. View botanical..." },
+      "sarpgandha": { title: "Sarpgandha (Indian Snakeroot) | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Sarpgandha (Indian Snakeroot) at Herbiveda. A potent medicinal plant containing reserpine-related alkaloids; use requires medical supervision. View..." },
+      "haritaki": { title: "Haritaki | Ayurvedic Herb & Botanical Details | Herbiveda", description: "Explore Haritaki at Herbiveda. A fruit used in classical Ayurveda, including as one of the three ingredients in Triphala. View botanical details, product..." }
+    };
+    var seo = productMeta[resolvedSlug] || productMeta.ashwagandha;
     if (canonical) canonical.href = 'https://herbiveda.com/product-details?product=' + encodeURIComponent(resolvedSlug);
 
-    document.title = p.name + ' | Herbiveda — Evidence-Based Ayurveda';
-    var meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', p.short);
+    document.title = seo.title;
+    var meta = document.getElementById('product-meta-description');
+    if (meta) meta.setAttribute('content', seo.description);
 
     function set(sel, text) {
       var el = document.querySelector(sel);
