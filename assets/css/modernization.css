@@ -178,4 +178,22 @@ html body .btn.btn-secondary:hover,html body .btn.btn-secondary:focus,.btn-secon
   .hero-slide .hero-content { padding-block:34px 12px; order:1; }
   .hero-slide .hero-banner { padding:4px 0 36px; order:2; }
   .hero-slide .hero-banner img { width:min(100%,420px); max-width:100%; border-radius:20px; }
+
+  /* Hero arrows: keep clear of CTA buttons — pin near pagination, not vertical center */
+  .hero-nav {
+    top: auto;
+    bottom: 52px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    z-index: 7;
+  }
+  .hero-nav--prev { inset-inline-start: 10px; }
+  .hero-nav--next { inset-inline-end: 10px; }
+  .hero-pagination { bottom: 12px !important; }
+  .hero-slide .hero-btn-group {
+    position: relative;
+    z-index: 4;
+    padding-inline: 0;
+  }
 }
