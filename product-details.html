@@ -203,9 +203,11 @@
     var params = new URLSearchParams(window.location.search);
     var slug = (params.get('product') || 'ashwagandha').toLowerCase();
     var canonical = document.getElementById('product-canonical');
-    if (canonical) canonical.href = 'https://herbiveda.com/product-details?product=' + encodeURIComponent(slug);
     var products = window.HERBIVEDA_PRODUCTS || {};
     var p = products[slug] || products.ashwagandha;
+    // Set the canonical only after resolving the product actually rendered.
+    var resolvedSlug = (p && p.slug ? p.slug : slug).toLowerCase();
+    if (canonical) canonical.href = 'https://herbiveda.com/product-details?product=' + encodeURIComponent(resolvedSlug);
 
     document.title = p.name + ' | Herbiveda — Evidence-Based Ayurveda';
     var meta = document.querySelector('meta[name="description"]');
