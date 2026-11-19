@@ -553,14 +553,17 @@
     });
     [experience, duration, intensity].forEach(function (control) { control.addEventListener('change', applyFilters); });
     root.querySelector('#rlp-show-all').addEventListener('click', function () {
-      selectedCountry = ''; tabs.forEach(function (tab) { tab.classList.remove('is-active'); tab.setAttribute('aria-pressed','false'); });
+      selectedCountry = '';
+      tabs.forEach(function (tab) { tab.classList.remove('is-active'); tab.setAttribute('aria-pressed','false'); });
       experience.value = ''; duration.value = ''; intensity.value = '';
       root.querySelector('#rlp-feature-eyebrow').textContent = 'Six destinations · Seven retreat concepts';
       root.querySelector('#rlp-feature-title').textContent = 'Find the journey that fits you';
       root.querySelector('#rlp-feature-description').textContent = 'Compare Ayurveda, yoga, nature and culture-led wellness experiences across our international retreat collection.';
       root.querySelector('#rlp-feature-facts').textContent = 'India · Sri Lanka · Nepal · Bhutan · Vietnam · Uzbekistan';
       var cta = root.querySelector('#rlp-feature-cta'); cta.textContent = 'Browse all retreats'; cta.href = '#rlp-retreat-grid';
-      applyFilters(); syncUrl('india'); window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+      applyFilters();
+      var url = new URL(window.location.href); url.searchParams.delete('destination');
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
     });
     var params = new URLSearchParams(window.location.search);
     var initial = params.get('destination') || 'india';
