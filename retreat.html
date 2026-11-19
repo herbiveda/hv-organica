@@ -60,6 +60,113 @@
       </div>
     </section>
 
+
+    <!-- Global retreat discovery: additive section; existing Kerala landing-page content remains intact. -->
+    <section class="rlp-destinations rlp-section--soft" id="destinations" aria-labelledby="rlp-destinations-title">
+      <div class="container">
+        <div class="rlp-head section-title-wrapper">
+          <p class="section-subtitle">Herbiveda Retreat Collection</p>
+          <h2 class="h2 section-title" id="rlp-destinations-title">Discover transformative wellness journeys</h2>
+          <p class="section-text">Explore curated retreat concepts across six destinations. Select a country to preview its experiences, or browse the complete collection below.</p>
+        </div>
+
+        <div class="rlp-destination-switcher" role="group" aria-label="Choose a retreat destination">
+          <button type="button" class="rlp-destination-tab is-active" data-destination="india" aria-pressed="true">🇮🇳 <span>India</span><small>1 retreat</small></button>
+          <button type="button" class="rlp-destination-tab" data-destination="sri-lanka" aria-pressed="false">🇱🇰 <span>Sri Lanka</span><small>2 retreats</small></button>
+          <button type="button" class="rlp-destination-tab" data-destination="nepal" aria-pressed="false">🇳🇵 <span>Nepal</span><small>1 retreat</small></button>
+          <button type="button" class="rlp-destination-tab" data-destination="bhutan" aria-pressed="false">🇧🇹 <span>Bhutan</span><small>1 retreat</small></button>
+          <button type="button" class="rlp-destination-tab" data-destination="vietnam" aria-pressed="false">🇻🇳 <span>Vietnam</span><small>1 retreat</small></button>
+          <button type="button" class="rlp-destination-tab" data-destination="uzbekistan" aria-pressed="false">🇺🇿 <span>Uzbekistan</span><small>1 retreat</small></button>
+        </div>
+
+        <div class="rlp-destination-feature" id="rlp-destination-feature" aria-live="polite" aria-atomic="true">
+          <div class="rlp-destination-feature-copy">
+            <p class="rlp-destination-eyebrow" id="rlp-feature-eyebrow">Flagship Ayurveda · India</p>
+            <h3 id="rlp-feature-title">Physician-Led Panchakarma in Kerala</h3>
+            <p id="rlp-feature-description">A structured 14-day Panchakarma programme at centres Herbiveda vets in person, with physician review and a personalised protocol.</p>
+            <div class="rlp-feature-facts" id="rlp-feature-facts"><span>14 days</span><span>Kerala, India</span><span>From $679</span></div>
+            <a class="btn btn-primary" id="rlp-feature-cta" href="#packages">Explore India retreat</a>
+          </div>
+          <div class="rlp-destination-image" role="img" aria-label="Destination photograph placeholder">
+            <span>Destination photograph</span>
+            <small>Add your image when ready</small>
+          </div>
+        </div>
+
+        <div class="rlp-retreat-grid-head">
+          <div>
+            <p class="section-subtitle">Compare experiences</p>
+            <h3 class="h2" id="rlp-grid-heading">All retreats</h3>
+            <p class="rlp-results-count" id="rlp-results-count">Showing 7 retreat concepts across 6 destinations</p>
+          </div>
+          <button type="button" class="rlp-clear-filters" id="rlp-show-all">View all retreats</button>
+        </div>
+
+        <div class="rlp-retreat-filters" aria-label="Filter retreat collection">
+          <label>Experience
+            <select id="rlp-filter-experience">
+              <option value="">All experiences</option>
+              <option value="panchakarma">Panchakarma</option>
+              <option value="ayurveda">Ayurveda & bodywork</option>
+              <option value="yoga">Yoga & meditation</option>
+              <option value="culture">Culture & nature</option>
+              <option value="wellness">Wellness reset</option>
+            </select>
+          </label>
+          <label>Duration
+            <select id="rlp-filter-duration">
+              <option value="">Any duration</option>
+              <option value="short">3–5 nights</option>
+              <option value="week">6–9 nights</option>
+              <option value="long">10–14 nights</option>
+              <option value="extended">15+ nights</option>
+            </select>
+          </label>
+          <label>Intensity
+            <select id="rlp-filter-intensity">
+              <option value="">Any intensity</option>
+              <option value="gentle">Gentle reset</option>
+              <option value="moderate">Moderate wellness</option>
+              <option value="deep">Deep Panchakarma</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="rlp-retreat-grid" id="rlp-retreat-grid">
+          <article class="rlp-retreat-card" data-country="india" data-experience="panchakarma ayurveda yoga" data-duration="long" data-intensity="deep">
+            <div class="rlp-card-image" role="img" aria-label="Kerala retreat image placeholder"><span>India retreat photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">India · Kerala</p><h4>14-Day Physician-Led Panchakarma Retreat</h4><p class="rlp-card-summary">A structured classical Ayurveda programme with physician-led intake, daily review and prescribed therapies.</p><div class="rlp-card-tags"><span>14 days</span><span>Deep Panchakarma</span><span>Physician-led</span></div><a class="btn btn-primary" href="#packages">View existing Kerala packages</a></div>
+          </article>
+          <article class="rlp-retreat-card" data-country="sri-lanka" data-experience="ayurveda yoga wellness culture" data-duration="week" data-intensity="gentle">
+            <div class="rlp-card-image" role="img" aria-label="Sri Lanka coast retreat image placeholder"><span>Sri Lanka coastal photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">Sri Lanka · Bentota / Weligama / Tangalle</p><h4>Tropical Ayurveda Reset</h4><p class="rlp-card-summary">A restorative coastal concept combining personalized Ayurveda, yoga, meditation, nourishing meals and unhurried nature time.</p><div class="rlp-card-tags"><span>5–10 nights</span><span>Gentle reset</span><span>First-time Ayurveda</span></div><a class="btn btn-primary" href="/contact?interest=retreats&amp;topic=Sri%20Lanka%20Tropical%20Ayurveda%20Reset&amp;source=retreat-collection">Request itinerary</a></div>
+          </article>
+          <article class="rlp-retreat-card" data-country="sri-lanka" data-experience="panchakarma ayurveda yoga" data-duration="long" data-intensity="deep">
+            <div class="rlp-card-image" role="img" aria-label="Sri Lanka Panchakarma retreat image placeholder"><span>Sri Lanka Panchakarma photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">Sri Lanka · Kandy / Sigiriya / South</p><h4>Sri Lanka Panchakarma Immersion</h4><p class="rlp-card-summary">A longer doctor-guided programme concept. Exact therapies and suitability depend on the partner physician's assessment.</p><div class="rlp-card-tags"><span>10–21 nights</span><span>Deep Panchakarma</span><span>Consultation required</span></div><a class="btn btn-primary" href="/contact?interest=retreats&amp;topic=Sri%20Lanka%20Panchakarma%20Immersion&amp;source=retreat-collection">Request itinerary</a></div>
+          </article>
+          <article class="rlp-retreat-card" data-country="nepal" data-experience="ayurveda yoga wellness culture" data-duration="week" data-intensity="gentle">
+            <div class="rlp-card-image" role="img" aria-label="Nepal Himalayan retreat image placeholder"><span>Nepal Himalayan photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">Nepal · Kathmandu Valley / Pokhara</p><h4>Himalayan Ayurveda Sanctuary</h4><p class="rlp-card-summary">A gentle retreat concept pairing Ayurveda-inspired self-care with yoga, breathwork, meditation and mountain nature.</p><div class="rlp-card-tags"><span>5–10 nights</span><span>Gentle reset</span><span>Nature immersion</span></div><a class="btn btn-primary" href="/contact?interest=retreats&amp;topic=Nepal%20Himalayan%20Ayurveda%20Sanctuary&amp;source=retreat-collection">Request itinerary</a></div>
+          </article>
+          <article class="rlp-retreat-card" data-country="bhutan" data-experience="yoga culture wellness" data-duration="week" data-intensity="gentle">
+            <div class="rlp-card-image" role="img" aria-label="Bhutan Himalayan wellness retreat image placeholder"><span>Bhutan destination photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">Bhutan · Thimphu / Paro / Punakha</p><h4>Mindful Wellness Journey</h4><p class="rlp-card-summary">A wellness and destination-immersion concept featuring mindful movement, cultural visits, nature and restorative practices.</p><div class="rlp-card-tags"><span>7–12 nights</span><span>Gentle reset</span><span>Culture & mindfulness</span></div><a class="btn btn-primary" href="/contact?interest=retreats&amp;topic=Bhutan%20Mindful%20Wellness%20Journey&amp;source=retreat-collection">Request itinerary</a></div>
+          </article>
+          <article class="rlp-retreat-card" data-country="vietnam" data-experience="yoga wellness culture" data-duration="week" data-intensity="moderate">
+            <div class="rlp-card-image" role="img" aria-label="Vietnam wellness retreat image placeholder"><span>Vietnam destination photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">Vietnam · Da Nang / Hoi An / Ninh Binh</p><h4>Vietnam Vitality Reset</h4><p class="rlp-card-summary">A lighter wellness holiday concept with movement, bodywork, nourishing food, nature and optional cultural experiences.</p><div class="rlp-card-tags"><span>4–8 nights</span><span>Moderate wellness</span><span>Yoga & nature</span></div><a class="btn btn-primary" href="/contact?interest=retreats&amp;topic=Vietnam%20Vitality%20Reset&amp;source=retreat-collection">Request itinerary</a></div>
+          </article>
+          <article class="rlp-retreat-card" data-country="uzbekistan" data-experience="culture wellness yoga" data-duration="week" data-intensity="gentle">
+            <div class="rlp-card-image" role="img" aria-label="Uzbekistan Silk Road retreat image placeholder"><span>Uzbekistan Silk Road photograph</span></div>
+            <div class="rlp-card-body"><p class="rlp-card-kicker">Uzbekistan · Samarkand / Bukhara / Tashkent</p><h4>Silk Road Serenity</h4><p class="rlp-card-summary">A culture-led wellness escape concept combining mindful movement, relaxation, heritage walks and local experiences.</p><div class="rlp-card-tags"><span>5–8 nights</span><span>Gentle reset</span><span>Culture & heritage</span></div><a class="btn btn-primary" href="/contact?interest=retreats&amp;topic=Uzbekistan%20Silk%20Road%20Serenity&amp;source=retreat-collection">Request itinerary</a></div>
+          </article>
+        </div>
+        <p class="rlp-collection-note">International retreats shown here are proposed experiences and are not yet confirmed as bookable. Partner centres, practitioners, accommodation, availability and final pricing must be verified before booking. No medical outcome is promised.</p>
+        <p class="rlp-collection-note">Ayurvedic and wellness programmes are not a substitute for medical care. Guests with medical conditions, those taking prescription medicines, and pregnant guests should seek advice from a qualified healthcare professional before considering a retreat. Intensive Panchakarma requires individual assessment by a qualified Ayurvedic physician.</p>
+      </div>
+    </section>
+
     <section class="rlp-section" id="fit">
       <div class="container">
         <div class="rlp-head section-title-wrapper">
@@ -367,6 +474,99 @@
     <a href="#apply" class="btn btn-primary">Apply</a>
     <a href="#packages" class="btn btn-primary">Packages</a>
   </div>
+
+
+  <script>
+  (function () {
+    'use strict';
+    var root = document.getElementById('destinations');
+    if (!root) return;
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-destination]'));
+    var cards = Array.prototype.slice.call(root.querySelectorAll('.rlp-retreat-card'));
+    var experience = root.querySelector('#rlp-filter-experience');
+    var duration = root.querySelector('#rlp-filter-duration');
+    var intensity = root.querySelector('#rlp-filter-intensity');
+    var count = root.querySelector('#rlp-results-count');
+    var heading = root.querySelector('#rlp-grid-heading');
+    var selectedCountry = 'india';
+    var countryNames = {india:'India', 'sri-lanka':'Sri Lanka', nepal:'Nepal', bhutan:'Bhutan', vietnam:'Vietnam', uzbekistan:'Uzbekistan'};
+    var feature = {
+      india:{eyebrow:'Flagship Ayurveda · India',title:'Physician-Led Panchakarma in Kerala',description:'A structured 14-day Panchakarma programme at centres Herbiveda vets in person, with physician review and a personalised protocol.',facts:['14 days','Kerala, India','From $679'],cta:'Explore India retreat',href:'#packages'},
+      'sri-lanka':{eyebrow:'Coastal Ayurveda · Sri Lanka',title:'Restore by the Indian Ocean',description:'Choose a gentle coastal Ayurveda reset or explore a longer Panchakarma immersion concept in Sri Lanka.',facts:['5–21 nights','Bentota · Weligama · South coast','2 retreat concepts'],cta:'Explore Sri Lanka retreats',href:'#rlp-retreat-grid'},
+      nepal:{eyebrow:'Himalayan renewal · Nepal',title:'Find stillness in the Himalayas',description:'A gentle retreat concept combining Ayurveda-inspired self-care, yoga, breathwork, meditation and mountain nature.',facts:['5–10 nights','Kathmandu Valley · Pokhara','Nature & yoga'],cta:'Explore Nepal retreat',href:'#rlp-retreat-grid'},
+      bhutan:{eyebrow:'Mindful travel · Bhutan',title:'A mindful Himalayan journey',description:'A wellness and cultural immersion concept centred on mindful movement, heritage, nature and restorative practices.',facts:['7–12 nights','Thimphu · Paro · Punakha','Culture & mindfulness'],cta:'Explore Bhutan retreat',href:'#rlp-retreat-grid'},
+      vietnam:{eyebrow:'Tropical wellness · Vietnam',title:'Refresh with a Vietnam vitality reset',description:'A lighter wellness holiday concept built around movement, bodywork, nourishing food, nature and local experiences.',facts:['4–8 nights','Da Nang · Hoi An','Yoga & nature'],cta:'Explore Vietnam retreat',href:'#rlp-retreat-grid'},
+      uzbekistan:{eyebrow:'Culture-led wellness · Uzbekistan',title:'Slow down along the Silk Road',description:'A restorative cultural escape concept combining mindful movement, relaxation, historic cities and local heritage.',facts:['5–8 nights','Samarkand · Bukhara · Tashkent','Culture & heritage'],cta:'Explore Uzbekistan retreat',href:'#rlp-retreat-grid'}
+    };
+    function syncUrl(country) {
+      var url = new URL(window.location.href);
+      if (country === 'india') url.searchParams.delete('destination');
+      else url.searchParams.set('destination', country);
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+    function updateFeature(country) {
+      var item = feature[country] || feature.india;
+      root.querySelector('#rlp-feature-eyebrow').textContent = item.eyebrow;
+      root.querySelector('#rlp-feature-title').textContent = item.title;
+      root.querySelector('#rlp-feature-description').textContent = item.description;
+      var facts = root.querySelector('#rlp-feature-facts');
+      facts.textContent = '';
+      item.facts.forEach(function (fact) { var span = document.createElement('span'); span.textContent = fact; facts.appendChild(span); });
+      var cta = root.querySelector('#rlp-feature-cta'); cta.textContent = item.cta; cta.href = item.href;
+    }
+    function applyFilters() {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var countryMatch = !selectedCountry || card.dataset.country === selectedCountry;
+        var expMatch = !experience.value || card.dataset.experience.split(' ').indexOf(experience.value) !== -1;
+        var intensityMatch = !intensity.value || card.dataset.intensity === intensity.value;
+        var durationValue = card.dataset.duration;
+        var durationMatch = !duration.value || durationValue === duration.value || (duration.value === 'week' && durationValue === 'short');
+        var visible = countryMatch && expMatch && intensityMatch && durationMatch;
+        card.hidden = !visible;
+        if (visible) shown += 1;
+      });
+      var countryText = selectedCountry ? ' in ' + countryNames[selectedCountry] : ' across 6 destinations';
+      count.textContent = 'Showing ' + shown + ' retreat' + (shown === 1 ? '' : 's') + countryText;
+      heading.textContent = selectedCountry ? 'Retreats in ' + countryNames[selectedCountry] : 'All retreats';
+    }
+    function selectCountry(country, writeUrl) {
+      if (!countryNames[country]) country = 'india';
+      selectedCountry = country;
+      tabs.forEach(function (tab) {
+        var active = tab.dataset.destination === country;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      experience.value = ''; duration.value = ''; intensity.value = '';
+      updateFeature(country); applyFilters();
+      if (writeUrl) syncUrl(country);
+    }
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () { selectCountry(tab.dataset.destination, true); });
+      tab.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        var next = (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[next].focus(); tabs[next].click();
+      });
+    });
+    [experience, duration, intensity].forEach(function (control) { control.addEventListener('change', applyFilters); });
+    root.querySelector('#rlp-show-all').addEventListener('click', function () {
+      selectedCountry = ''; tabs.forEach(function (tab) { tab.classList.remove('is-active'); tab.setAttribute('aria-pressed','false'); });
+      experience.value = ''; duration.value = ''; intensity.value = '';
+      root.querySelector('#rlp-feature-eyebrow').textContent = 'Six destinations · Seven retreat concepts';
+      root.querySelector('#rlp-feature-title').textContent = 'Find the journey that fits you';
+      root.querySelector('#rlp-feature-description').textContent = 'Compare Ayurveda, yoga, nature and culture-led wellness experiences across our international retreat collection.';
+      root.querySelector('#rlp-feature-facts').textContent = 'India · Sri Lanka · Nepal · Bhutan · Vietnam · Uzbekistan';
+      var cta = root.querySelector('#rlp-feature-cta'); cta.textContent = 'Browse all retreats'; cta.href = '#rlp-retreat-grid';
+      applyFilters(); syncUrl('india'); window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+    });
+    var params = new URLSearchParams(window.location.search);
+    var initial = params.get('destination') || 'india';
+    selectCountry(initial, false);
+  })();
+  </script>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
