@@ -976,3 +976,18 @@
     transition: none;
   }
 }
+
+
+/* Keep hero pagination centered on mobile after Swiper's stylesheet loads.
+   Swiper's horizontal-bullets selector otherwise overrides the earlier left/width rules. */
+@media (max-width: 767px) {
+  .hero-slider .hero-swiper .hero-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    left: 50%;
+    right: auto;
+    width: max-content;
+    max-width: calc(100% - 100px);
+    margin: 0;
+    transform: translateX(-50%);
+    justify-content: center;
+  }
+}
