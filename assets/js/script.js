@@ -167,13 +167,60 @@ function initializeTestimonialsSwiper() {
 function initializeHeroSwiper() {
   const hero = document.querySelector('.hero-swiper');
   if (!hero || typeof window.Swiper !== 'function' || hero.swiper) return;
-  new window.Swiper(hero, {
-    slidesPerView: 1, speed: 750, loop: true, grabCursor: true,
-    autoplay: { delay: 6000, disableOnInteraction: false },
-    effect: 'fade', fadeEffect: { crossFade: true },
-    pagination: { el: '.hero-swiper .hero-pagination', clickable: true },
-    navigation: { nextEl: '.hero-swiper .hero-nav--next', prevEl: '.hero-swiper .hero-nav--prev' },
-    keyboard: { enabled: true }, a11y: { enabled: true }
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroCarousel = new window.Swiper(hero, {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    speed: reduceMotion ? 0 : 750,
+    loop: true,
+    grabCursor: true,
+    watchOverflow: true,
+    touchEventsTarget: 'container',
+    threshold: 8,
+    touchRatio: 1,
+    touchAngle: 45,
+    resistanceRatio: 0.85,
+    autoplay: reduceMotion ? false : {
+      delay: 6000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    },
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    pagination: {
+      el: '.hero-swiper .hero-pagination',
+      clickable: true,
+      bulletElement: 'button'
+    },
+    navigation: {
+      nextEl: '.hero-swiper .hero-nav--next',
+      prevEl: '.hero-swiper .hero-nav--prev'
+    },
+    keyboard: { enabled: true, onlyInViewport: true },
+    a11y: { enabled: true },
+    on: {
+      init: function () {
+        hero.setAttribute('aria-roledescription', 'carousel');
+        hero.setAttribute('aria-label', 'Herbiveda featured highlights');
+      },
+      slideChange: function () {
+        hero.querySelectorAll('.swiper-slide').forEach(function (slide) {
+          const active = slide.classList.contains('swiper-slide-active');
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          slide.querySelectorAll('a, button').forEach(function (control) {
+            if (active) control.removeAttribute('tabindex');
+            else control.setAttribute('tabindex', '-1');
+          });
+        });
+      }
+    }
+  });
+
+  hero.addEventListener('mouseenter', function () {
+    if (heroCarousel.autoplay && heroCarousel.autoplay.running) heroCarousel.autoplay.pause();
+  });
+  hero.addEventListener('mouseleave', function () {
+    if (!reduceMotion && heroCarousel.autoplay && !heroCarousel.autoplay.running) heroCarousel.autoplay.resume();
   });
 }
 function initializeHomepageEnhancements() {
