@@ -665,7 +665,7 @@
   max-width:20ch;
 }
 .rlp-hero .h1 { max-width:22ch; font-size:clamp(2.5rem,4.5vw,3.8rem); }
-.rlp-hero-switcher-wrap { position:relative; z-index:2; padding-block:0 26px; }
+.rlp-hero-switcher-wrap { display:block !important; position:relative; z-index:2; padding-block:0 26px; }
 .rlp-hero .rlp-destination-switcher {
   display:flex;
   flex-wrap:wrap;
