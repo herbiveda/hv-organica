@@ -650,3 +650,102 @@
  .rlp-retreat-filters label,.rlp-retreat-filters select { width:100%; }
 }
 @media(prefers-reduced-motion:reduce) { .rlp-destination-tab { transition:none; } }
+
+
+/* Destination-switching global retreat hero */
+.rlp-hero-copy { min-width:0; }
+.rlp-hero .rlp-destination-title {
+  color:#7ddea8;
+  font-family:var(--ff-body,Roboto,sans-serif);
+  font-size:clamp(2.2rem,3.6vw,3.4rem);
+  font-weight:600;
+  line-height:1.16;
+  letter-spacing:-.02em;
+  margin:0 0 14px;
+  max-width:20ch;
+}
+.rlp-hero .h1 { max-width:22ch; font-size:clamp(2.5rem,4.5vw,3.8rem); }
+.rlp-hero-switcher-wrap { position:relative; z-index:2; padding-block:0 26px; }
+.rlp-hero .rlp-destination-switcher {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-start;
+  margin:0;
+  padding:16px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;
+  background:rgba(0,0,0,.22);
+  backdrop-filter:blur(8px);
+}
+.rlp-hero .rlp-destination-tab {
+  flex:1 1 140px;
+  min-width:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:12px;
+  padding:11px 13px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font:inherit;
+  cursor:pointer;
+  text-align:left;
+}
+.rlp-hero .rlp-destination-tab .hv-flag { font-size:1.8rem; }
+.rlp-hero .rlp-destination-tab .hv-name { font-size:1.35rem; font-weight:700; }
+.rlp-hero .rlp-destination-tab .hv-count { color:rgba(255,255,255,.78); font-size:1.1rem; }
+.rlp-hero .rlp-destination-tab:hover,
+.rlp-hero .rlp-destination-tab:focus-visible,
+.rlp-hero .rlp-destination-tab.is-active {
+  background:#fff;
+  border-color:#fff;
+  color:#12302a;
+  box-shadow:0 0 0 2px rgba(255,255,255,.2);
+}
+.rlp-hero .rlp-destination-tab.is-active .hv-count { color:#52665c; }
+.rlp-hero .rlp-destination-tab:focus-visible { outline:3px solid #7ddea8; outline-offset:3px; }
+.rlp-hero-figure.is-placeholder .rlp-hero-img,
+.rlp-hero-figure.is-placeholder .rlp-hero-img-color { display:none; }
+.rlp-hero-placeholder {
+  display:none;
+  position:absolute;
+  inset:0;
+  z-index:2;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:8px;
+  background:linear-gradient(135deg,#294a40,#10231f);
+  color:#e8f3ec;
+  text-align:center;
+}
+.rlp-hero-figure.is-placeholder .rlp-hero-placeholder { display:flex; }
+.rlp-hero-placeholder span { font-size:1.8rem; font-weight:700; }
+.rlp-hero-placeholder small { font-size:1.3rem; color:rgba(255,255,255,.75); }
+.rlp-destination-switcher .rlp-destination-tab[aria-selected="false"] { opacity:.94; }
+.rlp-destination-switcher .rlp-destination-tab[aria-selected="true"] { opacity:1; }
+.rlp-retreat-grid-head { margin-block-start:30px; }
+.rlp-card-image small { margin-top:5px; font-size:1.15rem; opacity:.78; }
+.rlp-card-body h3 { color:var(--rlp-ink); font-size:1.75rem; line-height:1.3; margin:0 0 8px; }
+.rlp-card-meta { display:flex; flex-wrap:wrap; gap:7px; list-style:none; margin:8px 0 12px; padding:0; }
+.rlp-card-meta li { border-radius:999px; background:var(--rlp-soft); color:var(--rlp-muted); font-size:1.15rem; padding:6px 10px; }
+.rlp-card-best-for { color:var(--rlp-muted); font-size:1.3rem; line-height:1.5; margin:0 0 14px; }
+.rlp-card-best-for strong { color:var(--rlp-ink); }
+.rlp-retreat-card .rlp-card-body .btn { margin-block-start:auto; }
+.rlp-retreat-card[hidden] { display:none !important; }
+@media(max-width:899px) {
+  .rlp-hero .container { grid-template-columns:1fr; }
+  .rlp-hero .rlp-destination-title { max-width:28ch; }
+  .rlp-hero-switcher-wrap { padding-block-start:18px; }
+}
+@media(max-width:650px) {
+  .rlp-hero .rlp-destination-switcher { flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; }
+  .rlp-hero .rlp-destination-tab { flex:0 0 136px; scroll-snap-align:start; }
+  .rlp-hero-switcher-wrap { padding-inline:0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .rlp-hero-figure { animation:none; border-radius:24px; }
+}
