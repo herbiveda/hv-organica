@@ -749,3 +749,28 @@
 @media(prefers-reduced-motion:reduce) {
   .rlp-hero-figure { animation:none; border-radius:24px; }
 }
+
+/* Full destination-specific retreat content panels */
+.rlp-active-destination{display:inline-flex;gap:6px;align-items:center;padding:8px 13px;border-radius:999px;background:var(--rlp-soft);color:var(--rlp-muted);font-size:1.3rem;margin:0 0 22px}
+.rlp-active-destination strong{color:var(--rlp-accent)}
+.rlp-destination-details{background:var(--rlp-surface);padding-block:clamp(38px,6vw,76px)}
+.rlp-dynamic-block{scroll-margin-top:90px;padding-block:20px 44px}
+.rlp-dynamic-block+.rlp-dynamic-block{border-top:1px solid var(--rlp-line)}
+.rlp-not-fit{max-width:76ch;margin:10px auto 0;text-align:center;color:var(--rlp-muted);font-size:1.3rem;line-height:1.6}
+.rlp-dynamic-cards{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:700px){.rlp-day-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rlp-review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1000px){.rlp-day-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.rlp-package-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rlp-dynamic-card{min-width:0;padding:20px;background:#fff;border:1px solid var(--rlp-line);border-radius:14px;display:flex;flex-direction:column;gap:9px}
+.rlp-day-time,.rlp-package-duration{color:var(--rlp-accent);font-size:1.25rem;font-weight:700;letter-spacing:.04em}
+.rlp-dynamic-card h3{color:var(--rlp-ink);font-size:1.65rem;line-height:1.3;margin:0}
+.rlp-dynamic-card p{font-size:1.35rem;line-height:1.55;color:var(--rlp-muted);margin:0}
+.rlp-package-card ul{padding-left:18px;margin:0 0 10px;color:var(--rlp-muted);font-size:1.3rem;line-height:1.6;flex:1}
+.rlp-package-card .btn{width:100%;justify-content:center;margin-top:auto}
+.rlp-package-card.is-featured{border:2px solid var(--rlp-accent);background:var(--rlp-soft)}
+.rlp-package-price{font-size:1.6rem!important;font-weight:700;color:var(--rlp-accent)!important}
+.rlp-review-quote{font-style:italic}
+.rlp-review-author{font-size:1.3rem;color:var(--rlp-ink)}
+.rlp-review-location,.rlp-review-note{font-size:1.15rem!important}
+.hv-badge{align-self:flex-start;border-radius:999px;padding:5px 10px;background:var(--rlp-accent);color:#fff;font-size:1.05rem;font-weight:700}
+.rlp-clear-filters{display:inline-flex;align-items:center;text-decoration:none}
+[hidden]{display:none!important}
