@@ -27,11 +27,14 @@
       </a>
       <ul class="rlp-nav">
         <li><a href="#fit">Who it’s for</a></li>
-        <li><a href="#itinerary">A day inside</a></li>
+        <li><a href="#sample-day">A day inside</a></li>
         <li><a href="#packages">Packages</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#apply" class="btn btn-primary">Apply</a>
+      <a href="./assets/docs/Herbiveda-Ayurveda-Retreat-Guide.pdf"
+         class="btn btn-primary"
+         download
+         aria-label="Download the Herbiveda retreat guide PDF">View All Retreats</a>
     </div>
   </header>
 
@@ -39,18 +42,27 @@
     <section class="rlp-hero" aria-label="Retreat hero">
       <div class="container">
         <div>
-          <p class="rlp-kicker">Physician-led · Kerala · Limited cohort</p>
-          <h1 class="h1">Deep detox under clinical oversight.<br><span class="span">Not a spa holiday.</span></h1>
-          <p class="rlp-hero-text">A structured 14-day Panchakarma programme at centres Herbiveda vets in person. Daily doctor review. Personalised protocol. Small group — not a resort package.</p>
-          <div class="rlp-meta">
+          <p class="rlp-kicker" data-retreat-kicker>Physician-led · Kerala · Limited cohort</p>
+          <h1 class="h1" data-retreat-title>Deep detox under clinical oversight.<br><span class="span">Not a spa holiday.</span></h1>
+          <p class="rlp-hero-text" data-retreat-hero-text>A structured 14-day Panchakarma programme at centres Herbiveda vets in person. Daily doctor review. Personalised protocol. Small group — not a resort package.</p>
+          <div class="rlp-meta" data-retreat-meta>
             <span>14 days</span>
             <span>Kerala, India</span>
             <span>Max 8 guests</span>
             <span>From $679</span>
           </div>
+          <div class="hv-destination-switcher" role="group" aria-label="Choose retreat destination">
+            <button type="button" class="hv-destination is-active" data-destination="india" aria-pressed="true">India</button>
+            <button type="button" class="hv-destination" data-destination="sri-lanka" aria-pressed="false">Sri Lanka</button>
+            <button type="button" class="hv-destination" data-destination="nepal" aria-pressed="false">Nepal</button>
+            <button type="button" class="hv-destination" data-destination="bhutan" aria-pressed="false">Bhutan</button>
+            <button type="button" class="hv-destination" data-destination="vietnam" aria-pressed="false">Vietnam</button>
+            <button type="button" class="hv-destination" data-destination="uzbekistan" aria-pressed="false">Uzbekistan</button>
+          </div>
+          <p class="hv-active-destination">Currently viewing: <strong data-active-country>India</strong></p>
           <div class="rlp-hero-actions">
-            <a href="#apply" class="btn btn-primary">Apply for this retreat</a>
-            <a href="#itinerary" class="btn btn-ghost">See a sample day</a>
+            <a href="#apply" class="btn btn-primary" data-destination-cta>Apply This Retreat</a>
+            <a href="#sample-day" class="btn btn-ghost" data-sample-day-cta>See a Sample Day</a>
           </div>
         </div>
         <figure class="rlp-hero-figure" tabindex="0" aria-label="Retreat experience photograph">
@@ -64,8 +76,8 @@
       <div class="container">
         <div class="rlp-head section-title-wrapper">
           <p class="section-subtitle">Audience</p>
-          <h2 class="h2 section-title">Who this retreat is for</h2>
-          <p class="section-text">We filter for fit so the cohort stays small, quiet, and clinically serious.</p>
+          <h2 class="h2 section-title">Who This Retreat Is For</h2>
+          <p class="section-text" data-audience>This retreat is for guests seeking a serious, physician-guided Panchakarma experience in Kerala—especially those dealing with burnout, chronic stress, poor sleep, digestive imbalance, fatigue, or a desire for a complete mind-body reset.</p>
         </div>
         <div class="rlp-filter">
           <div class="rlp-filter-card yes">
@@ -118,14 +130,14 @@
       </div>
     </section>
 
-    <section class="rlp-section" id="itinerary">
+    <section class="rlp-section" id="sample-day">
       <div class="container">
         <div class="rlp-head section-title-wrapper">
           <p class="section-subtitle">Experience</p>
-          <h2 class="h2 section-title">A day inside the programme</h2>
-          <p class="section-text">Rest-heavy, oil therapies, restricted diet — structured so the body can actually reset.</p>
+          <h2 class="h2 section-title">A Day Inside the Programme</h2>
+          <p class="section-text">A typical day shifts with destination — rest, therapies, movement, and meals structured for restoration.</p>
         </div>
-        <div class="rlp-timeline">
+        <div class="rlp-timeline" data-day-cards>
           <article class="rlp-day">
             <figure><img src="./assets/images/rlp-dawn.webp?v=20261109-rlp-refresh" width="400" height="250" loading="lazy" alt="Dawn meditation overlooking misty hills"></figure>
             <div class="body">
@@ -166,10 +178,10 @@
       <div class="container">
         <div class="rlp-head section-title-wrapper">
           <p class="section-subtitle">Packages</p>
-          <h2 class="h2 section-title">Choose your depth</h2>
-          <p class="section-text">Indicative starting prices. Final plan and quote after consultation.</p>
+          <h2 class="h2 section-title">Choose Your Depth</h2>
+          <p class="section-text">Durations and focus areas by destination. Final plan and quote after consultation.</p>
         </div>
-        <div class="rlp-packages">
+        <div class="rlp-packages" data-package-cards>
           <article class="rlp-pkg">
             <h3>7-Day Renewal</h3>
             <p class="price">From $679 <small>/ person</small></p>
@@ -244,9 +256,9 @@
       <div class="container">
         <div class="rlp-head section-title-wrapper">
           <p class="section-subtitle">Guests</p>
-          <h2 class="h2 section-title">What people notice</h2>
+          <h2 class="h2 section-title">What People Notice</h2>
         </div>
-        <div class="rlp-quotes">
+        <div class="rlp-quotes" data-review-cards>
           <div class="rlp-quote">
             <blockquote>“The Kerala retreat was well organized from the airport pickup to the final day, and the practitioners actually explained what each part of the Panchakarma protocol was doing.”</blockquote>
             <cite>Meera S. · Retreat Guest, Kerala</cite>
@@ -368,6 +380,7 @@
     <a href="#packages" class="btn btn-primary">Packages</a>
   </div>
 
+  <script src="./assets/js/retreat-destinations.js" defer></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
