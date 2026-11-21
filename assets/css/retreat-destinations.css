@@ -1,0 +1,46 @@
+/* Destination switcher for multi-country retreat content */
+.hv-destination-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 10px;
+}
+.hv-destination {
+  appearance: none;
+  border: 1px solid var(--rlp-line, hsl(150 18% 88%));
+  background: #fff;
+  color: var(--rlp-ink, hsl(245, 97%, 13%));
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.hv-destination:hover,
+.hv-destination:focus-visible {
+  border-color: var(--rlp-accent, rgba(15, 60, 53, 1));
+  color: var(--rlp-accent, rgba(15, 60, 53, 1));
+  outline: none;
+}
+.hv-destination.is-active {
+  background: var(--rlp-accent, rgba(15, 60, 53, 1));
+  border-color: var(--rlp-accent, rgba(15, 60, 53, 1));
+  color: #fff;
+}
+.hv-active-destination {
+  margin: 0 0 14px;
+  font-size: 1.3rem;
+  color: var(--rlp-muted, hsl(0, 0%, 45%));
+}
+.hv-active-destination strong {
+  color: var(--rlp-ink, hsl(245, 97%, 13%));
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .hv-destination {
+    font-size: 1.15rem;
+    padding: 7px 12px;
+  }
+}
