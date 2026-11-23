@@ -44,3 +44,94 @@
     padding: 7px 12px;
   }
 }
+
+
+/* Retreat destination switcher: active country label uses the light hero contrast */
+.hv-active-destination strong {
+  color: #fff;
+}
+
+/* Destination-specific timeline carousel */
+.rlp-timeline {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 2px 12px;
+  overscroll-behavior-inline: contain;
+}
+.rlp-timeline::-webkit-scrollbar { display: none; }
+.rlp-timeline .rlp-day {
+  flex: 0 0 calc((100% - 32px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.rlp-timeline .rlp-day figure {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.rlp-timeline .rlp-day figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.rlp-timeline-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 16px auto 0;
+}
+.rlp-timeline-control {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--rlp-line, #dce7e1);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--rlp-accent, #0f3c35);
+  font: inherit;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.rlp-timeline-control:hover,
+.rlp-timeline-control:focus-visible {
+  background: var(--rlp-accent, #0f3c35);
+  border-color: var(--rlp-accent, #0f3c35);
+  color: #fff;
+  outline: none;
+}
+.rlp-timeline-control:active { transform: scale(.96); }
+.rlp-timeline-hint {
+  color: var(--rlp-muted, #737373);
+  font-size: 1.2rem;
+  text-align: center;
+}
+@media (max-width: 899px) {
+  .rlp-timeline .rlp-day { flex-basis: 48%; }
+}
+@media (max-width: 600px) {
+  .rlp-timeline { gap: 12px; scroll-padding-inline: 4px; }
+  .rlp-timeline .rlp-day { flex-basis: 86%; }
+  .rlp-timeline-controls { gap: 10px; }
+  .rlp-timeline-hint { font-size: 1.1rem; }
+  .rlp-timeline-control { width: 40px; height: 40px; }
+  .rlp-header .container { gap: 10px; flex-wrap: wrap; }
+  .rlp-header .container > .btn { font-size: 1.15rem; padding: 10px 12px; }
+  .hv-destination-switcher { gap: 7px; }
+  .hv-destination { min-height: 40px; }
+  .rlp-hero-figure { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rlp-timeline { scroll-behavior: auto; }
+  .rlp-timeline-control { transition: none; }
+}
