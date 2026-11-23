@@ -1,0 +1,172 @@
+/* Mobile UX optimization pass (Nov 2026)
+   Hide bottom bar on scroll-down / show on scroll-up
+   Tighter spacing, larger touch targets, stronger shop cards, sticky retreat destinations
+*/
+
+.mobile-action-bar,
+.site-mobile-action-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-action-bar,
+  .site-mobile-action-bar {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid rgba(15, 60, 53, 0.14);
+    box-shadow: 0 -6px 22px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.28s ease, opacity 0.28s ease;
+    will-change: transform;
+  }
+
+  .mobile-action-bar.is-hidden,
+  .site-mobile-action-bar.is-hidden {
+    transform: translateY(110%);
+    opacity: 0.01;
+    pointer-events: none;
+  }
+
+  .mobile-action-bar .btn,
+  .site-mobile-action-bar .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    margin: 0;
+    padding: 11px 14px !important;
+    font-size: 1.3rem !important;
+    line-height: 1.2;
+    border-radius: 10px;
+    touch-action: manipulation;
+  }
+
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  body.mobile-bar-hidden {
+    padding-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .wa-float {
+    width: 48px !important;
+    height: 48px !important;
+    right: 14px !important;
+    bottom: calc(86px + env(safe-area-inset-bottom)) !important;
+    transition: bottom 0.28s ease, transform 0.2s ease !important;
+  }
+  .wa-float ion-icon { font-size: 26px !important; }
+  body.mobile-bar-hidden .wa-float {
+    bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .back-to-top,
+  .back-top-btn {
+    bottom: calc(86px + env(safe-area-inset-bottom)) !important;
+    transition: bottom 0.28s ease !important;
+  }
+  body.mobile-bar-hidden .back-to-top,
+  body.mobile-bar-hidden .back-top-btn {
+    bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .hero { padding-block: 22px 20px !important; }
+  .hero-text p { margin-bottom: 14px !important; line-height: 1.55 !important; }
+  .hero-btn-group { gap: 8px !important; }
+  .section { padding-block: 28px !important; }
+  .pillar { padding-block: 26px !important; }
+  .service { padding-block: 16px !important; }
+  .section-title-wrapper { margin-bottom: 14px !important; }
+  .section-text { margin-bottom: 14px !important; line-height: 1.55 !important; }
+  .pillar-list { gap: 12px !important; }
+  .partner.section,
+  .testimonials.section { padding-block: 20px !important; }
+  #consultation.cta { padding-block: 28px !important; }
+
+  button,
+  a.btn,
+  .btn,
+  .filter-btn,
+  .hv-destination,
+  .nav-open-btn,
+  .header-action-btn,
+  .wa-float,
+  .back-top-btn {
+    touch-action: manipulation;
+  }
+
+  .nav-open-btn,
+  .header-action-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shop-section { padding-block: 28px 48px !important; }
+  .shop-intro { padding: 16px !important; margin-bottom: 18px !important; border-radius: 12px !important; }
+  .shop-lead { font-size: 1.35rem !important; line-height: 1.55 !important; }
+  .shop-category-block { padding: 14px !important; margin-bottom: 14px !important; }
+  .filter-btn { min-height: 40px; padding: 9px 14px !important; font-size: 1.25rem !important; }
+  .product-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .product-card { border-radius: 14px !important; }
+  .product-card-body { padding: 16px 16px 18px !important; gap: 6px !important; }
+  .product-card-badge { font-size: 1.1rem !important; padding: 4px 10px !important; }
+  .product-card-title { font-size: 1.75rem !important; line-height: 1.25 !important; }
+  .product-card-price { font-size: 1.85rem !important; }
+  .product-card-actions { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+  .product-card-actions .btn { min-height: 44px !important; font-size: 1.25rem !important; padding: 11px 10px !important; }
+
+  .hv-destination-switcher {
+    position: sticky;
+    top: 8px;
+    z-index: 40;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding: 10px 4px 12px;
+    margin: 8px -4px 12px;
+    background: linear-gradient(180deg, rgba(7, 32, 28, 0.92) 0%, rgba(7, 32, 28, 0.88) 100%);
+    border-radius: 14px;
+    scrollbar-width: none;
+  }
+  .hv-destination-switcher::-webkit-scrollbar { display: none; }
+  .hv-destination {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 9px 14px !important;
+    font-size: 1.2rem !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+  }
+  .hv-destination.is-active {
+    background: #fff !important;
+    color: #0f3c35 !important;
+    border-color: #fff !important;
+  }
+  .hv-active-destination { margin-bottom: 10px !important; }
+}
+
+@media (max-width: 575px) {
+  .product-grid { grid-template-columns: 1fr !important; }
+  .hero { padding-block: 18px 16px !important; }
+  .section { padding-block: 24px !important; }
+}
