@@ -1,16 +1,3 @@
-/* Homepage responsive fixes based on the shared mobile design review. */
-
-/* Restore Heal as a single horizontal product rail on larger screens too. */
-#heal .grid-list {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
-  overflow-y: visible !important;
-  gap: 20px;
-  padding-block: 4px 14px;
-  padding-inline: 0;
-  margin-inline: 0;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-}
+/* Restore full responsive-fixes from last known-good commit, then layer mobile UX. */
+@import url("https://cdn.jsdelivr.net/gh/herbiveda/hv-organica@a97be912b190a14da01d94bda7a5d42a155d6bf6/assets/css/responsive-fixes.css");
+@import url("./mobile-ux.css");
