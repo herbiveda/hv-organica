@@ -1,11 +1,24 @@
 /* Mobile UX optimization pass (Nov 2026)
    Hide bottom bar on scroll-down / show on scroll-up
    Tighter spacing, larger touch targets, stronger shop cards, sticky retreat destinations
+   Hero slides: consistent top spacing across intro + pillars
 */
 
 .mobile-action-bar,
 .site-mobile-action-bar {
   display: none;
+}
+
+/* Hero slides: match top spacing across intro + pillar slides (web + mobile) */
+.hero-slider .hero-slide {
+  align-items: flex-start !important;
+}
+.hero-slide .hero-content {
+  padding-block-start: clamp(28px, 5vw, 56px) !important;
+}
+.hero-slide .hero-kicker {
+  margin-block: 0 8px !important;
+  line-height: 1.3 !important;
 }
 
 @media (max-width: 767px) {
@@ -83,6 +96,15 @@
   }
 
   .hero { padding-block: 22px 20px !important; }
+  .hero-slide .hero-content {
+    padding-block: 28px 12px !important;
+  }
+  .hero-slide .hero-kicker {
+    margin-block-end: 6px !important;
+  }
+  .hero-slide .hero-subtitle {
+    margin-block-end: 12px !important;
+  }
   .hero-text p { margin-bottom: 14px !important; line-height: 1.55 !important; }
   .hero-btn-group { gap: 8px !important; }
   .section { padding-block: 28px !important; }
