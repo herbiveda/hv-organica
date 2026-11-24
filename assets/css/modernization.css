@@ -48,7 +48,7 @@
 .hero-slider .swiper-wrapper,
 .hero-slider .hero-slide { position: relative; }
 .hero-slider .hero-swiper { width: 100%; overflow: hidden; }
-.hero-slider .hero-slide { min-height: clamp(540px, 72vh, 760px); display: flex; align-items: center; }
+.hero-slider .hero-slide { min-height: clamp(540px, 72vh, 760px); display: flex; align-items: flex-start; }
 .hero-slide-grid {
   width: min(100% - 40px, 1240px);
   display: grid;
@@ -58,7 +58,7 @@
   position: relative;
   z-index: 1;
 }
-.hero-slide .hero-content { min-width: 0; max-width: 760px; padding-block: clamp(40px, 6vw, 76px); }
+.hero-slide .hero-content { min-width: 0; max-width: 760px; padding-block: clamp(36px, 5vw, 56px) clamp(40px, 6vw, 76px); }
 .hero-slide .hero-banner { display: flex; align-items: center; justify-content: center; width: 100%; margin: 0; min-width: 0; padding: clamp(12px, 2vw, 24px); border: 0 !important; }
 .hero-slide .hero-banner img {
   width: min(100%, 560px);
@@ -86,7 +86,7 @@
 }
 .hero-slide .hero-subtitle,
 .hero-slide .hero-kicker { color: var(--ds-russian-violet) !important; }
-.hero-slide .hero-kicker { font-family: var(--ff-body); font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-block-end: 10px; }
+.hero-slide .hero-kicker { font-family: var(--ff-body); font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-block: 0 8px; line-height: 1.3; }
 .hero-slide .hero-title { color: var(--ds-russian-violet) !important; text-wrap: balance; }
 .hero-slide .hero-title .span { color: rgba(15, 60, 53, 1) !important; }
 .hero-slide .hero-text { max-width: 680px; color: #4d5f5a !important; font-size: clamp(1.45rem, 1.8vw, 1.7rem); line-height: 1.72; text-wrap: pretty; }
@@ -166,7 +166,7 @@ html body .btn.btn-secondary:hover,html body .btn.btn-secondary:focus,.btn-secon
   #featured-courses .grid-list,#books-guides .blog-list,#heal .grid-list,#retreats .offer-list { display:flex; overflow-x:auto; flex-wrap:nowrap; gap:16px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
   #featured-courses .grid-list>li,#books-guides .blog-list>li,#heal .grid-list>li,#retreats .offer-list>li { flex:0 0 300px; width:300px; scroll-snap-align:start; }
   .hero-slide-grid { width:min(100% - 32px, 980px); grid-template-columns:minmax(0,1fr) minmax(260px,0.82fr); gap:28px; }
-  .hero-slide .hero-content { padding-block:44px; }
+  .hero-slide .hero-content { padding-block:40px 44px; }
   .hero-slide .hero-banner img { max-width:440px; }
 }
 
@@ -175,11 +175,10 @@ html body .btn.btn-secondary:hover,html body .btn.btn-secondary:focus,.btn-secon
   .section { padding-block:36px !important; }
   .hero-slide { min-height:auto; }
   .hero-slide-grid { width:min(100% - 28px, 540px); grid-template-columns:1fr; gap:10px; }
-  .hero-slide .hero-content { padding-block:34px 12px; order:1; }
+  .hero-slide .hero-content { padding-block:28px 12px; order:1; }
   .hero-slide .hero-banner { padding:4px 0 36px; order:2; }
   .hero-slide .hero-banner img { width:min(100%,420px); max-width:100%; border-radius:20px; }
 
-  /* Hero arrows: keep clear of CTA buttons — pin near pagination, not vertical center */
   .hero-nav {
     top: auto;
     bottom: 52px;
